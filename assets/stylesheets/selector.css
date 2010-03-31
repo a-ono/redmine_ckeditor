@@ -11,6 +11,7 @@ div.selector-container div.container {
 
 div.selector-container div.clear {
   clear: left;
+  height: 1em;
 }
 
 div.selector-container input[type="button"] {
