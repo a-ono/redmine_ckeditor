@@ -1,0 +1,20 @@
+= Redmine CKEditor plugin
+
+This plugin adds the text formatting for using CKEditor to Redmine.
+
+== What is CKEditor?
+
+CKEditor is a WYSIWYG text editor.
+See {the official site}[http://ckeditor.com/] for more details.
+
+== Requirements
+
+* Redmine 0.9.x
+
+== Plugin installation and setup
+
+1. Copy the plugin directory into the vendor/plugins directory
+2. Start Redmine
+3. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
+4. Configure the plugin (Administration > Plugins > Configure)
+

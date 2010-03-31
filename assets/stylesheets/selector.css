@@ -1,0 +1,18 @@
+div.selector-container select {
+  float: left;
+  padding: 3px;
+  width: 15em;
+}
+
+div.selector-container div.container {
+  float: left;
+  padding: 3px;
+}
+
+div.selector-container div.clear {
+  clear: left;
+}
+
+div.selector-container input[type="button"] {
+  width: 8em;
+}
