@@ -67,12 +67,6 @@ body .cke_dialog
 	margin-bottom: 10px;
 }
 
-.cke_skin_kama .cke_browser_ie.cke_rtl .cke_dialog_title
-{
-	position: static !important;
-	unicode-bidi: bidi-override;
-}
-
 .cke_skin_kama .cke_dialog_contents
 {
 	background-color: #ebebeb;
@@ -245,6 +239,10 @@ body .cke_dialog
 	padding: 1px 0px;
 }
 
+.cke_skin_kama .cke_browser_ie.cke_rtl div.cke_dialog_ui_input_text {
+	padding-right: 1px;
+}
+
 .cke_skin_kama .cke_browser_gecko.cke_hc div.cke_dialog_ui_input_text,
 .cke_skin_kama .cke_browser_gecko.cke_hc div.cke_dialog_ui_input_password
 {
@@ -322,6 +320,7 @@ body .cke_dialog
 	background: transparent url(images/sprites.png) repeat-x scroll 0 -1069px;
 	_background: none;
 	padding: 5px 0;
+	text-align: center;
 }
 
 .cke_skin_kama .cke_browser_iequirks a.cke_dialog_ui_button
@@ -431,6 +430,8 @@ body .cke_dialog
 	color: #222;
 	display: inline-block;
 	cursor: default;
+	min-width: 60px;
+	+margin: 2px 0; /* IE7 */
 }
 
 /* Gecko 1.8 does not support display: inline-block */
@@ -609,7 +610,7 @@ body .cke_dialog
 	background-color: white;
 }
 
-.cke_skin_kama iframe.cke_dialog_ui_input_file
+.cke_skin_kama .cke_dialog_ui_input_file
 {
 	width: 100%;
 	height: 25px;
@@ -679,12 +680,10 @@ body .cke_dialog
 {
 	border: outset 1px;
 	cursor: pointer;
-	cursor: hand;
 }
 
-.cke_skin_kama .cke_dialog  #ImagePreviewBox
+.cke_skin_kama .cke_dialog  .ImagePreviewBox
 {
-	white-space : normal;
 	border : 2px ridge black;
 	overflow : scroll;
 	height : 160px;
@@ -692,7 +691,18 @@ body .cke_dialog
 	padding : 2px;
 	background-color : white;
 }
-.cke_skin_kama .cke_dialog  #ImagePreviewLoader
+
+.cke_skin_kama .cke_dialog .ImagePreviewBox table td {
+	white-space: normal;
+}
+
+/* Fix iframedialog's height doesn't stretch to 100% #4863.*/
+.cke_skin_kama .cke_browser_iequirks .cke_dialog_page_contents
+{
+	_position: absolute;
+}
+
+.cke_skin_kama .cke_dialog  .ImagePreviewLoader
 {
 	position: absolute;
 	white-space : normal;
@@ -707,7 +717,7 @@ body .cke_dialog
 	background-color : #e4e4e4;
 }
 
-.cke_skin_kama .cke_dialog  #FlashPreviewBox
+.cke_skin_kama .cke_dialog  .FlashPreviewBox
 {
 	white-space : normal;
 	border : 2px ridge black;
@@ -716,6 +726,27 @@ body .cke_dialog
 	width : 390px;
 	padding : 2px;
 	background-color : white;
+}
+
+.cke_skin_kama .cke_dialog .cke_pastetext
+{
+	width: 346px;
+	height: 170px;
+}
+
+.cke_skin_kama .cke_dialog .cke_pastetext textarea
+{
+	width: 340px;
+	height: 170px;
+	resize: none;
+}
+
+.cke_skin_kama .cke_dialog iframe.cke_pasteframe
+{
+	width: 346px;
+	height: 130px;
+	background-color: white;
+	border: 1px solid black;
 }
 
 .cke_skin_kama .cke_dialog .cke_dark_background
@@ -734,7 +765,6 @@ body .cke_dialog
 .cke_skin_kama .cke_dialog .cke_hand
 {
 	cursor: pointer;
-	cursor: hand;
 }
 
 .cke_skin_kama .cke_disabled
@@ -767,7 +797,6 @@ body .cke_dialog
 {
 	display: inline;
 	cursor: pointer;
-	cursor: hand;
 	font-weight: bold;
 	position: relative;
 	top: 3px;
@@ -776,6 +805,11 @@ body .cke_dialog
 .cke_skin_kama .cke_dialog_body .cke_label
 {
 	display: none;
+}
+
+.cke_skin_kama .cke_dialog_body label.cke_required
+{
+	font-weight: bold;
 }
 
 .cke_skin_kama .cke_hc .cke_dialog_body .cke_label

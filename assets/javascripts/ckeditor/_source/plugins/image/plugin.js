@@ -26,6 +26,14 @@ CKEDITOR.plugins.add( 'image',
 				command : pluginName
 			});
 
+		editor.on( 'doubleclick', function( evt )
+			{
+				var element = evt.data.element;
+
+				if ( element.is( 'img' ) && !element.getAttribute( '_cke_realelement' ) )
+					evt.data.dialog = 'image';
+			});
+
 		// If the "menu" plugin is loaded, register the menu items.
 		if ( editor.addMenuItems )
 		{
@@ -45,7 +53,7 @@ CKEDITOR.plugins.add( 'image',
 		{
 			editor.contextMenu.addListener( function( element, selection )
 				{
-					if ( !element || !element.is( 'img' ) || element.getAttribute( '_cke_realelement' ) )
+					if ( !element || !element.is( 'img' ) || element.getAttribute( '_cke_realelement' ) || element.isReadOnly() )
 						return null;
 
 					return { image : CKEDITOR.TRISTATE_OFF };
@@ -62,3 +70,12 @@ CKEDITOR.plugins.add( 'image',
  * config.image_removeLinkByEmptyURL = false;
  */
 CKEDITOR.config.image_removeLinkByEmptyURL = true;
+
+/**
+ *  Padding text to set off the image in preview area.
+ * @name CKEDITOR.config.image_previewText
+ * @type String
+ * @default "Lorem ipsum dolor..." placehoder text.
+ * @example
+ * config.image_previewText = CKEDITOR.tools.repeat( '___ ', 100 );
+ */

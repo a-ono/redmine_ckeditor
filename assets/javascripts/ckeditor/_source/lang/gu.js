@@ -105,22 +105,34 @@ CKEDITOR.lang['gu'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		advanced		: 'Advanced', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'વિશિષ્ટ અક્ષર ઇન્સર્ટ/દાખલ કરવું',
-		title		: 'સ્પેશિઅલ વિશિષ્ટ અક્ષર પસંદ કરો'
+		title		: 'સ્પેશિઅલ વિશિષ્ટ અક્ષર પસંદ કરો',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'લિંક ઇન્સર્ટ/દાખલ કરવી',
+		other 		: '<other>', // MISSING
 		menu		: ' લિંક એડિટ/માં ફેરફાર કરવો',
 		title		: 'લિંક',
 		info		: 'લિંક ઇન્ફૉ ટૅબ',
@@ -180,6 +192,30 @@ CKEDITOR.lang['gu'] =
 		title		: 'ઍંકરના ગુણ',
 		name		: 'ઍંકરનું નામ',
 		errorName	: 'ઍંકરનું નામ ટાઈપ કરો'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties', // MISSING
+		bulletedTitle		: 'Bulleted List Properties', // MISSING
+		type				: 'Type', // MISSING
+		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Circle', // MISSING
+		disc				: 'Disc', // MISSING
+		square				: 'Square', // MISSING
+		none				: 'None', // MISSING
+		notset				: '<not set>', // MISSING
+		armenian			: 'Armenian numbering', // MISSING
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)', // MISSING
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)', // MISSING
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)', // MISSING
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)', // MISSING
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)', // MISSING
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)', // MISSING
+		decimal				: 'Decimal (1, 2, 3, etc.)', // MISSING
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)' // MISSING
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +512,8 @@ CKEDITOR.lang['gu'] =
 	smiley :
 	{
 		toolbar	: 'સ્માઇલી',
-		title	: 'સ્માઇલી  પસંદ કરો'
+		title	: 'સ્માઇલી  પસંદ કરો',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +540,9 @@ CKEDITOR.lang['gu'] =
 	clipboard :
 	{
 		title		: 'પેસ્ટ',
-		cutError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કટ કરવાની પરવાનગી નથી આપતી. (Ctrl+X) નો ઉપયોગ કરો.',
-		copyError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કોપી કરવાની પરવાનગી નથી આપતી.  (Ctrl+C) का प्रयोग करें।',
-		pasteMsg	: 'Ctrl+V નો પ્રયોગ કરી પેસ્ટ કરો',
+		cutError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કટ કરવાની પરવાનગી નથી આપતી. (Ctrl/Cmd+X) નો ઉપયોગ કરો.',
+		copyError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કોપી કરવાની પરવાનગી નથી આપતી.  (Ctrl/Cmd+C) का प्रयोग करें।',
+		pasteMsg	: 'Ctrl/Cmd+V નો પ્રયોગ કરી પેસ્ટ કરો',
 		securityMsg	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસના કારણે,એડિટર તમારા કિલ્પબોર્ડ ડેટા ને કોપી નથી કરી શકતો. તમારે આ વિન્ડોમાં ફરીથી પેસ્ટ કરવું પડશે.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +565,7 @@ CKEDITOR.lang['gu'] =
 	{
 		button			: 'ટેમ્પ્લેટ',
 		title			: 'કન્ટેન્ટ ટેમ્પ્લેટ',
+		options : 'Template Options', // MISSING
 		insertOption	: 'મૂળ શબ્દને બદલો',
 		selectPromptMsg	: 'એડિટરમાં ઓપન કરવા ટેમ્પ્લેટ પસંદ કરો (વર્તમાન કન્ટેન્ટ સેવ નહીં થાય):',
 		emptyListMsg	: '(કોઈ ટેમ્પ્લેટ ડિફાઇન નથી)'
@@ -610,7 +648,7 @@ CKEDITOR.lang['gu'] =
 		'008080' : 'Teal', // MISSING
 		'000080' : 'Navy', // MISSING
 		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
+		'696969' : 'Dark Gray', // MISSING
 		'B22222' : 'Fire Brick', // MISSING
 		'A52A2A' : 'Brown', // MISSING
 		'DAA520' : 'Golden Rod', // MISSING
@@ -626,7 +664,7 @@ CKEDITOR.lang['gu'] =
 		'0FF' : 'Cyan', // MISSING
 		'00F' : 'Blue', // MISSING
 		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
+		'A9A9A9' : 'Dim Gray', // MISSING
 		'FFA07A' : 'Light Salmon', // MISSING
 		'FFA500' : 'Orange', // MISSING
 		'FFFF00' : 'Yellow', // MISSING
@@ -648,6 +686,7 @@ CKEDITOR.lang['gu'] =
 	scayt :
 	{
 		title			: 'Spell Check As You Type', // MISSING
+		opera_title		: 'Not supported by Opera', // MISSING
 		enable			: 'Enable SCAYT', // MISSING
 		disable			: 'Disable SCAYT', // MISSING
 		about			: 'About SCAYT', // MISSING
@@ -659,9 +698,23 @@ CKEDITOR.lang['gu'] =
 		ignoreAll		: 'Ignore All', // MISSING
 		addWord			: 'Add Word', // MISSING
 		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+
 		optionsTab		: 'Options', // MISSING
+		allCaps			: 'Ignore All-Caps Words', // MISSING
+		ignoreDomainNames : 'Ignore Domain Names', // MISSING
+		mixedCase		: 'Ignore Words with Mixed Case', // MISSING
+		mixedWithDigits	: 'Ignore Words with Numbers', // MISSING
+
 		languagesTab	: 'Languages', // MISSING
+
 		dictionariesTab	: 'Dictionaries', // MISSING
+		dic_field_name	: 'Dictionary name', // MISSING
+		dic_create		: 'Create', // MISSING
+		dic_restore		: 'Restore', // MISSING
+		dic_delete		: 'Delete', // MISSING
+		dic_rename		: 'Rename', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.', // MISSING
+
 		aboutTab		: 'About' // MISSING
 	},
 
@@ -689,11 +742,18 @@ CKEDITOR.lang['gu'] =
 	colordialog :
 	{
 		title		: 'Select color', // MISSING
+		options	:	'Color Options', // MISSING
 		highlight	: 'Highlight', // MISSING
-		selected	: 'Selected', // MISSING
+		selected	: 'Selected Color', // MISSING
 		clear		: 'Clear' // MISSING
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

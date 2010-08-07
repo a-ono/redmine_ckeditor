@@ -378,22 +378,24 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		init : function( editor, pluginPath )
 		{
 			editor._.filebrowserFn = CKEDITOR.tools.addFunction( setUrl, editor );
+		}
+	} );
 
-			CKEDITOR.on( 'dialogDefinition', function( evt )
+	CKEDITOR.on( 'dialogDefinition', function( evt )
+	{
+		var definition = evt.data.definition,
+			element;
+		// Associate filebrowser to elements with 'filebrowser' attribute.
+		for ( var i in definition.contents )
+		{
+			if ( ( element = definition.contents[ i ] ) )
 			{
-				var definition = evt.data.definition,
-					element;
-				// Associate filebrowser to elements with 'filebrowser' attribute.
-				for ( var i in definition.contents )
+				attachFileBrowser( evt.editor, evt.data.name, definition, element.elements );
+				if ( element.hidden && element.filebrowser )
 				{
-					element = definition.contents[ i ] ;
-					attachFileBrowser( evt.editor, evt.data.name, definition, element.elements );
-					if ( element.hidden && element.filebrowser )
-					{
-						element.hidden = !isConfigured( definition, element[ 'id' ], element.filebrowser );
-					}
+					element.hidden = !isConfigured( definition, element[ 'id' ], element.filebrowser );
 				}
-			} );
+			}
 		}
 	} );
 

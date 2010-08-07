@@ -146,6 +146,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				if ( CKEDITOR.env.gecko && CKEDITOR.env.version < 10900 && editor.lang.dir == 'rtl' )
 					editor.lang.dir = 'ltr';
 
+				var config = editor.config;
+				config.contentsLangDirection == 'ui' && ( config.contentsLangDirection = editor.lang.dir );
+
 				loadPlugins( editor );
 			});
 	};
@@ -331,7 +334,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		for ( var name in commands )
 		{
 			command = commands[ name ];
-			command[ command.modes[ mode ] ? 'enable' : 'disable' ]();
+			command[ command.startDisabled ? 'disable' : command.modes[ mode ] ? 'enable' : 'disable' ]();
 		}
 	}
 
@@ -468,7 +471,43 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 			if ( !noUpdate )
 				this.updateElement();
 
+			if ( this.mode )
+			{
+				// ->		currentMode.unload( holderElement );
+				this._.modes[ this.mode ].unload( this.getThemeSpace( 'contents' ) );
+			}
+
 			this.theme.destroy( this );
+
+			var toolbars,
+				index = 0,
+				j,
+				items,
+				instance;
+
+			if ( this.toolbox )
+			{
+				toolbars = this.toolbox.toolbars;
+				for ( ; index < toolbars.length ; index++ )
+				{
+					items = toolbars[ index ].items;
+					for ( j = 0 ; j < items.length ; j++ )
+					{
+						instance = items[ j ];
+						if ( instance.clickFn ) CKEDITOR.tools.removeFunction( instance.clickFn );
+						if ( instance.keyDownFn ) CKEDITOR.tools.removeFunction( instance.keyDownFn );
+
+						if ( instance.index ) CKEDITOR.ui.button._.instances[ instance.index ] = null;
+					}
+				}
+			}
+
+			if ( this.contextMenu )
+				CKEDITOR.tools.removeFunction( this.contextMenu._.functionId );
+
+			if ( this._.filebrowserFn )
+				CKEDITOR.tools.removeFunction( this._.filebrowserFn );
+
 			this.fire( 'destroy' );
 			CKEDITOR.remove( this );
 			CKEDITOR.fire( 'instanceDestroyed', null, this );

@@ -105,22 +105,34 @@ CKEDITOR.lang['en'] =
 		targetTop		: 'Topmost Window (_top)',
 		targetSelf		: 'Same Window (_self)',
 		targetParent	: 'Parent Window (_parent)',
+		advanced		: 'Advanced',
+		langDirLTR		: 'Left to Right (LTR)',
+		langDirRTL		: 'Right to Left (RTL)',
+		styles			: 'Style',
+		cssClasses		: 'Stylesheet Classes',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options'
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insert Special Character',
-		title		: 'Select Special Character'
+		title		: 'Select Special Character',
+		options : 'Special Character Options'
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link',
+		other 		: '<other>',
 		menu		: 'Edit Link',
 		title		: 'Link',
 		info		: 'Link Info',
@@ -180,6 +192,30 @@ CKEDITOR.lang['en'] =
 		title		: 'Anchor Properties',
 		name		: 'Anchor Name',
 		errorName	: 'Please type the anchor name'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties',
+		bulletedTitle		: 'Bulleted List Properties',
+		type				: 'Type',
+		start				: 'Start',
+		validateStartNumber				:'List start number must be a whole number.',
+		circle				: 'Circle',
+		disc				: 'Disc',
+		square				: 'Square',
+		none				: 'None',
+		notset				: '<not set>',
+		armenian			: 'Armenian numbering',
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)',
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)',
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)',
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)',
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)',
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)',
+		decimal				: 'Decimal (1, 2, 3, etc.)',
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)'
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +512,8 @@ CKEDITOR.lang['en'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Insert a Smiley'
+		title	: 'Insert a Smiley',
+		options : 'Smiley Options'
 	},
 
 	elementsPath :
@@ -503,9 +540,9 @@ CKEDITOR.lang['en'] =
 	clipboard :
 	{
 		title		: 'Paste',
-		cutError	: 'Your browser security settings don\'t permit the editor to automatically execute cutting operations. Please use the keyboard for that (Ctrl+X).',
-		copyError	: 'Your browser security settings don\'t permit the editor to automatically execute copying operations. Please use the keyboard for that (Ctrl+C).',
-		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK',
+		cutError	: 'Your browser security settings don\'t permit the editor to automatically execute cutting operations. Please use the keyboard for that (Ctrl/Cmd+X).',
+		copyError	: 'Your browser security settings don\'t permit the editor to automatically execute copying operations. Please use the keyboard for that (Ctrl/Cmd+C).',
+		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl/Cmd+V</strong>) and hit OK',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.',
 		pasteArea	: 'Paste Area'
 	},
@@ -528,6 +565,7 @@ CKEDITOR.lang['en'] =
 	{
 		button			: 'Templates',
 		title			: 'Content Templates',
+		options : 'Template Options',
 		insertOption	: 'Replace actual contents',
 		selectPromptMsg	: 'Please select the template to open in the editor',
 		emptyListMsg	: '(No templates defined)'
@@ -610,7 +648,7 @@ CKEDITOR.lang['en'] =
 		'008080' : 'Teal',
 		'000080' : 'Navy',
 		'4B0082' : 'Indigo',
-		'696969' : 'Dim Gray',
+		'696969' : 'Dark Gray',
 		'B22222' : 'Fire Brick',
 		'A52A2A' : 'Brown',
 		'DAA520' : 'Golden Rod',
@@ -626,7 +664,7 @@ CKEDITOR.lang['en'] =
 		'0FF' : 'Cyan',
 		'00F' : 'Blue',
 		'EE82EE' : 'Violet',
-		'A9A9A9' : 'Dark Gray',
+		'A9A9A9' : 'Dim Gray',
 		'FFA07A' : 'Light Salmon',
 		'FFA500' : 'Orange',
 		'FFFF00' : 'Yellow',
@@ -648,6 +686,7 @@ CKEDITOR.lang['en'] =
 	scayt :
 	{
 		title			: 'Spell Check As You Type',
+		opera_title		: 'Not supported by Opera',
 		enable			: 'Enable SCAYT',
 		disable			: 'Disable SCAYT',
 		about			: 'About SCAYT',
@@ -659,9 +698,23 @@ CKEDITOR.lang['en'] =
 		ignoreAll		: 'Ignore All',
 		addWord			: 'Add Word',
 		emptyDic		: 'Dictionary name should not be empty.',
+
 		optionsTab		: 'Options',
+		allCaps			: 'Ignore All-Caps Words',
+		ignoreDomainNames : 'Ignore Domain Names',
+		mixedCase		: 'Ignore Words with Mixed Case',
+		mixedWithDigits	: 'Ignore Words with Numbers',
+
 		languagesTab	: 'Languages',
+
 		dictionariesTab	: 'Dictionaries',
+		dic_field_name	: 'Dictionary name',
+		dic_create		: 'Create',
+		dic_restore		: 'Restore',
+		dic_delete		: 'Delete',
+		dic_rename		: 'Rename',
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.',
+
 		aboutTab		: 'About'
 	},
 
@@ -689,11 +742,18 @@ CKEDITOR.lang['en'] =
 	colordialog :
 	{
 		title		: 'Select color',
+		options	:	'Color Options',
 		highlight	: 'Highlight',
-		selected	: 'Selected',
+		selected	: 'Selected Color',
 		clear		: 'Clear'
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar',
-	toolbarExpand	: 'Expand Toolbar'
+	toolbarExpand	: 'Expand Toolbar',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right',
+		rtl : 'Text direction from right to left'
+	}
 };

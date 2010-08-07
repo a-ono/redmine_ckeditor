@@ -5,6 +5,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 CKEDITOR.dialog.add( 'link', function( editor )
 {
+	var plugin = CKEDITOR.plugins.link;
 	// Handles the event when the "Target" selection box is changed.
 	var targetChanged = function()
 	{
@@ -93,7 +94,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 
 	var parseLink = function( editor, element )
 	{
-		var href = element ? ( element.getAttribute( '_cke_saved_href' ) || element.getAttribute( 'href' ) ) : '',
+		var href = ( element  && ( element.getAttribute( '_cke_saved_href' ) || element.getAttribute( 'href' ) ) ) || '',
 		 	javascriptMatch,
 			emailMatch,
 			anchorMatch,
@@ -410,14 +411,14 @@ CKEDITOR.dialog.add( 'link', function( editor )
 										type : 'select',
 										label : editor.lang.common.protocol,
 										'default' : 'http://',
-										style : 'width : 100%;',
 										items :
 										[
-											[ 'http://' ],
-											[ 'https://' ],
-											[ 'ftp://' ],
-											[ 'news://' ],
-											[ '<other>', '' ]
+											// Force 'ltr' for protocol names in BIDI. (#5433)
+											[ 'http://\u200E', 'http://' ],
+											[ 'https://\u200E', 'https://' ],
+											[ 'ftp://\u200E', 'ftp://' ],
+											[ 'news://\u200E', 'news://' ],
+											[ editor.lang.link.other , '' ]
 										],
 										setup : function( data )
 										{
@@ -447,7 +448,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 											var	protocolCmb = this.getDialog().getContentElement( 'info', 'protocol' ),
 												url = this.getValue(),
 												urlOnChangeProtocol = /^(http|https|ftp|news):\/\/(?=.)/gi,
-												urlOnChangeTestOther = /^((javascript:)|[#\/\.])/gi;
+												urlOnChangeTestOther = /^((javascript:)|[#\/\.\?])/gi;
 
 											var protocol = urlOnChangeProtocol.exec( url );
 											if ( protocol )
@@ -781,7 +782,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 									if ( !data.target )
 										data.target = {};
 
-									data.target.name = this.getValue();
+									data.target.name = this.getValue().replace(/\W/gi, '');
 								}
 							}
 						]
@@ -1136,30 +1137,21 @@ CKEDITOR.dialog.add( 'link', function( editor )
 
 			var editor = this.getParentEditor(),
 				selection = editor.getSelection(),
-				ranges = selection.getRanges(),
-				element = null,
-				me = this;
-			// Fill in all the relevant fields if there's already one link selected.
-			if ( ranges.length == 1 )
-			{
+				element = null;
 
-				var rangeRoot = ranges[0].getCommonAncestor( true );
-				element = rangeRoot.getAscendant( 'a', true );
-				if ( element && element.getAttribute( 'href' ) )
-				{
-					selection.selectElement( element );
-				}
-				else if ( ( element = rangeRoot.getAscendant( 'img', true ) ) &&
-						 element.getAttribute( '_cke_real_element_type' ) &&
-						 element.getAttribute( '_cke_real_element_type' ) == 'anchor' )
-				{
-					this.fakeObj = element;
-					element = editor.restoreRealElement( this.fakeObj );
-					selection.selectElement( this.fakeObj );
-				}
-				else
-					element = null;
+			// Fill in all the relevant fields if there's already one link selected.
+			if ( ( element = plugin.getSelectedLink( editor ) ) && element.hasAttribute( 'href' ) )
+				selection.selectElement( element );
+			else if ( ( element = selection.getSelectedElement() ) && element.is( 'img' )
+					&& element.getAttribute( '_cke_real_element_type' )
+					&& element.getAttribute( '_cke_real_element_type' ) == 'anchor' )
+			{
+				this.fakeObj = element;
+				element = editor.restoreRealElement( this.fakeObj );
+				selection.selectElement( this.fakeObj );
 			}
+			else
+				element = null;
 
 			this.setupContent( parseLink.apply( this, [ editor, element ] ) );
 		},
@@ -1302,10 +1294,12 @@ CKEDITOR.dialog.add( 'link', function( editor )
 			{
 				// Create element if current selection is collapsed.
 				var selection = editor.getSelection(),
-					ranges = selection.getRanges();
+					ranges = selection.getRanges( true );
 				if ( ranges.length == 1 && ranges[0].collapsed )
 				{
-					var text = new CKEDITOR.dom.text( attributes._cke_saved_href, editor.document );
+					// Short mailto link text view (#5736).
+					var text = new CKEDITOR.dom.text( data.type == 'email' ?
+							data.email.address : attributes._cke_saved_href, editor.document );
 					ranges[0].insertNode( text );
 					ranges[0].selectNodeContents( text );
 					selection.selectRanges( ranges );
@@ -1356,9 +1350,13 @@ CKEDITOR.dialog.add( 'link', function( editor )
 
 				element.setAttributes( attributes );
 				element.removeAttributes( removeAttributes );
-				// Update text view when user changes protocol #4612.
-				if (href == textView)
-					element.setHtml( attributes._cke_saved_href );
+				// Update text view when user changes protocol (#4612).
+				if ( href == textView || data.type == 'email' && textView.indexOf( '@' ) != -1 )
+				{
+					// Short mailto link text view (#5736).
+					element.setHtml( data.type == 'email' ?
+						data.email.address : attributes._cke_saved_href );
+				}
 				// Make the element display as an anchor if a name has been set.
 				if ( element.getAttribute( 'name' ) )
 					element.addClass( 'cke_anchor' );

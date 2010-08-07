@@ -105,22 +105,34 @@ CKEDITOR.lang['fr'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		advanced		: 'Advanced', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, Indisponible</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insérer un caractère spécial',
-		title		: 'Sélectionnez un caractère'
+		title		: 'Sélectionnez un caractère',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Lien',
+		other 		: '<autre>',
 		menu		: 'Editer le lien',
 		title		: 'Lien',
 		info		: 'Infos sur le lien',
@@ -180,6 +192,30 @@ CKEDITOR.lang['fr'] =
 		title		: 'Propriétés de l\'ancre',
 		name		: 'Nom de l\'ancre',
 		errorName	: 'Veuillez entrer le nom de l\'ancre'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties', // MISSING
+		bulletedTitle		: 'Bulleted List Properties', // MISSING
+		type				: 'Type', // MISSING
+		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Circle', // MISSING
+		disc				: 'Disc', // MISSING
+		square				: 'Square', // MISSING
+		none				: 'None', // MISSING
+		notset				: '<not set>', // MISSING
+		armenian			: 'Armenian numbering', // MISSING
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)', // MISSING
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)', // MISSING
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)', // MISSING
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)', // MISSING
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)', // MISSING
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)', // MISSING
+		decimal				: 'Decimal (1, 2, 3, etc.)', // MISSING
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)' // MISSING
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +512,8 @@ CKEDITOR.lang['fr'] =
 	smiley :
 	{
 		toolbar	: 'Emoticon',
-		title	: 'Insérer un émoticon'
+		title	: 'Insérer un émoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +540,9 @@ CKEDITOR.lang['fr'] =
 	clipboard :
 	{
 		title		: 'Coller',
-		cutError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement l\'opération "couper". Veuillez utiliser le raccourci clavier (Ctrl+X).',
-		copyError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement des opérations de copie. Veuillez utiliser le raccourci clavier (Ctrl+C).',
-		pasteMsg	: 'Veuillez coller le texte dans la zone suivante en utilisant le raccourci clavier (<strong>Ctrl+V</strong>) et cliquez sur OK',
+		cutError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement l\'opération "couper". Veuillez utiliser le raccourci clavier (Ctrl/Cmd+X).',
+		copyError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement des opérations de copie. Veuillez utiliser le raccourci clavier (Ctrl/Cmd+C).',
+		pasteMsg	: 'Veuillez coller le texte dans la zone suivante en utilisant le raccourci clavier (<strong>Ctrl/Cmd+V</strong>) et cliquez sur OK',
 		securityMsg	: 'A cause des paramètres de sécurité de votre navigateur, l\'éditeur n\'est pas en mesure d\'accéder directement à vos données contenues dans le presse-papier. Vous devriez réessayer de coller les données dans la fenêtre.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +565,7 @@ CKEDITOR.lang['fr'] =
 	{
 		button			: 'Modèles',
 		title			: 'Contenu des modèles',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Remplacer le contenu actuel',
 		selectPromptMsg	: 'Veuillez sélectionner le modèle pour l\'ouvrir dans l\'éditeur',
 		emptyListMsg	: '(Aucun modèle disponible)'
@@ -610,7 +648,7 @@ CKEDITOR.lang['fr'] =
 		'008080' : 'Teal', // MISSING
 		'000080' : 'Navy', // MISSING
 		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
+		'696969' : 'Dark Gray', // MISSING
 		'B22222' : 'Fire Brick', // MISSING
 		'A52A2A' : 'Brown', // MISSING
 		'DAA520' : 'Golden Rod', // MISSING
@@ -626,7 +664,7 @@ CKEDITOR.lang['fr'] =
 		'0FF' : 'Cyan', // MISSING
 		'00F' : 'Blue', // MISSING
 		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
+		'A9A9A9' : 'Dim Gray', // MISSING
 		'FFA07A' : 'Light Salmon', // MISSING
 		'FFA500' : 'Orange', // MISSING
 		'FFFF00' : 'Yellow', // MISSING
@@ -648,6 +686,7 @@ CKEDITOR.lang['fr'] =
 	scayt :
 	{
 		title			: 'Vérification d\'Orthographe en Cours de Frappe (SCAYT: Spell Check As You Type)',
+		opera_title		: 'Not supported by Opera', // MISSING
 		enable			: 'Activer SCAYT',
 		disable			: 'Désactiver SCAYT',
 		about			: 'A propos de SCAYT',
@@ -659,9 +698,23 @@ CKEDITOR.lang['fr'] =
 		ignoreAll		: 'Ignorer Tout',
 		addWord			: 'Ajouter le mot',
 		emptyDic		: 'Le nom du dictionnaire ne devrait pas être vide.',
+
 		optionsTab		: 'Options',
+		allCaps			: 'Ignore All-Caps Words', // MISSING
+		ignoreDomainNames : 'Ignore Domain Names', // MISSING
+		mixedCase		: 'Ignore Words with Mixed Case', // MISSING
+		mixedWithDigits	: 'Ignore Words with Numbers', // MISSING
+
 		languagesTab	: 'Langues',
+
 		dictionariesTab	: 'Dictionnaires',
+		dic_field_name	: 'Dictionary name', // MISSING
+		dic_create		: 'Create', // MISSING
+		dic_restore		: 'Restore', // MISSING
+		dic_delete		: 'Delete', // MISSING
+		dic_rename		: 'Rename', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.', // MISSING
+
 		aboutTab		: 'A propos de'
 	},
 
@@ -689,11 +742,18 @@ CKEDITOR.lang['fr'] =
 	colordialog :
 	{
 		title		: 'Select color', // MISSING
+		options	:	'Color Options', // MISSING
 		highlight	: 'Highlight', // MISSING
-		selected	: 'Selected', // MISSING
+		selected	: 'Selected Color', // MISSING
 		clear		: 'Clear' // MISSING
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

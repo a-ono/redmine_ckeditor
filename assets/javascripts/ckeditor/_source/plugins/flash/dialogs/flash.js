@@ -175,8 +175,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		var previewPreloader,
 			previewAreaHtml = '<div>' + CKEDITOR.tools.htmlEncode( editor.lang.common.preview ) +'<br>' +
-			'<div id="FlashPreviewLoader" style="display:none"><div class="loading">&nbsp;</div></div>' +
-			'<div id="FlashPreviewBox"></div></div>';
+			'<div id="cke_FlashPreviewLoader' + CKEDITOR.tools.getNextNumber() + '" style="display:none"><div class="loading">&nbsp;</div></div>' +
+			'<div id="cke_FlashPreviewBox' + CKEDITOR.tools.getNextNumber() + '" class="FlashPreviewBox"></div></div>';
 
 		return {
 			title : editor.lang.flash.title,
@@ -186,7 +186,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			{
 				// Clear previously saved elements.
 				this.fakeImage = this.objectNode = this.embedNode = null;
-				previewPreloader = new CKEDITOR.dom.element( 'embeded', editor.document );
+				previewPreloader = new CKEDITOR.dom.element( 'embed', editor.document );
 
 				// Try to detect any embed or object tag that has Flash parameters.
 				var fakeImage = this.getSelectedElement();
@@ -265,12 +265,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						paramMap[ paramList.getItem( i ).getAttribute( 'name' ) ] = paramList.getItem( i );
 				}
 
-				// Apply or remove flash parameters.
-				var extraStyles = {};
-				this.commitContent( objectNode, embedNode, paramMap, extraStyles );
+				// A subset of the specified attributes/styles
+				// should also be applied on the fake element to
+				// have better visual effect. (#5240)
+				var extraStyles = {}, extraAttributes = {};
+				this.commitContent( objectNode, embedNode, paramMap, extraStyles, extraAttributes );
 
 				// Refresh the fake image.
 				var newFakeImage = editor.createFakeElement( objectNode || embedNode, 'cke_flash', 'flash', true );
+				newFakeImage.setAttributes( extraAttributes );
 				newFakeImage.setStyles( extraStyles );
 				if ( this.fakeImage )
 				{
@@ -572,7 +575,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 										[ editor.lang.flash.alignTop , 'top']
 									],
 									setup : loadValue,
-									commit : commitValue
+									commit : function( objectNode, embedNode, paramMap, extraStyles, extraAttributes )
+									{
+										var value = this.getValue();
+										commitValue.apply( this, arguments );
+										value && ( extraAttributes.align = value );
+									}
 								},
 								{
 									type : 'html',

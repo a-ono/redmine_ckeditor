@@ -105,22 +105,34 @@ CKEDITOR.lang['bg'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		advanced		: 'Advanced', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Вмъкни специален символ',
-		title		: 'Изберете специален символ'
+		title		: 'Изберете специален символ',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Добави/Редактирай връзка',
+		other 		: '<друг>',
 		menu		: 'Редактирай връзка',
 		title		: 'Връзка',
 		info		: 'Информация за връзката',
@@ -180,6 +192,30 @@ CKEDITOR.lang['bg'] =
 		title		: 'Параметри на котвата',
 		name		: 'Име на котвата',
 		errorName	: 'Моля, въведете име на котвата'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties', // MISSING
+		bulletedTitle		: 'Bulleted List Properties', // MISSING
+		type				: 'Type', // MISSING
+		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Circle', // MISSING
+		disc				: 'Disc', // MISSING
+		square				: 'Square', // MISSING
+		none				: 'None', // MISSING
+		notset				: '<not set>', // MISSING
+		armenian			: 'Armenian numbering', // MISSING
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)', // MISSING
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)', // MISSING
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)', // MISSING
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)', // MISSING
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)', // MISSING
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)', // MISSING
+		decimal				: 'Decimal (1, 2, 3, etc.)', // MISSING
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)' // MISSING
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +512,8 @@ CKEDITOR.lang['bg'] =
 	smiley :
 	{
 		toolbar	: 'Усмивка',
-		title	: 'Добави усмивка'
+		title	: 'Добави усмивка',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +540,9 @@ CKEDITOR.lang['bg'] =
 	clipboard :
 	{
 		title		: 'Вмъкни',
-		cutError	: 'Настройките за сигурност на вашия бразуър не разрешават на редактора да изпълни изрязването. За целта използвайте клавиатурата (Ctrl+X).',
-		copyError	: 'Настройките за сигурност на вашия бразуър не разрешават на редактора да изпълни запаметяването. За целта използвайте клавиатурата (Ctrl+C).',
-		pasteMsg	: 'Вмъкнете тук съдъжанието с клавиатуарата (<STRONG>Ctrl+V</STRONG>) и натиснете <STRONG>OK</STRONG>.',
+		cutError	: 'Настройките за сигурност на вашия бразуър не разрешават на редактора да изпълни изрязването. За целта използвайте клавиатурата (Ctrl/Cmd+X).',
+		copyError	: 'Настройките за сигурност на вашия бразуър не разрешават на редактора да изпълни запаметяването. За целта използвайте клавиатурата (Ctrl/Cmd+C).',
+		pasteMsg	: 'Вмъкнете тук съдъжанието с клавиатуарата (<STRONG>Ctrl/Cmd+V</STRONG>) и натиснете <STRONG>OK</STRONG>.',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +565,7 @@ CKEDITOR.lang['bg'] =
 	{
 		button			: 'Шаблони',
 		title			: 'Шаблони',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'Изберете шаблон <br>(текущото съдържание на редактора ще бъде загубено):',
 		emptyListMsg	: '(Няма дефинирани шаблони)'
@@ -610,7 +648,7 @@ CKEDITOR.lang['bg'] =
 		'008080' : 'Teal', // MISSING
 		'000080' : 'Navy', // MISSING
 		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
+		'696969' : 'Dark Gray', // MISSING
 		'B22222' : 'Fire Brick', // MISSING
 		'A52A2A' : 'Brown', // MISSING
 		'DAA520' : 'Golden Rod', // MISSING
@@ -626,7 +664,7 @@ CKEDITOR.lang['bg'] =
 		'0FF' : 'Cyan', // MISSING
 		'00F' : 'Blue', // MISSING
 		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
+		'A9A9A9' : 'Dim Gray', // MISSING
 		'FFA07A' : 'Light Salmon', // MISSING
 		'FFA500' : 'Orange', // MISSING
 		'FFFF00' : 'Yellow', // MISSING
@@ -648,6 +686,7 @@ CKEDITOR.lang['bg'] =
 	scayt :
 	{
 		title			: 'Spell Check As You Type', // MISSING
+		opera_title		: 'Not supported by Opera', // MISSING
 		enable			: 'Enable SCAYT', // MISSING
 		disable			: 'Disable SCAYT', // MISSING
 		about			: 'About SCAYT', // MISSING
@@ -659,9 +698,23 @@ CKEDITOR.lang['bg'] =
 		ignoreAll		: 'Ignore All', // MISSING
 		addWord			: 'Add Word', // MISSING
 		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+
 		optionsTab		: 'Options', // MISSING
+		allCaps			: 'Ignore All-Caps Words', // MISSING
+		ignoreDomainNames : 'Ignore Domain Names', // MISSING
+		mixedCase		: 'Ignore Words with Mixed Case', // MISSING
+		mixedWithDigits	: 'Ignore Words with Numbers', // MISSING
+
 		languagesTab	: 'Languages', // MISSING
+
 		dictionariesTab	: 'Dictionaries', // MISSING
+		dic_field_name	: 'Dictionary name', // MISSING
+		dic_create		: 'Create', // MISSING
+		dic_restore		: 'Restore', // MISSING
+		dic_delete		: 'Delete', // MISSING
+		dic_rename		: 'Rename', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.', // MISSING
+
 		aboutTab		: 'About' // MISSING
 	},
 
@@ -689,11 +742,18 @@ CKEDITOR.lang['bg'] =
 	colordialog :
 	{
 		title		: 'Select color', // MISSING
+		options	:	'Color Options', // MISSING
 		highlight	: 'Highlight', // MISSING
-		selected	: 'Selected', // MISSING
+		selected	: 'Selected Color', // MISSING
 		clear		: 'Clear' // MISSING
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

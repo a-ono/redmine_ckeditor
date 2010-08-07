@@ -213,9 +213,9 @@ CKEDITOR.dialog.add( 'scaytcheck', function( editor )
 			i;
 
 		// Add buttons titles
-		if (userDicActive)
+		if ( userDicActive )
 		{
-			for ( i in buttons )
+			for ( i = 0; i < buttons.length; i++ )
 			{
 				var button = buttons[ i ];
 				doc.getById( button ).setHtml( '<span class="cke_dialog_ui_button">' + captions[ 'button_' + button]  +'</span>' );
@@ -225,7 +225,7 @@ CKEDITOR.dialog.add( 'scaytcheck', function( editor )
 
 
 		// Fill options and dictionary labels.
-		if (tags[0] == 1)
+		if ( tags[0] == 1 )
 		{
 			for ( i in labels )
 			{
@@ -243,9 +243,9 @@ CKEDITOR.dialog.add( 'scaytcheck', function( editor )
 			}
 		}
 
-		var about = '<p>' + captions[ 'about_throwt_image' ] + '</p>'+
-					'<p>' + captions[ 'version' ]  + dialog.data.scayt.version.toString() + '</p>' +
-					'<p>' + captions[ 'about_throwt_copy' ] + '</p>';
+		var about = '<p><img src="' + window.scayt.getAboutInfo().logoURL + '" /></p>' +
+				'<p>' + captions[ 'version' ] + window.scayt.getAboutInfo().version.toString() + '</p>' +
+				'<p>' + captions[ 'about_throwt_copy' ] + '</p>';
 
 		doc.getById( 'scayt_about' ).setHtml( about );
 

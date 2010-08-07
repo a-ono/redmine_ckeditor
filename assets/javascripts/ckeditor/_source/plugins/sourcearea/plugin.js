@@ -34,7 +34,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 							textarea.setAttributes(
 								{
 									dir : 'ltr',
-									tabIndex : editor.tabIndex,
+									tabIndex : CKEDITOR.env.webkit ? -1 : editor.tabIndex,
 									'role' : 'textbox',
 									'aria-label' : editor.lang.editorTitle.replace( '%1', editor.name )
 								});
@@ -138,6 +138,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 
 						unload : function( holderElement )
 						{
+							textarea.clearCustomData();
 							editor.textarea = textarea = null;
 
 							if ( onResize )
@@ -190,6 +191,7 @@ CKEDITOR.plugins.sourcearea =
 		source :
 		{
 			modes : { wysiwyg:1, source:1 },
+			editorFocus : false,
 
 			exec : function( editor )
 			{

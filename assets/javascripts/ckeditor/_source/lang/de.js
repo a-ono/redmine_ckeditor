@@ -92,35 +92,47 @@ CKEDITOR.lang['de'] =
 		cssStyle		: 'Style',
 		ok				: 'OK',
 		cancel			: 'Abbrechen',
-		close			: 'Close', // MISSING
-		preview			: 'Preview', // MISSING
+		close			: 'Schließen',
+		preview			: 'Vorschau',
 		generalTab		: 'Allgemein',
 		advancedTab		: 'Erweitert',
 		validateNumberFailed : 'Dieser Wert ist keine Nummer.',
 		confirmNewPage	: 'Alle nicht gespeicherten Änderungen gehen verlohren. Sind sie sicher die neue Seite zu laden?',
 		confirmCancel	: 'Einige Optionen wurden geändert. Wollen Sie den Dialog dennoch schließen?',
-		options			: 'Options', // MISSING
-		target			: 'Target', // MISSING
-		targetNew		: 'New Window (_blank)', // MISSING
-		targetTop		: 'Topmost Window (_top)', // MISSING
-		targetSelf		: 'Same Window (_self)', // MISSING
-		targetParent	: 'Parent Window (_parent)', // MISSING
+		options			: 'Optionen',
+		target			: 'Zielseite',
+		targetNew		: 'Neues Fenster (_blank)',
+		targetTop		: 'Oberstes Fenster (_top)',
+		targetSelf		: 'Gleiches Fenster (_self)',
+		targetParent	: 'Oberes Fenster (_parent)',
+		advanced		: 'Advanced', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, nicht verfügbar</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Optionen'
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Sonderzeichen einfügen/editieren',
-		title		: 'Sonderzeichen auswählen'
+		title		: 'Sonderzeichen auswählen',
+		options : 'Sonderzeichen Optionen'
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link einfügen/editieren',
+		other 		: '<andere>',
 		menu		: 'Link editieren',
 		title		: 'Link',
 		info		: 'Link-Info',
@@ -128,7 +140,7 @@ CKEDITOR.lang['de'] =
 		upload		: 'Upload',
 		advanced	: 'Erweitert',
 		type		: 'Link-Typ',
-		toUrl		: 'URL', // MISSING
+		toUrl		: 'URL',
 		toAnchor	: 'Anker in dieser Seite',
 		toEmail		: 'E-Mail',
 		targetFrame		: '<Frame>',
@@ -182,6 +194,30 @@ CKEDITOR.lang['de'] =
 		errorName	: 'Bitte geben Sie den Namen des Ankers ein'
 	},
 
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Nummerierte Listen-Eigenschaften',
+		bulletedTitle		: 'Listen-Eigenschaften',
+		type				: 'Typ',
+		start				: 'Start',
+		validateStartNumber				:'List Startnummer muss eine ganze Zahl sein.',
+		circle				: 'Ring',
+		disc				: 'Kreis',
+		square				: 'Quadrat',
+		none				: 'Keine',
+		notset				: '<nicht gesetzt>',
+		armenian			: 'Armenisch Nummerierung',
+		georgian			: 'Georgisch Nummerierung (an, ban, gan, etc.)',
+		lowerRoman			: 'Klein römisch (i, ii, iii, iv, v, etc.)',
+		upperRoman			: 'Groß römisch (I, II, III, IV, V, etc.)',
+		lowerAlpha			: 'Klein alpha (a, b, c, d, e, etc.)',
+		upperAlpha			: 'Groß alpha (A, B, C, D, E, etc.)',
+		lowerGreek			: 'Klein griechisch (alpha, beta, gamma, etc.)',
+		decimal				: 'Dezimal (1, 2, 3, etc.)',
+		decimalLeadingZero	: 'Dezimal mit führende  Null (01, 02, 03, etc.)'
+	},
+
 	// Find And Replace Dialog
 	findAndReplace :
 	{
@@ -215,7 +251,7 @@ CKEDITOR.lang['de'] =
 		width		: 'Breite',
 		widthPx		: 'Pixel',
 		widthPc		: '%',
-		widthUnit	: 'width unit', // MISSING
+		widthUnit	: 'Breite Einheit',
 		height		: 'Höhe',
 		cellSpace	: 'Zellenabstand außen',
 		cellPad		: 'Zellenabstand innen',
@@ -266,7 +302,7 @@ CKEDITOR.lang['de'] =
 			invalidHeight	: 'Zellenhöhe muß eine Zahl sein.',
 			invalidRowSpan	: '"Anzahl Zeilen verbinden" muss eine Ganzzahl sein.',
 			invalidColSpan	: '"Anzahl Spalten verbinden" muss eine Ganzzahl sein.',
-			chooseColor		: 'Choose' // MISSING
+			chooseColor		: 'Wählen'
 		},
 
 		row :
@@ -378,7 +414,7 @@ CKEDITOR.lang['de'] =
 		width		: 'Breite',
 		height		: 'Höhe',
 		lockRatio	: 'Größenverhältnis beibehalten',
-		unlockRatio	: 'Unlock Ratio', // MISSING
+		unlockRatio	: 'Ratio Freischalten',
 		resetSize	: 'Größe zurücksetzen',
 		border		: 'Rahmen',
 		hSpace		: 'Horizontal-Abstand',
@@ -390,12 +426,12 @@ CKEDITOR.lang['de'] =
 		linkTab		: 'Link',
 		button2Img	: 'Möchten Sie den gewählten Bild-Button in ein einfaches Bild umwandeln?',
 		img2Button	: 'Möchten Sie das gewählten Bild in einen Bild-Button umwandeln?',
-		urlMissing	: 'Image source URL is missing.', // MISSING
-		validateWidth	: 'Width must be a whole number.', // MISSING
-		validateHeight	: 'Height must be a whole number.', // MISSING
-		validateBorder	: 'Border must be a whole number.', // MISSING
-		validateHSpace	: 'HSpace must be a whole number.', // MISSING
-		validateVSpace	: 'VSpace must be a whole number.' // MISSING
+		urlMissing	: 'Imagequelle URL fehlt.',
+		validateWidth	: 'Breite muß eine ganze Zahl sein.',
+		validateHeight	: 'Höhe muß eine ganze Zahl sein.',
+		validateBorder	: 'Rahmen muß eine ganze Zahl sein.',
+		validateHSpace	: 'Horizontal-Abstand muß eine ganze Zahl sein.',
+		validateVSpace	: 'Vertikal-Abstand must be a whole number.'
 	},
 
 	// Flash Dialog
@@ -476,12 +512,13 @@ CKEDITOR.lang['de'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Smiley auswählen'
+		title	: 'Smiley auswählen',
+		options : 'Smiley Optionen'
 	},
 
 	elementsPath :
 	{
-		eleLabel : 'Elements path', // MISSING
+		eleLabel : 'Elements Pfad',
 		eleTitle : '%1 Element'
 	},
 
@@ -507,7 +544,7 @@ CKEDITOR.lang['de'] =
 		copyError	: 'Die Sicherheitseinstellungen Ihres Browsers lassen es nicht zu, den Text automatisch kopieren. Bitte benutzen Sie die System-Zwischenablage über STRG-C (kopieren).',
 		pasteMsg	: 'Bitte fügen Sie den Text in der folgenden Box über die Tastatur (mit <STRONG>Strg+V</STRONG>) ein und bestätigen Sie mit <STRONG>OK</STRONG>.',
 		securityMsg	: 'Aufgrund von Sicherheitsbeschränkungen Ihres Browsers kann der Editor nicht direkt auf die Zwischenablage zugreifen. Bitte fügen Sie den Inhalt erneut in diesem Fenster ein.',
-		pasteArea	: 'Paste Area' // MISSING
+		pasteArea	: 'Einfügebereich'
 	},
 
 	pastefromword :
@@ -515,7 +552,7 @@ CKEDITOR.lang['de'] =
 		confirmCleanup	: 'Der Text, den Sie einfügen möchten, scheint aus MS-Word kopiert zu sein. Möchten Sie ihn zuvor bereinigen lassen?',
 		toolbar			: 'aus MS-Word einfügen',
 		title			: 'aus MS-Word einfügen',
-		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		error			: 'Aufgrund eines internen Fehlers war es nicht möglich die eingefügten Daten zu bereinigen'
 	},
 
 	pasteText :
@@ -528,6 +565,7 @@ CKEDITOR.lang['de'] =
 	{
 		button			: 'Vorlagen',
 		title			: 'Vorlagen',
+		options : 'Vorlagen Optionen',
 		insertOption	: 'Aktuellen Inhalt ersetzen',
 		selectPromptMsg	: 'Klicken Sie auf eine Vorlage, um sie im Editor zu öffnen (der aktuelle Inhalt wird dabei gelöscht!):',
 		emptyListMsg	: '(keine Vorlagen definiert)'
@@ -538,7 +576,7 @@ CKEDITOR.lang['de'] =
 	stylesCombo :
 	{
 		label		: 'Stil',
-		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle	: 'Formatierungenstil',
 		panelTitle1	: 'Block Stilart',
 		panelTitle2	: 'Inline Stilart',
 		panelTitle3	: 'Objekt Stilart'
@@ -563,19 +601,19 @@ CKEDITOR.lang['de'] =
 
 	div :
 	{
-		title				: 'Create Div Container', // MISSING
-		toolbar				: 'Create Div Container', // MISSING
-		cssClassInputLabel	: 'Stylesheet Classes', // MISSING
-		styleSelectLabel	: 'Style', // MISSING
-		IdInputLabel		: 'Id', // MISSING
-		languageCodeInputLabel	: ' Language Code', // MISSING
-		inlineStyleInputLabel	: 'Inline Style', // MISSING
-		advisoryTitleInputLabel	: 'Advisory Title', // MISSING
-		langDirLabel		: 'Language Direction', // MISSING
-		langDirLTRLabel		: 'Left to Right (LTR)', // MISSING
-		langDirRTLLabel		: 'Right to Left (RTL)', // MISSING
-		edit				: 'Edit Div', // MISSING
-		remove				: 'Remove Div' // MISSING
+		title				: 'Div Container erzeugen',
+		toolbar				: 'Div Container erzeugen',
+		cssClassInputLabel	: 'Stylesheet Klasse',
+		styleSelectLabel	: 'Stil',
+		IdInputLabel		: 'Id',
+		languageCodeInputLabel	: ' Sprache Code',
+		inlineStyleInputLabel	: 'Inline Style',
+		advisoryTitleInputLabel	: 'Beratungs Titel',
+		langDirLabel		: 'Sprache Richtung',
+		langDirLTRLabel		: 'Links nach Rechs (LTR)',
+		langDirRTLLabel		: 'Rechs nach Links (RTL)',
+		edit				: 'Div Bearbeiten',
+		remove				: 'Div Entfernen'
   	},
 
 	font :
@@ -596,7 +634,7 @@ CKEDITOR.lang['de'] =
 	{
 		textColorTitle	: 'Textfarbe',
 		bgColorTitle	: 'Hintergrundfarbe',
-		panelTitle		: 'Colors', // MISSING
+		panelTitle		: 'Farben',
 		auto			: 'Automatisch',
 		more			: 'Weitere Farben...'
 	},
@@ -648,6 +686,7 @@ CKEDITOR.lang['de'] =
 	scayt :
 	{
 		title			: 'Rechtschreibprüfung während der Texteingabe',
+		opera_title		: 'Nicht von Opera unterstützt',
 		enable			: 'SCAYT einschalten',
 		disable			: 'SCAYT ausschalten',
 		about			: 'Über SCAYT',
@@ -659,9 +698,23 @@ CKEDITOR.lang['de'] =
 		ignoreAll		: 'Alle ignorieren',
 		addWord			: 'Wort hinzufügen',
 		emptyDic		: 'Wörterbuchname sollte leer sein.',
+
 		optionsTab		: 'Optionen',
+		allCaps			: 'Groß geschriebenen Wörter ignorieren',
+		ignoreDomainNames : 'Domain-Namen ignorieren',
+		mixedCase		: 'Wörter mit gemischte Setzkasten ignorieren',
+		mixedWithDigits	: 'Wörter mit Zahlen ignorieren',
+
 		languagesTab	: 'Sprachen',
+
 		dictionariesTab	: 'Wörterbücher',
+		dic_field_name	: 'Wörterbuchname',
+		dic_create		: 'Erzeugen',
+		dic_restore		: 'Wiederherstellen',
+		dic_delete		: 'Löschen',
+		dic_rename		: 'Umbenennen',
+		dic_info		: 'Anfangs wird das Benutzerwörterbuch in einem Cookie gespeichert. Allerdings sind Cookies in der Größe begrenzt. Wenn das Benutzerwörterbuch bis zu einem Punkt wächst, wo es nicht mehr in einem Cookie gespeichert werden kann, wird das Benutzerwörterbuch auf dem Server gespeichert. Um Ihr persönliches Wörterbuch auf dem Server zu speichern, müssen Sie einen Namen für das Wörterbuch angeben. Falls  Sie schon ein gespeicherte Wörterbuch haben, geben Sie bitte dessen Namen ein und klicken Sie auf die Schaltfläche Wiederherstellen.',
+
 		aboutTab		: 'Über'
 	},
 
@@ -674,7 +727,7 @@ CKEDITOR.lang['de'] =
 	},
 
 	maximize : 'Maximieren',
-	minimize : 'Minimize', // MISSING
+	minimize : 'Minimieren',
 
 	fakeobjects :
 	{
@@ -688,12 +741,19 @@ CKEDITOR.lang['de'] =
 
 	colordialog :
 	{
-		title		: 'Select color', // MISSING
-		highlight	: 'Highlight', // MISSING
-		selected	: 'Selected', // MISSING
-		clear		: 'Clear' // MISSING
+		title		: 'Farbe wählen',
+		options	:	'Farbeoptionen',
+		highlight	: 'Hervorheben',
+		selected	: 'Ausgewählte Farbe',
+		clear		: 'Entfernen'
 	},
 
-	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Symbolleiste einklappen',
+	toolbarExpand	: 'Symbolleiste ausklappen',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

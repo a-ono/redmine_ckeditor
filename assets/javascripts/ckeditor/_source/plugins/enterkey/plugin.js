@@ -24,7 +24,25 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Get the range for the current selection.
 			range = range || getRange( editor );
 
+			// We may not have valid ranges to work on, like when inside a
+			// contenteditable=false element.
+			if ( !range )
+				return;
+
 			var doc = range.document;
+
+			// Exit the list when we're inside an empty list item block. (#5376)
+			if ( range.checkStartOfBlock() && range.checkEndOfBlock() )
+			{
+				var path = new CKEDITOR.dom.elementPath( range.startContainer ),
+						block = path.block;
+
+				if ( block && ( block.is( 'li' ) || block.getParent().is( 'li' ) ) )
+				{
+					editor.execCommand( 'outdent' );
+					return;
+				}
+			}
 
 			// Determine the block element to be used.
 			var blockTag = ( mode == CKEDITOR.ENTER_DIV ? 'div' : 'p' );
@@ -80,13 +98,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 			else
 			{
-
-				if ( isStartOfBlock && isEndOfBlock && previousBlock.is( 'li' ) )
-				{
-					editor.execCommand( 'outdent' );
-					return;
-				}
-
 				var newBlock;
 
 				if ( previousBlock )
@@ -94,7 +105,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// Do not enter this block if it's a header tag, or we are in
 					// a Shift+Enter (#77). Create a new block element instead
 					// (later in the code).
-					if ( !forceMode && !headerTagRegex.test( previousBlock.getName() ) )
+					if ( previousBlock.is( 'li' ) || !headerTagRegex.test( previousBlock.getName() ) )
 					{
 						// Otherwise, duplicate the previous block.
 						newBlock = previousBlock.clone();
@@ -105,6 +116,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				if ( !newBlock )
 					newBlock = doc.createElement( blockTag );
+				// Force the enter block unless we're talking of a list item.
+				else if ( forceMode && !newBlock.is( 'li' ) )
+					newBlock.renameNode( blockTag );
 
 				// Recreate the inline elements tree, which was available
 				// before hitting enter, so the same styles will be available in
@@ -180,6 +194,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Get the range for the current selection.
 			range = range || getRange( editor );
 
+			// We may not have valid ranges to work on, like when inside a
+			// contenteditable=false element.
+			if ( !range )
+				return;
+
 			var doc = range.document;
 
 			// Determine the block element to be used.
@@ -219,7 +238,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				isPre = ( startBlockTag == 'pre' );
 
-				if ( isPre )
+				// Gecko prefers <br> as line-break inside <pre> (#4711).
+				if ( isPre && !CKEDITOR.env.gecko )
 					lineBreak = doc.createText( CKEDITOR.env.ie ? '\r' : '\n' );
 				else
 					lineBreak = doc.createElement( 'br' );
@@ -283,13 +303,27 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	function shiftEnter( editor )
 	{
-		// On SHIFT+ENTER we want to enforce the mode to be respected, instead
+		// Only effective within document.
+		if ( editor.mode != 'wysiwyg' )
+			return false;
+
+		// On SHIFT+ENTER:
+		// 1. We want to enforce the mode to be respected, instead
 		// of cloning the current block. (#77)
-		return enter( editor, editor.config.shiftEnterMode, true );
+		// 2. Always perform a block break when inside <pre> (#5402).
+		if ( editor.getSelection().getStartElement().hasAscendant( 'pre', true ) )
+		{
+			setTimeout( function() { enterBlock( editor, editor.config.enterMode, null, true ); }, 0 );
+			return true;
+		}
+		else
+			return enter( editor, editor.config.shiftEnterMode, true );
 	}
 
 	function enter( editor, mode, forceMode )
 	{
+		forceMode = editor.config.forceEnterMode || forceMode;
+
 		// Only effective within document.
 		if ( editor.mode != 'wysiwyg' )
 			return false;
@@ -315,7 +349,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function getRange( editor )
 	{
 		// Get the selection ranges.
-		var ranges = editor.getSelection().getRanges();
+		var ranges = editor.getSelection().getRanges( true );
 
 		// Delete the contents of all ranges except the first one.
 		for ( var i = ranges.length - 1 ; i > 0 ; i-- )
