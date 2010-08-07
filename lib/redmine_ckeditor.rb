@@ -23,7 +23,7 @@ module RedmineCkeditor
     %w[Bold Italic Underline Strike - Subscript Superscript -
       NumberedList BulletedList - Outdent Indent Blockquote -
       JustifyRight JustifyCenter JustifyLeft JustifyBlock -
-      BidiLtr BidiRtl -
+      BidiRtl BidiLtr -
       Link Unlink Anchor - Image Table HorizontalRule SpecialChar
     ], '/',
     %w[Styles Format Font FontSize - TextColor BGColor]
