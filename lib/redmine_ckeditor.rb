@@ -12,7 +12,7 @@ module RedmineCkeditor
   ]
 
   ALLOWED_ATTRIBUTES = %w[
-    href src width height alt cite datetime title class name xml:lang abbr
+    href src width height alt cite datetime title class name xml:lang abbr dir
     style align valign border cellpadding cellspacing colspan rowspan nowrap
   ]
 
