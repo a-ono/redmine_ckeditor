@@ -25,9 +25,20 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	{
 		useComputedState = useComputedState === undefined || useComputedState;
 
-		var align = useComputedState ?
-			element.getComputedStyle( 'text-align' ) :
-			element.getStyle( 'text-align' ) || element.getAttribute( 'align' ) || '';
+		var align;
+		if ( useComputedState )
+			align = element.getComputedStyle( 'text-align' );
+		else
+		{
+			while ( !element.hasAttribute || !( element.hasAttribute( 'align' ) || element.getStyle( 'text-align' ) ) )
+			{
+				var parent = element.getParent();
+				if ( !parent )
+					break;
+				element = parent;
+			}
+			align = element.getStyle( 'text-align' ) || element.getAttribute( 'align' ) || '';
+		}
 
 		align && ( align = align.replace( /-moz-|-webkit-|start|auto/i, '' ) );
 
@@ -68,6 +79,41 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 
 			this.cssClassRegex = new RegExp( '(?:^|\\s+)(?:' + classes.join( '|' ) + ')(?=$|\\s)' );
+		}
+	}
+
+	function onDirChanged( e )
+	{
+		var editor = e.editor;
+
+		var range = new CKEDITOR.dom.range( editor.document );
+		range.setStartBefore( e.data );
+		range.setEndAfter( e.data );
+
+		var walker = new CKEDITOR.dom.walker( range ),
+			node;
+
+		while ( ( node = walker.next() ) )
+		{
+			if ( node.type == CKEDITOR.NODE_ELEMENT )
+			{
+				// A child with the defined dir is to be ignored.
+				if ( !node.equals( e.data ) && node.getDirection() )
+				{
+					range.setStartAfter( node );
+					walker = new CKEDITOR.dom.walker( range );
+					continue;
+				}
+
+				// Switch the alignment.
+				var style = 'text-align';
+				var align = node.getStyle( style );
+
+				if ( align == 'left' )
+					node.setStyle( style, 'right' );
+				else if ( align == 'right' )
+					node.setStyle( style, 'left' );
+			}
 		}
 	}
 
@@ -167,13 +213,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			editor.on( 'selectionChange', CKEDITOR.tools.bind( onSelectionChange, right ) );
 			editor.on( 'selectionChange', CKEDITOR.tools.bind( onSelectionChange, center ) );
 			editor.on( 'selectionChange', CKEDITOR.tools.bind( onSelectionChange, justify ) );
+			editor.on( 'dirChanged', onDirChanged );
 		},
 
 		requires : [ 'domiterator' ]
 	});
 })();
-
-CKEDITOR.tools.extend( CKEDITOR.config,
-	{
-		justifyClasses : null
-	} );

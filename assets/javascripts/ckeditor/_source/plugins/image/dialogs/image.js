@@ -541,7 +541,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													field.setValue( url );		// And call this.onChange()
 													// Manually set the initial value.(#4191)
 													field.setInitValue();
-													field.focus();
 												}
 											},
 											commit : function( type, element )
@@ -1128,7 +1127,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							{
 								action : 'Browse',
 								target: 'Link:txtUrl',
-								url: editor.config.filebrowserImageBrowseLinkUrl || editor.config.filebrowserBrowseUrl
+								url: editor.config.filebrowserImageBrowseLinkUrl
 							},
 							style : 'float:right',
 							hidden : true,

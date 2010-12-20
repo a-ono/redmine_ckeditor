@@ -3,6 +3,11 @@ Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
+/**
+ * @name CKEDITOR.theme
+ * @class
+ */
+
 CKEDITOR.themes.add( 'default', (function()
 {
 	function checkSharedSpace( editor, spaceName )
@@ -22,7 +27,7 @@ CKEDITOR.themes.add( 'default', (function()
 			// Creates an HTML structure that reproduces the editor class hierarchy.
 			var html =
 				'<span class="cke_shared">' +
-				'<span class="' + editor.skinClass + ' cke_editor_' + editor.name + '">' +
+				'<span class="' + editor.skinClass + ' ' + editor.id + ' cke_editor_' + editor.name + '">' +
 				'<span class="' + CKEDITOR.env.cssClass + '">' +
 				'<span class="cke_wrapper cke_' + editor.lang.dir + '">' +
 				'<span class="cke_editor">' +
@@ -65,7 +70,7 @@ CKEDITOR.themes.add( 'default', (function()
 		return container;
 	}
 
-	return {
+	return /** @lends CKEDITOR.theme */ {
 		build : function( editor, themePath )
 		{
 			var name = editor.name,
@@ -114,7 +119,7 @@ CKEDITOR.themes.add( 'default', (function()
 				'<span' +
 					' id="cke_', name, '"' +
 					' onmousedown="return false;"' +
-					' class="', editor.skinClass, ' cke_editor_', name, '"' +
+					' class="', editor.skinClass, ' ', editor.id, ' cke_editor_', name, '"' +
 					' dir="', editor.lang.dir, '"' +
 					' title="', ( CKEDITOR.env.gecko ? ' ' : '' ), '"' +
 					' lang="', editor.langCode, '"' +
@@ -167,7 +172,7 @@ CKEDITOR.themes.add( 'default', (function()
 			var baseIdNumber = CKEDITOR.tools.getNextNumber();
 
 			var element = CKEDITOR.dom.element.createFromHtml( [
-					'<div class="cke_editor_' + editor.name.replace('.', '\\.') + '_dialog cke_skin_', editor.skinName,
+					'<div class="', editor.id, '_dialog cke_editor_', editor.name.replace('.', '\\.'), '_dialog cke_skin_', editor.skinName,
 						'" dir="', editor.lang.dir, '"' +
 						' lang="', editor.langCode, '"' +
 						' role="dialog"' +
@@ -285,10 +290,6 @@ CKEDITOR.editor.prototype.getThemeSpace = function( spaceName )
  */
 CKEDITOR.editor.prototype.resize = function( width, height, isContentHeight, resizeInner )
 {
-	var numberRegex = /^\d+$/;
-	if ( numberRegex.test( width ) )
-		width += 'px';
-
 	var container = this.container,
 		contents = CKEDITOR.document.getById( 'cke_contents_' + this.name ),
 		outer = resizeInner ? container.getChild( 1 ) : container;
@@ -297,7 +298,8 @@ CKEDITOR.editor.prototype.resize = function( width, height, isContentHeight, res
 	// WEBKIT BUG: Webkit requires that we put the editor off from display when we
 	// resize it. If we don't, the browser crashes!
 	CKEDITOR.env.webkit && outer.setStyle( 'display', 'none' );
-	outer.setStyle( 'width', width );
+	// Set as border box width. (#5353)
+	outer.setSize( 'width',  width, true );
 	if ( CKEDITOR.env.webkit )
 	{
 		outer.$.offsetWidth;

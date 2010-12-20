@@ -36,14 +36,20 @@ function commitAdvParams()
 		var attrName = this.att,
 			value = this.getValue();
 
+		// Broadcast Lang Dir change
+		if ( attrName == 'dir' )
+		{
+			var dir = element.getAttribute( attrName, value );
+			if ( dir != value && element.getParent() )
+					this._.dialog._.editor.fire( 'dirChanged', element );
+		}
+
 		if ( value )
 			element.setAttribute( attrName, value );
 		else
 			element.removeAttribute( attrName, value );
 	}
 }
-
-var isUpdating;
 
 CKEDITOR.plugins.add( 'dialogadvtab',
 {
@@ -62,8 +68,8 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 		var result =
 		{
 			id : 'advanced',
-			label : lang.advanced,
-			title : lang.advanced,
+			label : lang.advancedTab,
+			title : lang.advancedTab,
 			elements :
 				[
 					{
@@ -100,7 +106,7 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 						type : 'select',
 						label : lang.langDir,
 						'default' : '',
-						style : 'width:110px',
+						style : 'width:100%',
 						items :
 						[
 							[ lang.notSet, '' ],
@@ -124,7 +130,7 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 		{
 			contents = [];
 
-			if ( tabConfig.id )
+			if ( tabConfig.styles )
 			{
 				contents.push(
 					{
@@ -134,8 +140,6 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 						label : lang.styles,
 						'default' : '',
 
-						onChange : function(){},
-
 						getStyle : function( name, defaultValue )
 						{
 							var match = this.getValue().match( new RegExp( name + '\\s*:\s*([^;]*)', 'i') );
@@ -144,12 +148,6 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 
 						updateStyle : function( name, value )
 						{
-							if ( isUpdating )
-								return;
-
-							// Flag to avoid recursion.
-							isUpdating = 1;
-
 							var styles = this.getValue();
 
 							// Remove the current value.
@@ -167,9 +165,8 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 								styles += name + ': ' + value;
 							}
 
-							this.setValue( styles );
+							this.setValue( styles, 1 );
 
-							isUpdating = 0;
 						},
 
 						setup : setupAdvParams,

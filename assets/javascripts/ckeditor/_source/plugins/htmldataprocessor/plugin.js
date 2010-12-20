@@ -263,7 +263,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		defaultHtmlFilterRules.elements[ i ] = unprotectReadyOnly;
 	}
 
-	var protectAttributeRegex = /<(?:a|area|img|input)[\s\S]*?\s((?:href|src|name)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+)))/gi;
+	var protectAttributeRegex = /<((?:a|area|img|input)[\s\S]*?\s)((href|src|name)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+)))([^>]*)>/gi,
+		findSavedSrcRegex = /\s_cke_saved_src\s*=/;
 
 	var protectElementsRegex = /(?:<style(?=[ >])[^>]*>[\s\S]*<\/style>)|(?:<(:?link|meta|base)[^>]*>)/gi,
 		encodedElementsRegex = /<cke:encoded>([^<]*)<\/cke:encoded>/gi;
@@ -275,7 +276,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	function protectAttributes( html )
 	{
-		return html.replace( protectAttributeRegex, '$& _cke_saved_$1' );
+		return html.replace( protectAttributeRegex, function( tag, beginning, fullAttr, attrName, end )
+			{
+				// We should not rewrite the _cke_saved_src attribute (#5218)
+				if ( attrName == 'src' && findSavedSrcRegex.test( tag ) )
+					return tag;
+				else
+					return '<' + beginning + fullAttr + ' _cke_saved_' + fullAttr + end + '>';
+			});
 	}
 
 	function protectElements( html )
@@ -307,6 +315,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function protectSelfClosingElements( html )
 	{
 		return html.replace( protectSelfClosingRegex, '<cke:$1$2></cke:$1>' );
+	}
+
+	function protectPreFormatted( html )
+	{
+		return html.replace( /(<pre\b[^>]*>)(\r\n|\n)/g, '$1$2$2' );
 	}
 
 	function protectRealComments( html )
@@ -429,6 +442,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// protecting them into open-close. (#3591)
 			data = protectSelfClosingElements( data );
 
+			// Compensate one leading line break after <pre> open as browsers
+			// eat it up. (#5789)
+			data = protectPreFormatted( data );
+
 			// Call the browser to help us fixing a possibly invalid HTML
 			// structure.
 			var div = new CKEDITOR.dom.element( 'div' );
@@ -483,4 +500,3 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @example
  * config.forceSimpleAmpersand = false;
  */
-CKEDITOR.config.forceSimpleAmpersand = false;
