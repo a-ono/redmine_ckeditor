@@ -7,7 +7,7 @@ module RedmineCkeditor
 
       base.class_eval do
         unloadable
-        alias_method_chain :reply, :ckeditor
+        #alias_method_chain :reply, :ckeditor
       end
     end
 
