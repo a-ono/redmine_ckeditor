@@ -6,8 +6,10 @@ module RedmineCkeditor::WikiFormatting
         CKEDITOR.config.contentsCss = "#{stylesheet_path "application"}";
         CKEDITOR.config.bodyClass = "wiki";
         CKEDITOR.config.toolbar = #{RedmineCkeditorSetting.toolbar.inspect};
+        CKEDITOR.config.language = "#{current_language}";
 
         var textarea = $('#{field_id}');
+        textarea.parent.insertBefore(document.createElement('br'), textarea);
         Event.observe(document, "dom:loaded", function() {
           var editor = CKEDITOR.replace(textarea);
           var submit = Form.getInputs(textarea.form, "submit").first();
