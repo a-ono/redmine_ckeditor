@@ -9,7 +9,7 @@ module RedmineCkeditor::WikiFormatting
         CKEDITOR.config.language = "#{current_language}";
 
         var textarea = $('#{field_id}');
-        textarea.parent.insertBefore(document.createElement('br'), textarea);
+        textarea.parentNode.insertBefore(document.createElement('br'), textarea);
         Event.observe(document, "dom:loaded", function() {
           var editor = CKEDITOR.replace(textarea);
           var submit = Form.getInputs(textarea.form, "submit").first();
