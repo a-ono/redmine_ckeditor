@@ -11,7 +11,21 @@ module RedmineCkeditor::WikiFormatting
         var textarea = $('#{field_id}');
         textarea.parentNode.insertBefore(document.createElement('br'), textarea);
         Event.observe(document, "dom:loaded", function() {
-          var editor = CKEDITOR.replace(textarea);
+          var editor = CKEDITOR.replace(textarea,
+            {
+              on:
+              {
+                instanceReady : function(ev)
+                {
+                  var writer = this.dataProcessor.writer;
+                  var tags = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+                  for (i = tags.size() - 1; i >= 0; --i)
+                  {
+                    writer.setRules(tags[i], { breakAfterOpen : false });
+                  }
+                }
+              }
+            });
           var submit = Form.getInputs(textarea.form, "submit").first();
           if (submit) {
             submit.nextSiblings().each(function(elem) {
