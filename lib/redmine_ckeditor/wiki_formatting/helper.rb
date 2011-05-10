@@ -6,7 +6,7 @@ module RedmineCkeditor::WikiFormatting
         CKEDITOR.config.contentsCss = "#{stylesheet_path "application"}";
         CKEDITOR.config.bodyClass = "wiki";
         CKEDITOR.config.toolbar = #{RedmineCkeditorSetting.toolbar.inspect};
-        CKEDITOR.config.language = "#{current_language}";
+        CKEDITOR.config.language = "#{current_language.to_s.downcase}";
 
         var textarea = $('#{field_id}');
         textarea.parentNode.insertBefore(document.createElement('br'), textarea);
