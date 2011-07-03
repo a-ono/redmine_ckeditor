@@ -82,8 +82,10 @@ JustifyBlock:
   label: [justify, block]
 BidiLtr:
   position: 35
+  label: [bidi, ltr]
 BidiRtl:
   position: 36
+  label: [bidi, rtl]
 Link:
   position: 37
   label: [link, toolbar]

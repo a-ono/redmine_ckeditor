@@ -14,7 +14,7 @@ module RedmineCkeditor
     module InstanceMethods
       def new_with_ckeditor
         unless Setting.text_formatting == "CKEditor"
-          reply_without_ckeditor
+          new_without_ckeditor
           return
         end
 

@@ -19,7 +19,7 @@ module RedmineCkeditor::WikiFormatting
                 {
                   var writer = this.dataProcessor.writer;
                   var tags = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li'];
-                  for (i = tags.size() - 1; i >= 0; --i)
+                  for (var i = tags.size() - 1; i >= 0; --i)
                   {
                     writer.setRules(tags[i], { breakAfterOpen : false });
                   }

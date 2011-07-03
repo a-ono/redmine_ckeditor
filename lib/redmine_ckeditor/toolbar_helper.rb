@@ -74,10 +74,12 @@ module RedmineCkeditor
 
       html = hidden_field_tag("settings[toolbar]", items.join(",")) +
         content_tag(:select, options_for_select(left),
-          :id => "left", :multiple => true, :size => 10) +
+          :id => "left", :multiple => true, :size => 10,
+          :style => "width:250px") +
         button_container +
         content_tag(:select, options_for_select(right),
-          :id => "right", :multiple => true, :size => 10) +
+          :id => "right", :multiple => true, :size => 10,
+          :style => "width:250px") +
         content_tag(:div, nil, :class => "clear") +
         content_tag(:div, nil, :id => "toolbar")
 
