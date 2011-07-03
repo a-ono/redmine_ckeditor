@@ -95,6 +95,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// Do that once only.
 					event.removeListener();
 
+					// Redirect the focus into editor for webkit. (#5713)
+					CKEDITOR.env.webkit && editor.container.on( 'focus', function()
+						{
+							editor.focus();
+						});
+
 					if ( editor.config.startupFocus )
 						editor.focus();
 
@@ -104,7 +110,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					setTimeout( function(){
 						editor.fireOnce( 'instanceReady' );
 						CKEDITOR.fire( 'instanceReady', null, editor );
-					} );
+					}, 0 );
 				});
 		}
 	});
@@ -205,7 +211,6 @@ CKEDITOR.config.startupMode = 'wysiwyg';
  * @example
  * config.startupFocus = true;
  */
-CKEDITOR.config.startupFocus = false;
 
 /**
  * Whether to render or not the editing block area in the editor interface.

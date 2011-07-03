@@ -81,5 +81,8 @@ CKEDITOR.stylesSet.add( 'default',
 			'border' : '2',
 			'align' : 'right'
 		}
-	}
+	},
+
+	{ name : 'Borderless Table', element : 'table', styles: { 'border-style': 'hidden', 'background-color' : '#E6E6FA' } },
+	{ name : 'Square Bulleted List', element : 'ul', styles : { 'list-style-type' : 'square' } }
 ]);

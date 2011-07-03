@@ -41,7 +41,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function blockNeedsExtension( block )
 	{
 		var lastChild = lastNoneSpaceChild( block );
-		return !lastChild || lastChild.type == CKEDITOR.NODE_ELEMENT && lastChild.name == 'br';
+
+		return !lastChild
+			|| lastChild.type == CKEDITOR.NODE_ELEMENT && lastChild.name == 'br'
+			// Some of the controls in form needs extension too,
+			// to move cursor at the end of the form. (#4791)
+			|| block.name == 'form' && lastChild.name == 'input';
 	}
 
 	function extendBlockForDisplay( block )
@@ -79,6 +84,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	delete blockLikeTags.pre;
 	var defaultDataFilterRules =
 	{
+		elements : {},
 		attributeNames :
 		[
 			// Event attributes (onXYZ) must not be directly set. They can become
@@ -172,6 +178,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					}
 				},
 
+				html : function( element )
+				{
+					delete element.attributes.contenteditable;
+					delete element.attributes[ 'class' ];
+				},
+
 				body : function( element )
 				{
 					delete element.attributes.spellcheck;
@@ -189,7 +201,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				title : function( element )
 				{
-					element.children[ 0 ].value = element.attributes[ '_cke_title' ];
+					var titleText = element.children[ 0 ];
+					titleText && ( titleText.value = element.attributes[ '_cke_title' ] || '' );
 				}
 			},
 
@@ -235,7 +248,23 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		};
 	}
 
-	var protectAttributeRegex = /<(?:a|area|img|input)[\s\S]*?\s((?:href|src|name)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+)))/gi;
+	function protectReadOnly( element )
+	{
+		element.attributes.contenteditable = "false";
+	}
+	function unprotectReadyOnly( element )
+	{
+		delete element.attributes.contenteditable;
+	}
+	// Disable form elements editing mode provided by some browers. (#5746)
+	for ( i in { input : 1, textarea : 1 } )
+	{
+		defaultDataFilterRules.elements[ i ] = protectReadOnly;
+		defaultHtmlFilterRules.elements[ i ] = unprotectReadyOnly;
+	}
+
+	var protectAttributeRegex = /<((?:a|area|img|input)[\s\S]*?\s)((href|src|name)\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|(?:[^ "'>]+)))([^>]*)>/gi,
+		findSavedSrcRegex = /\s_cke_saved_src\s*=/;
 
 	var protectElementsRegex = /(?:<style(?=[ >])[^>]*>[\s\S]*<\/style>)|(?:<(:?link|meta|base)[^>]*>)/gi,
 		encodedElementsRegex = /<cke:encoded>([^<]*)<\/cke:encoded>/gi;
@@ -247,7 +276,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	function protectAttributes( html )
 	{
-		return html.replace( protectAttributeRegex, '$& _cke_saved_$1' );
+		return html.replace( protectAttributeRegex, function( tag, beginning, fullAttr, attrName, end )
+			{
+				// We should not rewrite the _cke_saved_src attribute (#5218)
+				if ( attrName == 'src' && findSavedSrcRegex.test( tag ) )
+					return tag;
+				else
+					return '<' + beginning + fullAttr + ' _cke_saved_' + fullAttr + end + '>';
+			});
 	}
 
 	function protectElements( html )
@@ -279,6 +315,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function protectSelfClosingElements( html )
 	{
 		return html.replace( protectSelfClosingRegex, '<cke:$1$2></cke:$1>' );
+	}
+
+	function protectPreFormatted( html )
+	{
+		return html.replace( /(<pre\b[^>]*>)(\r\n|\n)/g, '$1$2$2' );
 	}
 
 	function protectRealComments( html )
@@ -401,6 +442,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// protecting them into open-close. (#3591)
 			data = protectSelfClosingElements( data );
 
+			// Compensate one leading line break after <pre> open as browsers
+			// eat it up. (#5789)
+			data = protectPreFormatted( data );
+
 			// Call the browser to help us fixing a possibly invalid HTML
 			// structure.
 			var div = new CKEDITOR.dom.element( 'div' );
@@ -455,4 +500,3 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @example
  * config.forceSimpleAmpersand = false;
  */
-CKEDITOR.config.forceSimpleAmpersand = false;

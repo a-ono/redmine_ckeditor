@@ -23,7 +23,7 @@ if ( !CKEDITOR.loader )
 		// Table of script names and their dependencies.
 		var scripts =
 		{
-			'core/_bootstrap'		: [ 'core/config', 'core/ckeditor', 'core/plugins', 'core/scriptloader', 'core/tools', /* The following are entries that we want to force loading at the end to avoid dependence recursion */ 'core/dom/comment', 'core/dom/elementpath', 'core/dom/text', 'core/dom/range' ],
+			'core/_bootstrap'		: [ 'core/config', 'core/ckeditor', 'core/plugins', 'core/scriptloader', 'core/tools', /* The following are entries that we want to force loading at the end to avoid dependence recursion */ 'core/dom/comment', 'core/dom/elementpath', 'core/dom/text', 'core/dom/rangelist' ],
 			'core/ajax'				: [ 'core/xml' ],
 			'core/ckeditor'			: [ 'core/ckeditor_basic', 'core/dom', 'core/dtd', 'core/dom/document', 'core/dom/element', 'core/editor', 'core/event', 'core/htmlparser', 'core/htmlparser/element', 'core/htmlparser/fragment', 'core/htmlparser/filter', 'core/htmlparser/basicwriter', 'core/tools' ],
 			'core/ckeditor_base'	: [],
@@ -41,6 +41,7 @@ if ( !CKEDITOR.loader )
 			'core/dom/nodelist'		: [ 'core/dom/node' ],
 			'core/dom/domobject'	: [ 'core/dom/event' ],
 			'core/dom/range'		: [ 'core/dom/document', 'core/dom/documentfragment', 'core/dom/element', 'core/dom/walker' ],
+			'core/dom/rangelist'    : [ 'core/dom/range' ],
 			'core/dom/text'			: [ 'core/dom/node', 'core/dom/domobject' ],
 			'core/dom/walker'		: [ 'core/dom/node' ],
 			'core/dom/window'		: [ 'core/dom/domobject' ],
@@ -58,7 +59,7 @@ if ( !CKEDITOR.loader )
 			'core/htmlparser/cdata'		: [ 'core/htmlparser' ],
 			'core/htmlparser/filter'	: [ 'core/htmlparser' ],
 			'core/htmlparser/basicwriter': [ 'core/htmlparser' ],
-			'core/imagecacher'		: [ 'core/dom/element' ],
+			'core/imagecacher'		: [ 'core/dom/element', 'core/event' ],
 			'core/lang'				: [],
 			'core/plugins'			: [ 'core/resourcemanager' ],
 			'core/resourcemanager'	: [ 'core/scriptloader', 'core/tools' ],
@@ -83,7 +84,7 @@ if ( !CKEDITOR.loader )
 
 			for ( var i = 0 ; i < scripts.length ; i++ )
 			{
-				var match = scripts[i].src.match( /(^|.*[\\\/])core\/loader.js(?:\?.*)?$/i );
+				var match = scripts[i].src.match( /(^|.*?[\\\/])(?:_source\/)?core\/loader.js(?:\?.*)?$/i );
 
 				if ( match )
 				{
@@ -107,7 +108,7 @@ if ( !CKEDITOR.loader )
 			return path;
 		})();
 
-		var timestamp = 'A1QD';
+		var timestamp = 'AA4E4NT';
 
 		var getUrl = function( resource )
 		{

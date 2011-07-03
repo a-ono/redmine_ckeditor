@@ -105,22 +105,33 @@ CKEDITOR.lang['ru'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, недоступно</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Вставить специальный символ',
-		title		: 'Выберите специальный символ'
+		title		: 'Выберите специальный символ',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Вставить/Редактировать ссылку',
+		other 		: '<другой>',
 		menu		: 'Вставить ссылку',
 		title		: 'Ссылка',
 		info		: 'Информация ссылки',
@@ -180,6 +191,30 @@ CKEDITOR.lang['ru'] =
 		title		: 'Свойства якоря',
 		name		: 'Имя якоря',
 		errorName	: 'Пожалуйста, введите имя якоря'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties', // MISSING
+		bulletedTitle		: 'Bulleted List Properties', // MISSING
+		type				: 'Type', // MISSING
+		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Circle', // MISSING
+		disc				: 'Disc', // MISSING
+		square				: 'Square', // MISSING
+		none				: 'None', // MISSING
+		notset				: '<not set>', // MISSING
+		armenian			: 'Armenian numbering', // MISSING
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)', // MISSING
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)', // MISSING
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)', // MISSING
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)', // MISSING
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)', // MISSING
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)', // MISSING
+		decimal				: 'Decimal (1, 2, 3, etc.)', // MISSING
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)' // MISSING
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +511,8 @@ CKEDITOR.lang['ru'] =
 	smiley :
 	{
 		toolbar	: 'Смайлик',
-		title	: 'Вставить смайлик'
+		title	: 'Вставить смайлик',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +539,9 @@ CKEDITOR.lang['ru'] =
 	clipboard :
 	{
 		title		: 'Вставить',
-		cutError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции вырезания. Пожалуйста, используйте клавиатуру для этого (Ctrl+X).',
-		copyError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции копирования. Пожалуйста, используйте клавиатуру для этого (Ctrl+C).',
-		pasteMsg	: 'Пожалуйста, вставьте текст в прямоугольник, используя сочетание клавиш (<STRONG>Ctrl+V</STRONG>), и нажмите <STRONG>OK</STRONG>.',
+		cutError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции вырезания. Пожалуйста, используйте клавиатуру для этого (Ctrl/Cmd+X).',
+		copyError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции копирования. Пожалуйста, используйте клавиатуру для этого (Ctrl/Cmd+C).',
+		pasteMsg	: 'Пожалуйста, вставьте текст в прямоугольник, используя сочетание клавиш (<STRONG>Ctrl/Cmd+V</STRONG>), и нажмите <STRONG>OK</STRONG>.',
 		securityMsg	: 'По причине настроек безопасности браузера, редактор не имеет доступа к данным буфера обмена напрямую. Вам необходимо вставить текст снова в это окно.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +564,7 @@ CKEDITOR.lang['ru'] =
 	{
 		button			: 'Шаблоны',
 		title			: 'Шаблоны содержимого',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Заменить текущее содержание',
 		selectPromptMsg	: 'Пожалуйста, выберете шаблон для открытия в редакторе<br>(текущее содержимое будет потеряно):',
 		emptyListMsg	: '(Ни одного шаблона не определено)'
@@ -648,6 +685,7 @@ CKEDITOR.lang['ru'] =
 	scayt :
 	{
 		title			: 'Проверка Орфографии по Мере Ввода',
+		opera_title		: 'Not supported by Opera', // MISSING
 		enable			: 'Включить ПОМВ',
 		disable			: 'Отключить ПОМВ',
 		about			: 'О ПОМВ',
@@ -659,9 +697,23 @@ CKEDITOR.lang['ru'] =
 		ignoreAll		: 'Пропустить всё',
 		addWord			: 'Добавить слово',
 		emptyDic		: 'Имя словаря должно быть не пустым.',
+
 		optionsTab		: 'Настройки',
+		allCaps			: 'Ignore All-Caps Words', // MISSING
+		ignoreDomainNames : 'Ignore Domain Names', // MISSING
+		mixedCase		: 'Ignore Words with Mixed Case', // MISSING
+		mixedWithDigits	: 'Ignore Words with Numbers', // MISSING
+
 		languagesTab	: 'Языки',
+
 		dictionariesTab	: 'Словари',
+		dic_field_name	: 'Dictionary name', // MISSING
+		dic_create		: 'Create', // MISSING
+		dic_restore		: 'Restore', // MISSING
+		dic_delete		: 'Delete', // MISSING
+		dic_rename		: 'Rename', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type its name and click the Restore button.', // MISSING
+
 		aboutTab		: 'О словарях'
 	},
 
@@ -689,11 +741,18 @@ CKEDITOR.lang['ru'] =
 	colordialog :
 	{
 		title		: 'Выберите цвет',
+		options	:	'Color Options', // MISSING
 		highlight	: 'Выделить',
 		selected	: 'Выбранное',
 		clear		: 'Очистить'
 	},
 
 	toolbarCollapse	: 'Свернуть панель инструментов',
-	toolbarExpand	: 'Развернуть панель инструментов'
+	toolbarExpand	: 'Развернуть панель инструментов',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

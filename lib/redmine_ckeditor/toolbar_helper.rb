@@ -1,6 +1,7 @@
 module RedmineCkeditor
   module ToolbarHelper
     include ActionView::Helpers
+    include Redmine::I18n
 
     @@dict = {}
     
@@ -141,11 +142,13 @@ module RedmineCkeditor
           if (bar.length > 0) bars.push(bar);
           
           CKEDITOR.config.toolbar = bars;
+          CKEDITOR.config.language = "#{current_language.to_s.downcase}";
           CKEDITOR.instances['toolbar'].destroy();
           CKEDITOR.replace('toolbar');
         }
         
         CKEDITOR.config.toolbar = #{RedmineCkeditorSetting.toolbar.inspect};
+        CKEDITOR.config.language = "#{current_language.to_s.downcase}";
         CKEDITOR.replace('toolbar');
       EOT
     end

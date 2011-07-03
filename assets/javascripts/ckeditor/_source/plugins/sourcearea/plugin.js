@@ -34,7 +34,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 							textarea.setAttributes(
 								{
 									dir : 'ltr',
-									tabIndex : editor.tabIndex,
+									tabIndex : CKEDITOR.env.webkit ? -1 : editor.tabIndex,
 									'role' : 'textbox',
 									'aria-label' : editor.lang.editorTitle.replace( '%1', editor.name )
 								});
@@ -72,12 +72,12 @@ CKEDITOR.plugins.add( 'sourcearea',
 								win.on( 'resize', onResize );
 								setTimeout( onResize, 0 );
 							}
-							else
+							// As we prevent click to put focus on editor container,
+							// while 'mousedown' inside <textarea> is also captured,
+							// but we must stop the even propagation, otherwise
+							// it's not possible to place the caret inside of it (non IE and IE9).
+							if ( document.addEventListener )
 							{
-								// By some yet unknown reason, we must stop the
-								// mousedown propagation for the textarea,
-								// otherwise it's not possible to place the caret
-								// inside of it (non IE).
 								textarea.on( 'mousedown', function( evt )
 									{
 										evt.data.stopPropagation();
@@ -138,6 +138,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 
 						unload : function( holderElement )
 						{
+							textarea.clearCustomData();
 							editor.textarea = textarea = null;
 
 							if ( onResize )
@@ -190,6 +191,7 @@ CKEDITOR.plugins.sourcearea =
 		source :
 		{
 			modes : { wysiwyg:1, source:1 },
+			editorFocus : false,
 
 			exec : function( editor )
 			{

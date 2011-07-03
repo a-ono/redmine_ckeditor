@@ -14,7 +14,7 @@ CKEDITOR.dialog.add( 'checkbox', function( editor )
 
 			var element = this.getParentEditor().getSelection().getSelectedElement();
 
-			if ( element && element.getAttribute( 'type' ) == "checkbox" )
+			if ( element && element.getAttribute( 'type' ) == 'checkbox' )
 			{
 				this.checkbox = element;
 				this.setupContent( element );
@@ -31,10 +31,8 @@ CKEDITOR.dialog.add( 'checkbox', function( editor )
 				editor = this.getParentEditor();
 				element = editor.document.createElement( 'input' );
 				element.setAttribute( 'type', 'checkbox' );
-			}
-
-			if ( isInsertMode )
 				editor.insertElement( element );
+			}
 			this.commitContent( { element : element } );
 		},
 		contents : [
@@ -91,7 +89,19 @@ CKEDITOR.dialog.add( 'checkbox', function( editor )
 							if ( value && !( CKEDITOR.env.ie && value == 'on' ) )
 								element.setAttribute( 'value', value );
 							else
-								element.removeAttribute( 'value' );
+							{
+								if ( CKEDITOR.env.ie )
+								{
+									// Remove attribute 'value' of checkbox (#4721).
+									var checkbox = new CKEDITOR.dom.element( 'input', element.getDocument() );
+									element.copyAttributes( checkbox, { value: 1 } );
+									checkbox.replace( element );
+									editor.getSelection().selectElement( checkbox );
+									data.element = checkbox;
+								}
+								else
+									element.removeAttribute( 'value' );
+							}
 						}
 					},
 					{
@@ -111,8 +121,8 @@ CKEDITOR.dialog.add( 'checkbox', function( editor )
 
 							if ( CKEDITOR.env.ie )
 							{
-								var isElementChecked = !!element.getAttribute( 'checked' );
-								var isChecked = !!this.getValue();
+								var isElementChecked = !!element.getAttribute( 'checked' ),
+									isChecked = !!this.getValue();
 
 								if ( isElementChecked != isChecked )
 								{

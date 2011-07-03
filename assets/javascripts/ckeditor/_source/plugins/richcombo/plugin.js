@@ -130,7 +130,7 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 					var element = CKEDITOR.document.getById( id ).getChild( 1 );
 					element.focus();
 				},
-				execute : clickFn
+				clickFn : clickFn
 			};
 
 			editor.on( 'mode', function()
@@ -160,6 +160,9 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 					// Avoid subsequent focus grab on editor document.
 					ev.preventDefault();
 				});
+
+			// For clean up
+			instance.keyDownFn = keyDownFn;
 
 			output.push(
 				'<span class="cke_rcombo">',
@@ -236,7 +239,7 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 						me.onOpen();
 				};
 
-			panel.onHide = function()
+			panel.onHide = function( preventOnClose )
 				{
 					if ( me.className )
 						this.element.getFirst().removeClass( me.className + '_panel' );
@@ -245,7 +248,7 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 
 					me._.on = 0;
 
-					if ( me.onClose )
+					if ( !preventOnClose && me.onClose )
 						me.onClose();
 				};
 

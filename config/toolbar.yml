@@ -80,54 +80,58 @@ JustifyRight:
 JustifyBlock:
   position: 34
   label: [justify, block]
-Link:
+BidiLtr:
   position: 35
+BidiRtl:
+  position: 36
+Link:
+  position: 37
   label: [link, toolbar]
 Unlink:
-  position: 36
+  position: 38
 Anchor:
-  position: 37
+  position: 39
   label: [anchor, toolbar]
 Image:
-  position: 38
+  position: 40
   label: [image, title]
 Table:
-  position: 39
+  position: 41
   label: [table, toolbar]
 HorizontalRule:
-  position: 40
+  position: 42
   label: horizontalrule
 Smiley:
-  position: 41
+  position: 43
   label: [smiley, toolbar]
 SpecialChar:
-  position: 42
+  position: 44
   label: [specialChar, toolbar]
 PageBreak:
-  position: 43
+  position: 45
   label: pagebreak
 Styles:
-  position: 44
+  position: 46
   label: [stylesCombo, label]
 Format:
-  position: 45
+  position: 47
   label: [format, label]
 Font:
-  position: 46
+  position: 48
   label: [font, label]
 FontSize:
-  position: 47
+  position: 49
   label: [fontSize, label]
 TextColor:
-  position: 48
+  position: 50
   label: [colorButton, textColorTitle]
 BGColor:
-  position: 49
+  position: 51
   label: [colorButton, bgColorTitle]
 Maximize:
-  position: 50
-ShowBlocks:
-  position: 51
-About:
   position: 52
+ShowBlocks:
+  position: 53
+About:
+  position: 54
   label: [about, title]

@@ -31,11 +31,11 @@ CKEDITOR.lang['es'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+	editorTitle : 'Editor de texto, %1, pulse ALT 0 para ayuda.',
 
 	// ARIA descriptions.
-	toolbar	: 'Toolbar', // MISSING
-	editor	: 'Rich Text Editor', // MISSING
+	toolbar	: 'Barra de herramientas',
+	editor	: 'Editor de texto enriquecido',
 
 	// Toolbar buttons without dialogs.
 	source			: 'Fuente HTML',
@@ -92,35 +92,46 @@ CKEDITOR.lang['es'] =
 		cssStyle		: 'Estilo',
 		ok				: 'Aceptar',
 		cancel			: 'Cancelar',
-		close			: 'Close', // MISSING
-		preview			: 'Preview', // MISSING
+		close			: 'Cerrar',
+		preview			: 'Previsualización',
 		generalTab		: 'General',
 		advancedTab		: 'Avanzado',
 		validateNumberFailed : 'El valor no es un número.',
 		confirmNewPage	: 'Cualquier cambio que no se haya guardado se perderá.\r\n¿Está seguro de querer crear una nueva página?',
 		confirmCancel	: 'Algunas de las opciones se han cambiado.\r\n¿Está seguro de querer cerrar el diálogo?',
-		options			: 'Options', // MISSING
-		target			: 'Target', // MISSING
-		targetNew		: 'New Window (_blank)', // MISSING
-		targetTop		: 'Topmost Window (_top)', // MISSING
-		targetSelf		: 'Same Window (_self)', // MISSING
-		targetParent	: 'Parent Window (_parent)', // MISSING
+		options			: 'Opciones',
+		target			: 'Destino',
+		targetNew		: 'Nueva ventana (_blank)',
+		targetTop		: 'Ventana principal (_top)',
+		targetSelf		: 'Misma ventana (_self)',
+		targetParent	: 'Ventana padre (_parent)',
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, no disponible</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Opciones del menú contextual'
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insertar Caracter Especial',
-		title		: 'Seleccione un caracter especial'
+		title		: 'Seleccione un caracter especial',
+		options : 'Opciones de caracteres especiales'
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Insertar/Editar Vínculo',
+		other 		: '<otro>',
 		menu		: 'Editar Vínculo',
 		title		: 'Vínculo',
 		info		: 'Información de Vínculo',
@@ -128,7 +139,7 @@ CKEDITOR.lang['es'] =
 		upload		: 'Cargar',
 		advanced	: 'Avanzado',
 		type		: 'Tipo de vínculo',
-		toUrl		: 'URL', // MISSING
+		toUrl		: 'URL',
 		toAnchor	: 'Referencia en esta página',
 		toEmail		: 'E-Mail',
 		targetFrame		: '<marco>',
@@ -182,6 +193,30 @@ CKEDITOR.lang['es'] =
 		errorName	: 'Por favor, complete el nombre de la Referencia'
 	},
 
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Propiedades de lista numerada',
+		bulletedTitle		: 'Propiedades de viñetas',
+		type				: 'Tipo',
+		start				: 'Inicio',
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Círculo',
+		disc				: 'Disco',
+		square				: 'Cuadrado',
+		none				: 'Ninguno',
+		notset				: '<sin establecer>',
+		armenian			: 'Numeración armenia',
+		georgian			: 'Numeración georgiana (an, ban, gan, etc.)',
+		lowerRoman			: 'Números romanos en minúsculas (i, ii, iii, iv, v, etc.)',
+		upperRoman			: 'Números romanos en mayúsculas (I, II, III, IV, V, etc.)',
+		lowerAlpha			: 'Alfabeto en minúsculas (a, b, c, d, e, etc.)',
+		upperAlpha			: 'Alfabeto en mayúsculas  (A, B, C, D, E, etc.)',
+		lowerGreek			: 'Letras griegas (alpha, beta, gamma, etc.)',
+		decimal				: 'Decimal (1, 2, 3, etc.)',
+		decimalLeadingZero	: 'Decimal con cero inicial (01, 02, 03, etc.)'
+	},
+
 	// Find And Replace Dialog
 	findAndReplace :
 	{
@@ -215,7 +250,7 @@ CKEDITOR.lang['es'] =
 		width		: 'Anchura',
 		widthPx		: 'pixeles',
 		widthPc		: 'porcentaje',
-		widthUnit	: 'width unit', // MISSING
+		widthUnit	: 'unidad de la anchura',
 		height		: 'Altura',
 		cellSpace	: 'Esp. e/celdas',
 		cellPad		: 'Esp. interior',
@@ -378,7 +413,7 @@ CKEDITOR.lang['es'] =
 		width		: 'Anchura',
 		height		: 'Altura',
 		lockRatio	: 'Proporcional',
-		unlockRatio	: 'Unlock Ratio', // MISSING
+		unlockRatio	: 'Desbloquear el proporcional',
 		resetSize	: 'Tamaño Original',
 		border		: 'Borde',
 		hSpace		: 'Esp.Horiz',
@@ -391,11 +426,11 @@ CKEDITOR.lang['es'] =
 		button2Img	: '¿Desea convertir el botón de imagen en una simple imagen?',
 		img2Button	: '¿Desea convertir la imagen en un botón de imagen?',
 		urlMissing	: 'Debe indicar la URL de la imagen.',
-		validateWidth	: 'Width must be a whole number.', // MISSING
-		validateHeight	: 'Height must be a whole number.', // MISSING
-		validateBorder	: 'Border must be a whole number.', // MISSING
-		validateHSpace	: 'HSpace must be a whole number.', // MISSING
-		validateVSpace	: 'VSpace must be a whole number.' // MISSING
+		validateWidth	: 'La anchura debe ser un número.',
+		validateHeight	: 'La altura debe ser un número.',
+		validateBorder	: 'El borde debe ser un número.',
+		validateHSpace	: 'El espaciado horizontal debe ser un número.',
+		validateVSpace	: 'El espaciado vertical debe ser un número.'
 	},
 
 	// Flash Dialog
@@ -475,13 +510,14 @@ CKEDITOR.lang['es'] =
 
 	smiley :
 	{
-		toolbar	: 'Emoticons',
-		title	: 'Insertar un Emoticon'
+		toolbar	: 'Emoticonos',
+		title	: 'Insertar un Emoticon',
+		options : 'Opciones de emoticonos'
 	},
 
 	elementsPath :
 	{
-		eleLabel : 'Elements path', // MISSING
+		eleLabel : 'Ruta de los elementos',
 		eleTitle : '%1 elemento'
 	},
 
@@ -503,11 +539,11 @@ CKEDITOR.lang['es'] =
 	clipboard :
 	{
 		title		: 'Pegar',
-		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl+X).',
-		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl+C).',
-		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
+		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl/Cmd+X).',
+		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl/Cmd+C).',
+		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl/Cmd+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
 		securityMsg	: 'Debido a la configuración de seguridad de su navegador, el editor no tiene acceso al portapapeles.\r\nEs necesario que lo pegue de nuevo en esta ventana.',
-		pasteArea	: 'Paste Area' // MISSING
+		pasteArea	: 'Zona de pegado'
 	},
 
 	pastefromword :
@@ -528,6 +564,7 @@ CKEDITOR.lang['es'] =
 	{
 		button			: 'Plantillas',
 		title			: 'Contenido de Plantillas',
+		options : 'Opciones de plantillas',
 		insertOption	: 'Reemplazar el contenido actual',
 		selectPromptMsg	: 'Por favor selecciona la plantilla a abrir en el editor<br>(el contenido actual se perderá):',
 		emptyListMsg	: '(No hay plantillas definidas)'
@@ -538,7 +575,7 @@ CKEDITOR.lang['es'] =
 	stylesCombo :
 	{
 		label		: 'Estilo',
-		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle	: 'Estilos para formatear',
 		panelTitle1	: 'Estilos de párrafo',
 		panelTitle2	: 'Estilos de carácter',
 		panelTitle3	: 'Estilos de objeto'
@@ -596,7 +633,7 @@ CKEDITOR.lang['es'] =
 	{
 		textColorTitle	: 'Color de Texto',
 		bgColorTitle	: 'Color de Fondo',
-		panelTitle		: 'Colors', // MISSING
+		panelTitle		: 'Colores',
 		auto			: 'Automático',
 		more			: 'Más Colores...'
 	},
@@ -648,6 +685,7 @@ CKEDITOR.lang['es'] =
 	scayt :
 	{
 		title			: 'Comprobar Ortografía Mientras Escribe',
+		opera_title		: 'No soportado en Opera',
 		enable			: 'Activar Corrector',
 		disable			: 'Desactivar Corrector',
 		about			: 'Acerca de Corrector',
@@ -659,9 +697,23 @@ CKEDITOR.lang['es'] =
 		ignoreAll		: 'Ignorar Todas',
 		addWord			: 'Añadir palabra',
 		emptyDic		: 'El nombre del diccionario no puede estar en blanco.',
+
 		optionsTab		: 'Opciones',
+		allCaps			: 'Omitir palabras en MAYÚSCULAS',
+		ignoreDomainNames : 'Omitir nombres de dominio',
+		mixedCase		: 'Ignorar palabras con combinación de mayúsculas y minúsculas',
+		mixedWithDigits	: 'Omitir palabras con números',
+
 		languagesTab	: 'Idiomas',
+
 		dictionariesTab	: 'Diccionarios',
+		dic_field_name	: 'Nombre del diccionario',
+		dic_create		: 'Crear',
+		dic_restore		: 'Recuperar',
+		dic_delete		: 'Borrar',
+		dic_rename		: 'Renombrar',
+		dic_info		: 'Inicialmente el Diccionario de usuario se guarda en una Cookie. Sin embargo, las cookies están limitadas en tamaño. Cuando el diccionario crece a un punto en el que no se puede guardar en una Cookie, el diccionario puede ser almacenado en nuestro servidor. Para almacenar su diccionario personalizado en nuestro servidor debe especificar un nombre para su diccionario. Si ya ha guardado un diccionaro, por favor, escriba su nombre y pulse el botón Recuperar',
+
 		aboutTab		: 'Acerca de'
 	},
 
@@ -689,11 +741,18 @@ CKEDITOR.lang['es'] =
 	colordialog :
 	{
 		title		: 'Elegir color',
+		options	:	'Opciones de colores',
 		highlight	: 'Muestra',
 		selected	: 'Elegido',
 		clear		: 'Borrar'
 	},
 
 	toolbarCollapse	: 'Contraer barra de herramientas',
-	toolbarExpand	: 'Expandir barra de herramientas'
+	toolbarExpand	: 'Expandir barra de herramientas',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

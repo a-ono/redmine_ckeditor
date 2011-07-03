@@ -11,6 +11,33 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 	 */
 	var dialog,
 		lang = editor.lang.specialChar;
+
+	var insertSpecialChar = function ( specialChar )
+	{
+		var selection = editor.getSelection(),
+			ranges = selection.getRanges( true ),
+			range, textNode;
+
+		editor.fire( 'saveSnapshot' );
+
+		for ( var i = ranges.length - 1; i >= 0 ; i-- )
+		{
+			range = ranges[ i ];
+			range.deleteContents();
+
+			textNode = CKEDITOR.dom.element.createFromHtml( specialChar );
+			range.insertNode( textNode );
+		}
+
+		if ( range )
+		{
+			range.moveToPosition( textNode, CKEDITOR.POSITION_AFTER_END );
+			range.select();
+		}
+
+		editor.fire( 'saveSnapshot' );
+	};
+
 	var onChoice = function( evt )
 	{
 		var target, value;
@@ -23,7 +50,12 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 		{
 			target.removeClass( "cke_light_background" );
 			dialog.hide();
-			editor.insertHtml( value );
+
+			// Firefox has bug on insert chars into a element use its own API. (#5170)
+			if ( CKEDITOR.env.gecko )
+				insertSpecialChar( value );
+			else
+				editor.insertHtml( value );
 		}
 	};
 
@@ -80,7 +112,8 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 		// Get an Anchor element.
 		var element = ev.getTarget();
 		var relative, nodeToMove;
-		var keystroke = ev.getKeystroke();
+		var keystroke = ev.getKeystroke(),
+			rtl = editor.lang.dir == 'rtl';
 
 		switch ( keystroke )
 		{
@@ -119,7 +152,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				break;
 
 			// RIGHT-ARROW
-			case 39 :
+			case rtl ? 37 : 39 :
 			// TAB
 			case 9 :
 				// relative is TD
@@ -153,7 +186,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				break;
 
 			// LEFT-ARROW
-			case 37 :
+			case rtl ? 39 : 37 :
 			// SHIFT + TAB
 			case CKEDITOR.SHIFT + 9 :
 				// relative is TD
@@ -232,7 +265,8 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 			var columns = this.definition.charColumns,
 				chars = this.definition.chars;
 
-			var html = [ '<table role="listbox" aria-labelledby="specialchar_table_label"' +
+			var charsTableLabel =  CKEDITOR.tools.getNextId() + '_specialchar_table_label';
+			var html = [ '<table role="listbox" aria-labelledby="' + charsTableLabel + '"' +
 						 			' style="width: 320px; height: 100%; border-collapse: separate;"' +
 						 			' align="center" cellspacing="2" cellpadding="2" border="0">' ];
 
@@ -259,12 +293,14 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 						// Use character in case description unavailable.
 						charDesc = charDesc || character;
 
+						var charLabelId =  'cke_specialchar_label_' + i + '_' + CKEDITOR.tools.getNextNumber();
+
 						html.push(
-							'<td class="cke_dark_background" style="cursor: default">' +
+							'<td class="cke_dark_background" style="cursor: default" role="presentation">' +
 							'<a href="javascript: void(0);" role="option"' +
 							' aria-posinset="' + ( i +1 ) + '"',
 							' aria-setsize="' + size + '"',
-							' aria-labelledby="cke_specialchar_label_' + i + '"',
+							' aria-labelledby="' + charLabelId + '"',
 							' style="cursor: inherit; display: block; height: 1.25em; margin-top: 0.25em; text-align: center;" title="', CKEDITOR.tools.htmlEncode( charDesc ), '"' +
 							' onkeydown="CKEDITOR.tools.callFunction( ' + onKeydown + ', event, this )"' +
 							' onclick="CKEDITOR.tools.callFunction(' + onClick + ', this); return false;"' +
@@ -272,7 +308,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 							'<span style="margin: 0 auto;cursor: inherit">' +
 							character +
 							'</span>' +
-							'<span class="cke_voice_label" id="cke_specialchar_label_' + i + '">' +
+							'<span class="cke_voice_label" id="' + charLabelId + '">' +
 							charDesc +
 							'</span></a>');
 					}
@@ -284,7 +320,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				html.push( '</tr>' );
 			}
 
-			html.push( '</tbody></table>', '<span id="specialchar_table_label" class="cke_voice_label">' + editor.lang.common.options +'</span>' );
+			html.push( '</tbody></table>', '<span id="' + charsTableLabel + '" class="cke_voice_label">' + lang.options +'</span>' );
 
 			this.getContentElement( 'info', 'charContainer' ).getElement().setHtml( html.join( '' ) );
 		},
@@ -311,11 +347,11 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 								focus : function()
 								{
 									var firstChar = this.getElement().getElementsByTag( 'a' ).getItem( 0 );
-									setTimeout(function()
+									setTimeout( function()
 									{
 										firstChar.focus();
 										onFocus( null, firstChar );
-									});
+									}, 0 );
 								},
 								onShow : function()
 								{
@@ -324,7 +360,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 										{
 											firstChar.focus();
 											onFocus( null, firstChar );
-										});
+										}, 0 );
 								},
 								onLoad : function( event )
 								{

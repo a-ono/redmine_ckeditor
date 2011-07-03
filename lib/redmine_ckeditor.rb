@@ -1,4 +1,4 @@
-require 'redmine_ckeditor/issues_controller_patch'
+require 'redmine_ckeditor/journals_controller_patch'
 require 'redmine_ckeditor/toolbar_helper'
 
 module RedmineCkeditor
@@ -12,23 +12,24 @@ module RedmineCkeditor
   ]
 
   ALLOWED_ATTRIBUTES = %w[
-    href src width height alt cite datetime title class name xml:lang abbr
+    href src width height alt cite datetime title class name xml:lang abbr dir
     style align valign border cellpadding cellspacing colspan rowspan nowrap
   ]
 
   DEFAULT_TOOLBAR = [
-    %w[Source - Preview - Maximize ShowBlocks - Template - PasteFromWord -
+    %w[Source - Preview - Maximize ShowBlocks - Template - PasteText PasteFromWord -
       Undo Redo - Find Replace
     ], '/',
     %w[Bold Italic Underline Strike - Subscript Superscript -
       NumberedList BulletedList - Outdent Indent Blockquote -
       JustifyLeft JustifyCenter JustifyRight JustifyBlock -
+      BidiLtr BidiRtl -
       Link Unlink Anchor - Image Table HorizontalRule SpecialChar
     ], '/',
     %w[Styles Format Font FontSize - TextColor BGColor]
   ]
 
   def self.apply_patch
-    IssuesController.send(:include, IssuesControllerPatch)
+    JournalsController.send(:include, JournalsControllerPatch)
   end
 end

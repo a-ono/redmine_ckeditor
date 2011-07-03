@@ -105,22 +105,33 @@ CKEDITOR.lang['cy'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, ddim ar gael</span>'
+	},
+
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
 	},
 
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Mewnosod Nodau Arbennig',
-		title		: 'Dewis Nod Arbennig'
+		title		: 'Dewis Nod Arbennig',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Dolen',
+		other 		: '<eraill>',
 		menu		: 'Golygu Dolen',
 		title		: 'Dolen',
 		info		: 'Gwyb ar y Ddolen',
@@ -180,6 +191,30 @@ CKEDITOR.lang['cy'] =
 		title		: 'Priodweddau\'r Angor',
 		name		: 'Enw\'r Angor',
 		errorName	: 'Teipiwch enw\'r angor'
+	},
+
+	// List style dialog
+	list:
+	{
+		numberedTitle		: 'Numbered List Properties', // MISSING
+		bulletedTitle		: 'Bulleted List Properties', // MISSING
+		type				: 'Type', // MISSING
+		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
+		circle				: 'Circle', // MISSING
+		disc				: 'Disc', // MISSING
+		square				: 'Square', // MISSING
+		none				: 'None', // MISSING
+		notset				: '<not set>', // MISSING
+		armenian			: 'Armenian numbering', // MISSING
+		georgian			: 'Georgian numbering (an, ban, gan, etc.)', // MISSING
+		lowerRoman			: 'Lower Roman (i, ii, iii, iv, v, etc.)', // MISSING
+		upperRoman			: 'Upper Roman (I, II, III, IV, V, etc.)', // MISSING
+		lowerAlpha			: 'Lower Alpha (a, b, c, d, e, etc.)', // MISSING
+		upperAlpha			: 'Upper Alpha (A, B, C, D, E, etc.)', // MISSING
+		lowerGreek			: 'Lower Greek (alpha, beta, gamma, etc.)', // MISSING
+		decimal				: 'Decimal (1, 2, 3, etc.)', // MISSING
+		decimalLeadingZero	: 'Decimal leading zero (01, 02, 03, etc.)' // MISSING
 	},
 
 	// Find And Replace Dialog
@@ -476,7 +511,8 @@ CKEDITOR.lang['cy'] =
 	smiley :
 	{
 		toolbar	: 'Gwenoglun',
-		title	: 'Mewnosod Gwenoglun'
+		title	: 'Mewnosod Gwenoglun',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +539,9 @@ CKEDITOR.lang['cy'] =
 	clipboard :
 	{
 		title		: 'Gludo',
-		cutError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd torri\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl+X).',
-		copyError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd copïo\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl+C).',
-		pasteMsg	: 'Gludwch i mewn i\'r blwch canlynol gan ddefnyddio\'r bysellfwrdd (<strong>Ctrl+V</strong>) a phwyso <strong>Iawn</strong>.',
+		cutError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd torri\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl/Cmd+X).',
+		copyError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd copïo\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl/Cmd+C).',
+		pasteMsg	: 'Gludwch i mewn i\'r blwch canlynol gan ddefnyddio\'r bysellfwrdd (<strong>Ctrl/Cmd+V</strong>) a phwyso <strong>Iawn</strong>.',
 		securityMsg	: 'Oherwydd gosodiadau diogelwch eich porwr, nid yw\'r porwr yn gallu ennill mynediad i\'r data ar y clipfwrdd yn uniongyrchol. Mae angen i chi ei ludo eto i\'r ffenestr hon.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +564,7 @@ CKEDITOR.lang['cy'] =
 	{
 		button			: 'Templedi',
 		title			: 'Templedi Cynnwys',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Amnewid y cynnwys go iawn',
 		selectPromptMsg	: 'Dewiswch dempled i\'w agor yn y golygydd',
 		emptyListMsg	: '(Dim templedi wedi\'u diffinio)'
@@ -648,6 +685,7 @@ CKEDITOR.lang['cy'] =
 	scayt :
 	{
 		title			: 'Gwirio\'r Sillafu Wrth Deipio',
+		opera_title		: 'Not supported by Opera', // MISSING
 		enable			: 'Galluogi SCAYT',
 		disable			: 'Analluogi SCAYT',
 		about			: 'Ynghylch SCAYT',
@@ -659,9 +697,23 @@ CKEDITOR.lang['cy'] =
 		ignoreAll		: 'Anwybyddu pob',
 		addWord			: 'Ychwanegu Gair',
 		emptyDic		: 'Ni ddylai enw\'r geiriadur fod yn wag.',
+
 		optionsTab		: 'Opsiynau',
+		allCaps			: 'Ignore All-Caps Words', // MISSING
+		ignoreDomainNames : 'Ignore Domain Names', // MISSING
+		mixedCase		: 'Ignore Words with Mixed Case', // MISSING
+		mixedWithDigits	: 'Ignore Words with Numbers', // MISSING
+
 		languagesTab	: 'Ieithoedd',
+
 		dictionariesTab	: 'Geiriaduron',
+		dic_field_name	: 'Dictionary name', // MISSING
+		dic_create		: 'Create', // MISSING
+		dic_restore		: 'Restore', // MISSING
+		dic_delete		: 'Delete', // MISSING
+		dic_rename		: 'Rename', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type its name and click the Restore button.', // MISSING
+
 		aboutTab		: 'Ynghylch'
 	},
 
@@ -689,11 +741,18 @@ CKEDITOR.lang['cy'] =
 	colordialog :
 	{
 		title		: 'Dewis lliw',
+		options	:	'Color Options', // MISSING
 		highlight	: 'Uwcholeuo',
 		selected	: 'Dewiswyd',
 		clear		: 'Clirio'
 	},
 
 	toolbarCollapse	: 'Cyfangu\'r Bar Offer',
-	toolbarExpand	: 'Ehangu\'r Bar Offer'
+	toolbarExpand	: 'Ehangu\'r Bar Offer',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

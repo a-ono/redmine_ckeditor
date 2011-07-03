@@ -9,7 +9,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 0.9.x
+* Redmine 1.1.x (Might work with other versions, but I've not tested.)
 
 == Plugin installation and setup
 

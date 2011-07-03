@@ -1,18 +1,18 @@
-require_dependency 'issues_controller'
+require_dependency 'journals_controller'
 
 module RedmineCkeditor
-  module IssuesControllerPatch
+  module JournalsControllerPatch
     def self.included(base)
       base.send(:include, InstanceMethods)
 
       base.class_eval do
         unloadable
-        alias_method_chain :reply, :ckeditor
+        alias_method_chain :new, :ckeditor
       end
     end
 
     module InstanceMethods
-      def reply_with_ckeditor
+      def new_with_ckeditor
         unless Setting.text_formatting == "CKEditor"
           reply_without_ckeditor
           return

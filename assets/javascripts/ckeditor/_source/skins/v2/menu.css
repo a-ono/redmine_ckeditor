@@ -32,21 +32,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	border: 2px solid;
 }
 
-.cke_skin_v2 .cke_menuitem a.cke_disabled:hover,
-.cke_skin_v2 .cke_menuitem a.cke_disabled:focus,
-.cke_skin_v2 .cke_menuitem a.cke_disabled:active
-{
-	background-color: transparent !important;
-}
-
-.cke_hc .cke_menuitem a.cke_disabled:hover,
-.cke_hc .cke_menuitem a.cke_disabled:focus,
-.cke_hc .cke_menuitem a.cke_disabled:active
-{
-	border-width: 0px;
-}
-
-
 .cke_skin_v2 .cke_menuitem .cke_icon
 {
 	background-image: url(icons.png);
@@ -56,6 +41,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	width: 16px;
 	height: 16px;
 	float: left;
+}
+
+.cke_rtl .cke_skin_v2 .cke_menuitem .cke_icon
+{
+	background-image: url(icons_rtl.png);
 }
 
 .cke_skin_v2 .cke_menuitem .cke_disabled .cke_icon
@@ -73,6 +63,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	float: left;
 	filter: alpha(opacity=70); /* IE */
 	opacity: 0.70; /* Safari, Opera and Mozilla */
+	clear: both;
+}
+
+/* IE9 insists on border box model on this element.*/
+ .cke_browser_ie9 .cke_skin_v2 .cke_menuitem .cke_icon_wrapper
+{
+	width:24px;
+	height:24px;
 }
 
 .cke_rtl .cke_skin_v2 .cke_menuitem .cke_icon_wrapper
@@ -108,6 +106,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	margin-left: 24px;
 	background-color: #fff;
 }
+
+/* IE9 insists on border box model on this element.*/
+.cke_browser_ie9 .cke_skin_v2 .cke_menuitem .cke_label
+{
+	height:24px;
+}
+
 /* Set these after the document has been loaded and we know the dimensions*/
 .cke_skin_v2 .cke_frameLoaded .cke_menuitem .cke_label
 {
