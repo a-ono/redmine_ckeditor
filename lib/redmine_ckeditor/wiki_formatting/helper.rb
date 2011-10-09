@@ -36,6 +36,9 @@ module RedmineCkeditor::WikiFormatting
               }
             });
           }
+
+          // fire change event
+          setInterval(function(){textarea.value = editor.getData();}, 1000);
         }, false);
       })();
       EOT
