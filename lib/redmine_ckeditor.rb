@@ -17,7 +17,7 @@ module RedmineCkeditor
   ]
 
   DEFAULT_TOOLBAR = [
-    %w[Source - Preview - Maximize ShowBlocks - Template - PasteText PasteFromWord -
+    %w[Source - Preview - Maximize ShowBlocks - Templates - PasteText PasteFromWord -
       Undo Redo - Find Replace
     ], '/',
     %w[Bold Italic Underline Strike - Subscript Superscript -
