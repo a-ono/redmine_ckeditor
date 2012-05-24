@@ -14,7 +14,7 @@ module RedmineCkeditor
     #
     def config
       ActionController::Base.config
-    end def
+    end
     
     #
     # Renamed because config was being queries for cache control / asset control etc, which is undesired
