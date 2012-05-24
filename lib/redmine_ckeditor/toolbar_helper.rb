@@ -71,7 +71,7 @@ module RedmineCkeditor
         [button_label(item), item]
       }
 
-      button_container = content_tag(:div, <<-EOT, :class => "container")
+      button_container = <<-EOT
         <input type="button" class="button" value="#{I18n.t(:add)} >>"
           onclick="moveItem('left', 'right')"/><br/>
         <input type="button" class="button" value="<< #{I18n.t(:remove)}"
@@ -81,6 +81,7 @@ module RedmineCkeditor
         <input type="button" class="button" value="#{I18n.t(:line_break)} >>"
           onclick="addItem('/')"/>
       EOT
+      button_container = content_tag(:div, button_container.html_safe, :class => "container")
 
       html = hidden_field_tag("settings[toolbar]", items.join(",")) +
         content_tag(:select, options_for_select(left),
