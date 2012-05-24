@@ -9,7 +9,17 @@ module RedmineCkeditor
       base.extend RedmineCkeditor::ToolbarHelper
     end
 
-    def config(*args)
+    #
+    # Return Base ActionController instance of config
+    #
+    def config
+      ActionController::Base.config
+    end def
+    
+    #
+    # Renamed because config was being queries for cache control / asset control etc, which is undesired
+    #
+    def configuration(*args)
       result = @@toolbar_config ||=
         YAML.load_file(RedmineCkeditor::PLUGIN_DIR + '/config/toolbar.yml')
 
@@ -20,7 +30,7 @@ module RedmineCkeditor
     end
 
     def button_names
-      @@toolbar_buttons ||= config.to_a.sort{|a, b|
+      @@toolbar_buttons ||= configuration.to_a.sort{|a, b|
         a[1]["position"] <=> b[1]["position"]
       }.map{|item| item[0]}
     end
@@ -36,7 +46,7 @@ module RedmineCkeditor
             (data = File.read(filename))[data.index("=")+1..data.rindex(";")-1]
           )
 
-          config.each {|name, conf|
+          configuration.each {|name, conf|
             label_keys = conf["label"] || name.camelize(:lower)
             h[name] = label_keys.to_a.inject(dict) {|d, key|
               d ? d[key] : nil
