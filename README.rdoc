@@ -9,11 +9,14 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 1.1.x or higher
+* Redmine 2.0.0 or higher (trunk)
+
+* Redmine 1.1.0 - 1.4.2
+https://github.com/a-ono/redmine_ckeditor/tree/0.0.6
 
 == Plugin installation and setup
 
-1. Copy the plugin directory into the vendor/plugins directory (make sure the name is redmine_ckeditor)
+1. Copy the plugin directory into the plugins directory (make sure the name is redmine_ckeditor)
 2. Start Redmine
 3. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
 4. Configure the plugin (Administration > Plugins > Configure)
