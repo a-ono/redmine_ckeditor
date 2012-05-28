@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -181,6 +181,11 @@ body .cke_dialog
 	position: relative;
 }
 
+.cke_skin_office2003 .cke_browser_ie.cke_rtl .cke_dialog_title
+{
+	position: static;
+}
+
 .cke_skin_office2003 .cke_dialog_contents
 {
 	background-color: #f7f8fd;
@@ -198,6 +203,10 @@ body .cke_dialog
 .cke_skin_office2003 .cke_rtl .cke_dialog_footer
 {
 	text-align: left;
+}
+
+.cke_skin_office2003 .cke_dialog_footer .cke_resizer {
+	margin-top: 21px;
 }
 
 /* tabs */
@@ -325,6 +334,8 @@ body .cke_dialog
 	background-color: white;
 	border: 1px solid #a0a0a0;
 	padding: 1px 0px;
+	/* IE6/Quirks - make sure the content does not overflow (#7321) */
+	_width: 99.9%;
 }
 
 /* Opera/IE doesn't leave enough padding in text input for cursor to blink in RTL. (#6087) */
@@ -391,6 +402,12 @@ body .cke_dialog
 	padding: 1px 0px;
 }
 
+/* RTL + IE6: Input overflows dialog element. (#7321) */
+.cke_skin_office2003 .cke_rtl .cke_dialog_ui_labeled_content
+{
+	_width: 95%;
+}
+
 .cke_skin_office2003 div.cke_disabled .cke_dialog_ui_labeled_content *
 {
 	background-color : #a0a0a0;
@@ -427,6 +444,12 @@ body .cke_dialog
 {
 	border-collapse: separate;
 	cursor: default;
+}
+
+.cke_skin_office2003 a.cke_dialog_ui_button_ok span,
+.cke_skin_office2003 a.cke_dialog_ui_button_cancel span
+{
+	width:60px;
 }
 
 .cke_skin_office2003 span.cke_dialog_ui_button
@@ -485,8 +508,12 @@ body .cke_dialog
 
 .cke_skin_office2003 .cke_dialog_footer_buttons span.cke_dialog_ui_button
 {
-	width: 60px;
 	margin: 7px 0;
+}
+
+.cke_skin_office2003 .cke_browser_ie7 .cke_dialog_footer_buttons
+{
+	position: static;
 }
 
 .cke_skin_office2003 strong
@@ -614,6 +641,10 @@ body .cke_dialog
 	border: none 1px;
 	font-size: 1px;
 }
+.cke_skin_office2003 .cke_dialog a.cke_btn_locked .cke_icon
+{
+	display:none;
+}
 
 .cke_skin_office2003 .cke_rtl .cke_dialog a.cke_btn_locked,
 .cke_skin_office2003 .cke_rtl .cke_dialog a.cke_btn_unlocked
@@ -637,7 +668,7 @@ body .cke_dialog
 {
 	border : 2px ridge black;
 	overflow : scroll;
-	height : 160px;
+	height : 210px;
 	width : 230px;
 	padding : 2px;
 	background-color : white;
@@ -765,6 +796,7 @@ body .cke_dialog
 .cke_skin_office2003 .cke_hc .cke_dialog_body .cke_label
 {
 	display: inline;
+	cursor: inherit;
 }
 
 .cke_skin_office2003 .cke_hc a.cke_btn_locked,
@@ -775,6 +807,11 @@ body .cke_dialog
 	float: left;
 	width: auto;
 	height: auto;
+	padding: 0 2px;
+}
+.cke_skin_office2003 .cke_hc a.cke_btn_locked .cke_icon
+{
+	display:inline;
 }
 
 .cke_skin_office2003 .cke_rtl.cke_hc a.cke_btn_locked,
@@ -782,4 +819,73 @@ body .cke_dialog
 .cke_skin_office2003 .cke_rtl.cke_hc a.cke_btn_reset
 {
 	float: right;
+}
+
+/**
+ * Styles specific to "cellProperties" dialog.
+ */
+
+.cke_skin_office2003 .cke_dialog_contents a.colorChooser
+{
+	display:block;
+	margin-top:12px;
+	margin-left: 10px;
+	width: 40px;
+}
+
+.cke_skin_office2003 .cke_dialog_contents a.colorChooser .cke_dialog_ui_button
+{
+	width:100%;
+}
+
+.cke_skin_office2003 .cke_rtl .cke_dialog_contents a.colorChooser
+{
+	margin-right: 10px;
+}
+
+/* Compensate focus outline for some input elements. (#6200) */
+.cke_skin_office2003 .cke_browser_gecko .cke_dialog_ui_checkbox_input:focus,
+.cke_skin_office2003 .cke_browser_gecko .cke_dialog_ui_radio_input:focus,
+.cke_skin_office2003 .cke_browser_opera .cke_dialog_ui_checkbox_input:focus,
+.cke_skin_office2003 .cke_browser_opera .cke_dialog_ui_radio_input:focus,
+.cke_skin_office2003 .cke_browser_gecko .cke_dialog_ui_input_select:focus,
+.cke_skin_office2003 .cke_browser_gecko .cke_btn_over,
+.cke_skin_office2003 .cke_browser_opera .cke_btn_over,
+.cke_skin_office2003 .cke_browser_ie .cke_btn_over
+{
+	outline: 1px dotted #696969;
+}
+
+/* IE<8 instead doesn't support CSS outline property, emulated with dotted border. */
+
+/* Predefined border to avoid visual size change impact. */
+.cke_skin_office2003 .cke_browser_ie .cke_dialog_ui_checkbox_input,
+.cke_skin_office2003 .cke_browser_ie .cke_dialog_ui_ratio_input,
+.cke_skin_office2003 .cke_browser_ie .cke_btn_reset,
+.cke_skin_office2003 .cke_browser_ie .cke_btn_locked,
+.cke_skin_office2003 .cke_browser_ie .cke_btn_unlocked
+{
+	*border: 1px solid transparent !important;
+	/* Emulating border-color: transparent in IE6.*/
+	/* Emulating border-color: transparent in IE6.*/
+	-border: 1px solid red !important;
+	-filter: chroma(color=red);
+}
+
+.cke_skin_office2003 .cke_browser_ie .cke_dialog_ui_focused,
+.cke_skin_office2003 .cke_browser_ie .cke_btn_over
+{
+	*border: 1px dotted #696969 !important;
+}
+
+.cke_skin_office2003 .cke_iframe_shim
+{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1;
+	filter:alpha(opacity=0);
+	width:100%;
+	height:100%;
 }

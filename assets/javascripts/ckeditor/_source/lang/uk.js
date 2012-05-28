@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 /**
- * Constains the dictionary of language entries.
+ * Contains the dictionary of language entries.
  * @namespace
  */
 CKEDITOR.lang['uk'] =
@@ -34,8 +34,8 @@ CKEDITOR.lang['uk'] =
 	editorTitle : 'Текстовий редактор, %1, натисніть ALT 0 для довідки.',
 
 	// ARIA descriptions.
-	toolbar	: 'Панель інструментів',
-	editor	: 'Текстовий редактор',
+	toolbars	: 'Панель інструментів редактора',
+	editor		: 'Текстовий редактор',
 
 	// Toolbar buttons without dialogs.
 	source			: 'Джерело',
@@ -56,6 +56,7 @@ CKEDITOR.lang['uk'] =
 	superscript		: 'Верхній індекс',
 	horizontalrule	: 'Горизонтальна лінія',
 	pagebreak		: 'Вставити розрив сторінки',
+	pagebreakAlt		: 'Розрив Сторінки',
 	unlink			: 'Видалити посилання',
 	undo			: 'Повернути',
 	redo			: 'Повторити',
@@ -109,6 +110,21 @@ CKEDITOR.lang['uk'] =
 		langDirRTL		: 'Справа наліво (RTL)',
 		styles			: 'Стиль CSS',
 		cssClasses		: 'Клас CSS',
+		width			: 'Ширина',
+		height			: 'Висота',
+		align			: 'Вирівнювання',
+		alignLeft		: 'По лівому краю',
+		alignRight		: 'По правому краю',
+		alignCenter		: 'По центру',
+		alignTop		: 'По верхньому краю',
+		alignMiddle		: 'По середині',
+		alignBottom		: 'По нижньому краю',
+		invalidHeight	: 'Висота повинна бути цілим числом.',
+		invalidWidth	: 'Ширина повинна бути цілим числом.',
+		invalidCssLength	: 'Значення, вказане для "%1" в полі повинно бути позитивним числом або без дійсного виміру CSS блоку (px, %, in, cm, mm, em, ex, pt, or pc).',
+		invalidHtmlLength	: 'Значення, вказане для "%1" в полі повинно бути позитивним числом або без дійсного виміру HTML блоку (px or %).',
+		invalidInlineStyle	: 'Значення, вказане для вбудованого стилю повинне складатися з одного чи кількох кортежів у форматі "ім\'я : значення", розділених крапкою з комою.',
+		cssLengthTooltip	: 'Введіть номер значення в пікселях або число з дійсною одиниці CSS (px, %, in, cm, mm, em, ex, pt, or pc).',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, не доступне</span>'
@@ -155,9 +171,7 @@ CKEDITOR.lang['uk'] =
 		popupFullScreen	: 'Повний екран (IE)',
 		popupScrollBars	: 'Стрічки прокрутки',
 		popupDependent	: 'Залежний (Netscape)',
-		popupWidth		: 'Ширина',
 		popupLeft		: 'Позиція зліва',
-		popupHeight		: 'Висота',
 		popupTop		: 'Позиція зверху',
 		id				: 'Ідентифікатор',
 		langDir			: 'Напрямок мови',
@@ -165,18 +179,19 @@ CKEDITOR.lang['uk'] =
 		langDirRTL		: 'Справа наліво (RTL)',
 		acccessKey		: 'Гаряча клавіша',
 		name			: 'Ім\'я',
-		langCode		: 'Код мови',
-		tabIndex		: 'Послідовність переходу',
-		advisoryTitle	: 'Заголовок',
+		langCode			: 'Код мови',
+		tabIndex			: 'Послідовність переходу',
+		advisoryTitle		: 'Заголовок',
 		advisoryContentType	: 'Тип вмісту',
 		cssClasses		: 'Клас CSS',
 		charset			: 'Кодування',
 		styles			: 'Стиль CSS',
-		selectAnchor	: 'Оберіть якір',
+		rel			: 'Зв\'язок',
+		selectAnchor		: 'Оберіть якір',
 		anchorName		: 'За ім\'ям елементу',
-		anchorId		: 'За ідентифікатором елементу',
-		emailAddress	: 'Адреса ел. пошти',
-		emailSubject	: 'Тема листа',
+		anchorId			: 'За ідентифікатором елементу',
+		emailAddress		: 'Адреса ел. пошти',
+		emailSubject		: 'Тема листа',
 		emailBody		: 'Тіло повідомлення',
 		noAnchors		: '(В цьому документі немає якорів)',
 		noUrl			: 'Будь ласка, вкажіть URL посилання',
@@ -190,14 +205,15 @@ CKEDITOR.lang['uk'] =
 		menu		: 'Властивості якоря',
 		title		: 'Властивості якоря',
 		name		: 'Ім\'я якоря',
-		errorName	: 'Будь ласка, вкажіть ім\'я якоря'
+		errorName	: 'Будь ласка, вкажіть ім\'я якоря',
+		remove		: 'Прибрати якір'
 	},
 
 	// List style dialog
 	list:
 	{
 		numberedTitle		: 'Опції нумерованого списку',
-		bulletedTitle		: 'Опції маркірованого списку',
+		bulletedTitle		: 'Опції маркованого списку',
 		type				: 'Тип',
 		start				: 'Почати з...',
 		validateStartNumber				:'Початковий номер списку повинен бути цілим числом.',
@@ -226,6 +242,7 @@ CKEDITOR.lang['uk'] =
 		findWhat			: 'Шукати:',
 		replaceWith			: 'Замінити на:',
 		notFoundMsg			: 'Вказаний текст не знайдено.',
+		findOptions			: 'Параметри Пошуку',
 		matchCase			: 'Враховувати регістр',
 		matchWord			: 'Збіг цілих слів',
 		matchCyclic			: 'Циклічна заміна',
@@ -243,15 +260,9 @@ CKEDITOR.lang['uk'] =
 		rows		: 'Рядки',
 		columns		: 'Стовбці',
 		border		: 'Розмір рамки',
-		align		: 'Вирівнювання',
-		alignLeft	: 'По лівому краю',
-		alignCenter	: 'По центру',
-		alignRight	: 'По правому краю',
-		width		: 'Ширина',
 		widthPx		: 'пікселів',
 		widthPc		: 'відсотків',
 		widthUnit	: 'Одиниці вимір.',
-		height		: 'Висота',
 		cellSpace	: 'Проміжок',
 		cellPad		: 'Внутр. відступ',
 		caption		: 'Заголовок таблиці',
@@ -287,9 +298,6 @@ CKEDITOR.lang['uk'] =
 			wordWrap		: 'Автоперенесення тексту',
 			hAlign			: 'Гориз. вирівнювання',
 			vAlign			: 'Верт. вирівнювання',
-			alignTop		: 'По верхньому краю',
-			alignMiddle		: 'По середині',
-			alignBottom		: 'По нижньому краю',
 			alignBaseline	: 'По базовій лінії',
 			bgColor			: 'Колір фону',
 			borderColor		: 'Колір рамки',
@@ -410,24 +418,16 @@ CKEDITOR.lang['uk'] =
 		btnUpload	: 'Надіслати на сервер',
 		upload		: 'Надіслати',
 		alt			: 'Альтернативний текст',
-		width		: 'Ширина',
-		height		: 'Висота',
 		lockRatio	: 'Зберегти пропорції',
-		unlockRatio	: 'Не зберігати пропорції',
 		resetSize	: 'Очистити поля розмірів',
 		border		: 'Рамка',
 		hSpace		: 'Гориз. відступ',
 		vSpace		: 'Верт. відступ',
-		align		: 'Вирівн.',
-		alignLeft	: 'По лівому краю',
-		alignRight	: 'По правому краю',
 		alertUrl	: 'Будь ласка, вкажіть URL зображення',
 		linkTab		: 'Посилання',
 		button2Img	: 'Бажаєте перетворити обрану кнопку-зображення на просте зображення?',
 		img2Button	: 'Бажаєте перетворити обране зображення на кнопку-зображення?',
 		urlMissing	: 'Вкажіть URL зображення.',
-		validateWidth	: 'Ширина повинна бути цілим числом.',
-		validateHeight	: 'Висота повинна бути цілим числом.',
 		validateBorder	: 'Ширина рамки повинна бути цілим числом.',
 		validateHSpace	: 'Гориз. відступ повинен бути цілим числом.',
 		validateVSpace	: 'Верт. відступ повинен бути цілим числом.'
@@ -451,16 +451,10 @@ CKEDITOR.lang['uk'] =
 		accessAlways	: 'Завжди',
 		accessSameDomain: 'З того ж домена',
 		accessNever		: 'Ніколи',
-		align			: 'Вирівнювання',
-		alignLeft		: 'По лівому краю',
 		alignAbsBottom	: 'По нижньому краю (abs)',
 		alignAbsMiddle	: 'По середині (abs)',
 		alignBaseline	: 'По базовій лінії',
-		alignBottom		: 'По нижньому краю',
-		alignMiddle		: 'По середині',
-		alignRight		: 'По правому краю',
 		alignTextTop	: 'Текст по верхньому краю',
-		alignTop		: 'По верхньому краю',
 		quality			: 'Якість',
 		qualityBest		: 'Відмінна',
 		qualityHigh		: 'Висока',
@@ -474,13 +468,9 @@ CKEDITOR.lang['uk'] =
 		windowMode		: 'Віконний режим',
 		flashvars		: 'Змінні Flash',
 		bgcolor			: 'Колір фону',
-		width			: 'Ширина',
-		height			: 'Висота',
 		hSpace			: 'Гориз. відступ',
 		vSpace			: 'Верт. відступ',
 		validateSrc		: 'Будь ласка, вкажіть URL посилання',
-		validateWidth	: 'Ширина повинна бути цілим числом.',
-		validateHeight	: 'Висота повинна бути цілим числом.',
 		validateHSpace	: 'Гориз. відступ повинен бути цілим числом.',
 		validateVSpace	: 'Верт. відступ повинен бути цілим числом.'
 	},
@@ -584,7 +574,7 @@ CKEDITOR.lang['uk'] =
 	format :
 	{
 		label		: 'Форматування',
-		panelTitle	: 'Форматування',
+		panelTitle	: 'Форматування параграфа',
 
 		tag_p		: 'Нормальний',
 		tag_pre		: 'Форматований',
@@ -614,6 +604,15 @@ CKEDITOR.lang['uk'] =
 		edit				: 'Редагувати блок',
 		remove				: 'Видалити блок'
   	},
+
+	iframe :
+	{
+		title		: 'Налаштування для IFrame',
+		toolbar		: 'IFrame',
+		noUrl		: 'Будь ласка введіть посилання для IFrame',
+		scrolling	: 'Увімкнути прокрутку',
+		border		: 'Показати рамки фрейму'
+	},
 
 	font :
 	{
@@ -721,6 +720,8 @@ CKEDITOR.lang['uk'] =
 	{
 		title		: 'Про CKEditor',
 		dlgTitle	: 'Про CKEditor',
+		help	: 'Перевірте $1 для допомоги.',
+		userGuide : 'Інструкція Користувача для CKEditor',
 		moreInfo	: 'Щодо інформації з ліцензування завітайте на наш сайт:',
 		copy		: 'Copyright &copy; $1. Всі права застережено.'
 	},
@@ -730,10 +731,11 @@ CKEDITOR.lang['uk'] =
 
 	fakeobjects :
 	{
-		anchor	: 'Якір',
-		flash	: 'Flash-анімація',
-		div		: 'Розрив сторінки',
-		unknown	: 'Невідомий об\'єкт'
+		anchor		: 'Якір',
+		flash		: 'Flash-анімація',
+		iframe		: 'IFrame',
+		hiddenfield	: 'Приховані Поля',
+		unknown		: 'Невідомий об\'єкт'
 	},
 
 	resize : 'Потягніть для зміни розмірів',
@@ -750,9 +752,64 @@ CKEDITOR.lang['uk'] =
 	toolbarCollapse	: 'Згорнути панель інструментів',
 	toolbarExpand	: 'Розгорнути панель інструментів',
 
+	toolbarGroups :
+	{
+		document : 'Документ',
+		clipboard : 'Буфер обміну / Скасувати',
+		editing : 'Редагування',
+		forms : 'Форми',
+		basicstyles : 'Основний Стиль',
+		paragraph : 'Параграф',
+		links : 'Посилання',
+		insert : 'Вставити',
+		styles : 'Стилі',
+		colors : 'Кольори',
+		tools : 'Інструменти'
+	},
+
 	bidi :
 	{
 		ltr : 'Напрямок тексту зліва направо',
 		rtl : 'Напрямок тексту справа наліво'
+	},
+
+	docprops :
+	{
+		label : 'Властивості документа',
+		title : 'Властивості документа',
+		design : 'Дизайн',
+		meta : 'Мета дані',
+		chooseColor : 'Обрати',
+		other : '<інший>',
+		docTitle :	'Заголовок сторінки',
+		charset : 	'Кодування набору символів',
+		charsetOther : 'Інше кодування набору символів',
+		charsetASCII : 'ASCII',
+		charsetCE : 'Центрально-європейська',
+		charsetCT : 'Китайська традиційна (Big5)',
+		charsetCR : 'Кирилиця',
+		charsetGR : 'Грецька',
+		charsetJP : 'Японська',
+		charsetKR : 'Корейська',
+		charsetTR : 'Турецька',
+		charsetUN : 'Юнікод (UTF-8)',
+		charsetWE : 'Західно-европейская',
+		docType : 'Заголовок типу документу',
+		docTypeOther : 'Інший заголовок типу документу',
+		xhtmlDec : 'Ввімкнути XHTML оголошення',
+		bgColor : 'Колір тла',
+		bgImage : 'URL зображення тла',
+		bgFixed : 'Тло без прокрутки',
+		txtColor : 'Колір тексту',
+		margin : 'Відступи сторінки',
+		marginTop : 'Верхній',
+		marginLeft : 'Лівий',
+		marginRight : 'Правий',
+		marginBottom : 'Нижній',
+		metaKeywords : 'Ключові слова документа (розділені комами)',
+		metaDescription : 'Опис документа',
+		metaAuthor : 'Автор',
+		metaCopyright : 'Авторські права',
+		previewHtml : '<p>Це приклад<strong>тексту</strong>. Ви використовуєте<a href="javascript:void(0)"> CKEditor </a>.</p>'
 	}
 };

@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -29,6 +29,7 @@ CKEDITOR.plugins.add( 'newpage',
 								name: command.name,
 								command: command
 							} );
+							editor.selectionChange();
 
 						}, 200 );
 					} );
@@ -46,6 +47,7 @@ CKEDITOR.plugins.add( 'newpage',
 });
 /**
  * The HTML to load in the editor when the "new page" command is executed.
+ * @name CKEDITOR.config.newpage_html
  * @type String
  * @default ''
  * @example

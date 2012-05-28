@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 /**
- * Constains the dictionary of language entries.
+ * Contains the dictionary of language entries.
  * @namespace
  */
 CKEDITOR.lang['zh-cn'] =
@@ -34,8 +34,8 @@ CKEDITOR.lang['zh-cn'] =
 	editorTitle : '所见即所得编辑器, %1, 按 ALT+0 查看帮助。',
 
 	// ARIA descriptions.
-	toolbar	: '工具栏',
-	editor	: '所见即所得编辑器',
+	toolbars	: '工具栏',
+	editor		: '所见即所得编辑器',
 
 	// Toolbar buttons without dialogs.
 	source			: '源码',
@@ -56,6 +56,7 @@ CKEDITOR.lang['zh-cn'] =
 	superscript		: '上标',
 	horizontalrule	: '插入水平线',
 	pagebreak		: '插入分页符',
+	pagebreakAlt		: '分页符',
 	unlink			: '取消超链接',
 	undo			: '撤消',
 	redo			: '重做',
@@ -109,6 +110,21 @@ CKEDITOR.lang['zh-cn'] =
 		langDirRTL		: '从右到左 (RTL)',
 		styles			: '样式',
 		cssClasses		: '样式类',
+		width			: '宽度',
+		height			: '高度',
+		align			: '对齐方式',
+		alignLeft		: '左对齐',
+		alignRight		: '右对齐',
+		alignCenter		: '居中',
+		alignTop		: '顶端',
+		alignMiddle		: '居中',
+		alignBottom		: '底部',
+		invalidHeight	: '高度必须为数字格式',
+		invalidWidth	: '宽度必须为数字格式',
+		invalidCssLength	: '该字段必须为合式的CSS长度值，包括单位(px, %, in, cm, mm, em, ex, pt 或 pc)',
+		invalidHtmlLength	: '该字段必须为合式的HTML长度值，包括单位(px 或 %)',
+		invalidInlineStyle	: '内联样式必须为格式是以分号分隔的一个或多个“属性名 : 属性值”',
+		cssLengthTooltip	: '该字段必须为合式的CSS长度值，包括单位(px, %, in, cm, mm, em, ex, pt 或 pc)',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, 不可用</span>'
@@ -155,9 +171,7 @@ CKEDITOR.lang['zh-cn'] =
 		popupFullScreen	: '全屏 (IE)',
 		popupScrollBars	: '滚动条',
 		popupDependent	: '依附 (NS)',
-		popupWidth		: '宽',
 		popupLeft		: '左',
-		popupHeight		: '高',
 		popupTop		: '右',
 		id				: 'ID',
 		langDir			: '语言方向',
@@ -165,18 +179,19 @@ CKEDITOR.lang['zh-cn'] =
 		langDirRTL		: '从右到左 (RTL)',
 		acccessKey		: '访问键',
 		name			: '名称',
-		langCode		: '语言代码',
-		tabIndex		: 'Tab 键次序',
-		advisoryTitle	: '标题',
+		langCode			: '语言代码',
+		tabIndex			: 'Tab 键次序',
+		advisoryTitle		: '标题',
 		advisoryContentType	: '内容类型',
 		cssClasses		: '样式类名称',
 		charset			: '字符编码',
 		styles			: '行内样式',
-		selectAnchor	: '选择一个锚点',
+		rel			: '关联',
+		selectAnchor		: '选择一个锚点',
 		anchorName		: '按锚点名称',
-		anchorId		: '按锚点 ID',
-		emailAddress	: '地址',
-		emailSubject	: '主题',
+		anchorId			: '按锚点 ID',
+		emailAddress		: '地址',
+		emailSubject		: '主题',
 		emailBody		: '内容',
 		noAnchors		: '(此文档没有可用的锚点)',
 		noUrl			: '请输入超链接地址',
@@ -190,7 +205,8 @@ CKEDITOR.lang['zh-cn'] =
 		menu		: '锚点链接属性',
 		title		: '锚点链接属性',
 		name		: '锚点名称',
-		errorName	: '请输入锚点名称'
+		errorName	: '请输入锚点名称',
+		remove		: '删除锚点'
 	},
 
 	// List style dialog
@@ -226,6 +242,7 @@ CKEDITOR.lang['zh-cn'] =
 		findWhat			: '查找:',
 		replaceWith			: '替换:',
 		notFoundMsg			: '指定文本没有找到',
+		findOptions			: '查找选项',
 		matchCase			: '区分大小写',
 		matchWord			: '全字匹配',
 		matchCyclic			: '循环匹配',
@@ -243,15 +260,9 @@ CKEDITOR.lang['zh-cn'] =
 		rows		: '行数',
 		columns		: '列数',
 		border		: '边框',
-		align		: '对齐',
-		alignLeft	: '左对齐',
-		alignCenter	: '居中',
-		alignRight	: '右对齐',
-		width		: '宽度',
 		widthPx		: '像素',
 		widthPc		: '百分比',
 		widthUnit	: '宽度单位',
-		height		: '高度',
 		cellSpace	: '间距',
 		cellPad		: '边距',
 		caption		: '标题',
@@ -287,9 +298,6 @@ CKEDITOR.lang['zh-cn'] =
 			wordWrap		: '自动换行',
 			hAlign			: '水平对齐',
 			vAlign			: '垂直对齐',
-			alignTop		: '顶端',
-			alignMiddle		: '中间',
-			alignBottom		: '底部',
 			alignBaseline	: '基线',
 			bgColor			: '背景颜色',
 			borderColor		: '边框颜色',
@@ -410,24 +418,16 @@ CKEDITOR.lang['zh-cn'] =
 		btnUpload	: '上传到服务器上',
 		upload		: '上传',
 		alt			: '替换文本',
-		width		: '宽度',
-		height		: '高度',
 		lockRatio	: '锁定比例',
-		unlockRatio	: '不锁定比例',
 		resetSize	: '原始尺寸',
 		border		: '边框大小',
 		hSpace		: '水平间距',
 		vSpace		: '垂直间距',
-		align		: '对齐方式',
-		alignLeft	: '左对齐',
-		alignRight	: '右对齐',
 		alertUrl	: '请输入图象地址',
 		linkTab		: '链接',
 		button2Img	: '确定要把当前按钮改变为图像吗?',
 		img2Button	: '确定要把当前图像改变为按钮吗?',
 		urlMissing	: '缺少图像源文件地址',
-		validateWidth	: '图像宽度必须为整数格式',
-		validateHeight	: '图像高度必须为整数格式',
 		validateBorder	: '边框大小必须为整数格式',
 		validateHSpace	: '水平间距必须为整数格式',
 		validateVSpace	: '垂直间距必须为整数格式'
@@ -451,16 +451,10 @@ CKEDITOR.lang['zh-cn'] =
 		accessAlways	: '总是',
 		accessSameDomain: '同域',
 		accessNever		: '从不',
-		align			: '对齐方式',
-		alignLeft		: '左对齐',
 		alignAbsBottom	: '绝对底部',
 		alignAbsMiddle	: '绝对居中',
 		alignBaseline	: '基线',
-		alignBottom		: '底部',
-		alignMiddle		: '居中',
-		alignRight		: '右对齐',
 		alignTextTop	: '文本上方',
-		alignTop		: '顶端',
 		quality			: '质量',
 		qualityBest		: '最好',
 		qualityHigh		: '高',
@@ -474,13 +468,9 @@ CKEDITOR.lang['zh-cn'] =
 		windowMode		: '窗体模式',
 		flashvars		: 'Flash 变量',
 		bgcolor			: '背景颜色',
-		width			: '宽度',
-		height			: '高度',
 		hSpace			: '水平间距',
 		vSpace			: '垂直间距',
 		validateSrc		: '请输入源文件地址',
-		validateWidth	: '宽度必须为数字格式',
-		validateHeight	: '高度必须为数字格式',
 		validateHSpace	: '水平间距必须为数字格式',
 		validateVSpace	: '垂直间距必须为数字格式'
 	},
@@ -615,6 +605,15 @@ CKEDITOR.lang['zh-cn'] =
 		remove				: '移除 DIV'
   	},
 
+	iframe :
+	{
+		title		: 'IFrame 属性',
+		toolbar		: 'IFrame',
+		noUrl		: '请输入框架的 URL',
+		scrolling	: '允许滚动条',
+		border		: '显示框架边框'
+	},
+
 	font :
 	{
 		label		: '字体',
@@ -721,8 +720,10 @@ CKEDITOR.lang['zh-cn'] =
 	{
 		title		: '关于CKEditor',
 		dlgTitle	: '关于CKEditor',
+		help	: '请访问 $1 以获取帮助.',
+		userGuide : 'CKEditor 用户向导',
 		moreInfo	: '访问我们的网站以获取更多关于协议的信息',
-		copy		: 'Copyright &copy; $1. All rights reserved.'
+		copy		: 'Copyright &copy; $1. 版权所有。'
 	},
 
 	maximize : '全屏',
@@ -730,10 +731,11 @@ CKEDITOR.lang['zh-cn'] =
 
 	fakeobjects :
 	{
-		anchor	: '锚点',
-		flash	: 'Flash 动画',
-		div		: '分页',
-		unknown	: '未知对象'
+		anchor		: '锚点',
+		flash		: 'Flash 动画',
+		iframe		: 'IFrame',
+		hiddenfield	: '隐藏域',
+		unknown		: '未知对象'
 	},
 
 	resize : '拖拽以改变尺寸',
@@ -750,9 +752,64 @@ CKEDITOR.lang['zh-cn'] =
 	toolbarCollapse	: '折叠工具栏',
 	toolbarExpand	: '展开工具栏',
 
+	toolbarGroups :
+	{
+		document : '文档',
+		clipboard : '剪贴板/撤销',
+		editing : '编辑',
+		forms : '表单',
+		basicstyles : '基本格式',
+		paragraph : '段落',
+		links : '链接',
+		insert : '插入',
+		styles : '样式',
+		colors : '颜色',
+		tools : '工具'
+	},
+
 	bidi :
 	{
 		ltr : '文字方向为从左至右',
 		rtl : '文字方向为从右至左'
+	},
+
+	docprops :
+	{
+		label : '页面属性',
+		title : '页面属性',
+		design : '设计',
+		meta : 'Meta 数据',
+		chooseColor : '选择',
+		other : '<其他>',
+		docTitle :	'页面标题',
+		charset : 	'字符编码',
+		charsetOther : '其它字符编码',
+		charsetASCII : 'ASCII',
+		charsetCE : '中欧',
+		charsetCT : '繁体中文 (Big5)',
+		charsetCR : '西里尔文',
+		charsetGR : '希腊文',
+		charsetJP : '日文',
+		charsetKR : '韩文',
+		charsetTR : '土耳其文',
+		charsetUN : 'Unicode (UTF-8)',
+		charsetWE : '西欧',
+		docType : '文档类型',
+		docTypeOther : '其它文档类型',
+		xhtmlDec : '包含 XHTML 声明',
+		bgColor : '背景颜色',
+		bgImage : '背景图像',
+		bgFixed : '不滚动背景图像',
+		txtColor : '文本颜色',
+		margin : '页面边距',
+		marginTop : '上',
+		marginLeft : '左',
+		marginRight : '右',
+		marginBottom : '下',
+		metaKeywords : '页面索引关键字 (用半角逗号[,]分隔)',
+		metaDescription : '页面说明',
+		metaAuthor : '作者',
+		metaCopyright : '版权',
+		previewHtml : '<p>这是一些<strong>演示用文字</strong>。你当前正在使用<a href="javascript:void(0)">CKEditor</a>。</p>'
 	}
 };

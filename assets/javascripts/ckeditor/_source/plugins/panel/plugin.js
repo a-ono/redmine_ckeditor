@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -16,7 +16,7 @@ CKEDITOR.plugins.add( 'panel',
  * @constant
  * @example
  */
-CKEDITOR.UI_PANEL = 2;
+CKEDITOR.UI_PANEL = 'panel';
 
 CKEDITOR.ui.panel = function( document, definition )
 {
@@ -136,12 +136,13 @@ CKEDITOR.ui.panel.prototype =
 					className = parentDiv.getParent().getAttribute( 'class' ),
 					langCode = parentDiv.getParent().getAttribute( 'lang' ),
 					doc = iframe.getFrameDocument();
-				// Initialize the IFRAME document body.
-				doc.$.open();
 
-				// Support for custom document.domain in IE.
-				if ( CKEDITOR.env.isCustomDomain() )
-					doc.$.domain = document.domain;
+				// Make it scrollable on iOS. (#8308)
+				CKEDITOR.env.iOS && parentDiv.setStyles(
+					{
+						'overflow' : 'scroll',
+						'-webkit-overflow-scrolling' : 'touch'
+					});
 
 				var onLoad = CKEDITOR.tools.addFunction( CKEDITOR.tools.bind( function( ev )
 					{
@@ -150,20 +151,18 @@ CKEDITOR.ui.panel.prototype =
 							this.onLoad();
 					}, this ) );
 
-				doc.$.write(
+				var data =
 					'<!DOCTYPE html>' +
 					'<html dir="' + dir + '" class="' + className + '_container" lang="' + langCode + '">' +
 						'<head>' +
 							'<style>.' + className + '_container{visibility:hidden}</style>' +
+							CKEDITOR.tools.buildStyleHtml( this.css ) +
 						'</head>' +
 						'<body class="cke_' + dir + ' cke_panel_frame ' + CKEDITOR.env.cssClass + '" style="margin:0;padding:0"' +
 						' onload="( window.CKEDITOR || window.parent.CKEDITOR ).tools.callFunction(' + onLoad + ');"></body>' +
-						// It looks strange, but for FF2, the styles must go
-						// after <body>, so it (body) becames immediatelly
-						// available. (#3031)
-						CKEDITOR.tools.buildStyleHtml( this.css ) +
-					'<\/html>' );
-				doc.$.close();
+					'<\/html>';
+
+				doc.write( data );
 
 				var win = doc.getWindow();
 
@@ -194,6 +193,7 @@ CKEDITOR.ui.panel.prototype =
 
 				holder = doc.getBody();
 				holder.unselectable();
+				CKEDITOR.env.air && CKEDITOR.tools.callFunction( onLoad );
 			}
 			else
 				holder = this.document.getById( this.id );
@@ -224,13 +224,12 @@ CKEDITOR.ui.panel.prototype =
 	{
 		var blocks = this._.blocks,
 			block = blocks[ name ],
-			current = this._.currentBlock,
-			holder = this.forceIFrame ?
-				this.document.getById( this.id + '_frame' )
-				: this._.holder;
+			current = this._.currentBlock;
 
-		// Disable context menu for block panel.
-		holder.getParent().getParent().disableContextMenu();
+		// ARIA role works better in IE on the body element, while on the iframe
+		// for FF. (#8864)
+		var holder = !this.forceIFrame || CKEDITOR.env.ie ?
+				 this._.holder : this.document.getById( this.id + '_frame' );
 
 		if ( current )
 		{
@@ -248,16 +247,6 @@ CKEDITOR.ui.panel.prototype =
 		block._.focusIndex = -1;
 
 		this._.onKeyDown = block.onKeyDown && CKEDITOR.tools.bind( block.onKeyDown, block );
-
-		block.onMark = function( item )
-		{
-			holder.setAttribute( 'aria-activedescendant', item.getId() + '_option' );
-		};
-
-		block.onUnmark = function()
-		{
-			holder.removeAttribute( 'aria-activedescendant' );
-		};
 
 		block.show();
 
@@ -384,11 +373,12 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 					return false;
 
 				case 'click' :
+				case 'mouseup' :
 					index = this._.focusIndex;
 					link = index >= 0 && this.element.getElementsByTag( 'a' ).getItem( index );
 
 					if ( link )
-						link.$.click ? link.$.click() : link.$.onclick();
+						link.$[ keyAction ] ? link.$[ keyAction ]() : link.$[ 'on' + keyAction ]();
 
 					return false;
 			}
@@ -397,3 +387,10 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 		}
 	}
 });
+
+/**
+ * Fired when a panel is added to the document
+ * @name CKEDITOR#ariaWidget
+ * @event
+ * @param {Object} holder The element wrapping the panel
+ */

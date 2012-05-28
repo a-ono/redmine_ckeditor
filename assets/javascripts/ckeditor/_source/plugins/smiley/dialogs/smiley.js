@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -34,7 +34,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 				attributes :
 				{
 					src : src,
-					_cke_saved_src : src,
+					'data-cke-saved-src' : src,
 					title : title,
 					alt : title,
 					width : target.$.width,
@@ -183,16 +183,22 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 	var smileySelector =
 	{
 		type : 'html',
+		id : 'smileySelector',
 		html : html.join( '' ),
 		onLoad : function( event )
 		{
 			dialog = event.sender;
 		},
 		focus : function()
- 		{
-			var firstSmile = this.getElement().getElementsByTag( 'a' ).getItem( 0 );
-			firstSmile.focus();
- 		},
+		{
+			var self = this;
+			// IE need a while to move the focus (#6539).
+			setTimeout( function ()
+			{
+				var firstSmile = self.getElement().getElementsByTag( 'a' ).getItem( 0 );
+				firstSmile.focus();
+			}, 0 );
+		},
 		onClick : onClick,
 		style : 'width: 100%; border-collapse: separate;'
 	};

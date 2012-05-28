@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 /**
- * Constains the dictionary of language entries.
+ * Contains the dictionary of language entries.
  * @namespace
  */
 CKEDITOR.lang['mn'] =
@@ -34,8 +34,8 @@ CKEDITOR.lang['mn'] =
 	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
 
 	// ARIA descriptions.
-	toolbar	: 'Toolbar', // MISSING
-	editor	: 'Rich Text Editor', // MISSING
+	toolbars	: 'Editor toolbars', // MISSING
+	editor		: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Код',
@@ -56,6 +56,7 @@ CKEDITOR.lang['mn'] =
 	superscript		: 'Зэрэг болгох',
 	horizontalrule	: 'Хөндлөн зураас оруулах',
 	pagebreak		: 'Хуудас тусгаарлагч оруулах',
+	pagebreakAlt		: 'Page Break', // MISSING
 	unlink			: 'Линк авч хаях',
 	undo			: 'Хүчингүй болгох',
 	redo			: 'Өмнөх үйлдлээ сэргээх',
@@ -109,6 +110,21 @@ CKEDITOR.lang['mn'] =
 		langDirRTL		: 'Right to Left (RTL)', // MISSING
 		styles			: 'Style', // MISSING
 		cssClasses		: 'Stylesheet Classes', // MISSING
+		width			: 'Өргөн',
+		height			: 'Өндөр',
+		align			: 'Эгнээ',
+		alignLeft		: 'Зүүн',
+		alignRight		: 'Баруун',
+		alignCenter		: 'Төвд',
+		alignTop		: 'Дээд талд',
+		alignMiddle		: 'Дунд талд',
+		alignBottom		: 'Доод талд',
+		invalidHeight	: 'Height must be a number.', // MISSING
+		invalidWidth	: 'Width must be a number.', // MISSING
+		invalidCssLength	: 'Value specified for the "%1" field must be a positive number with or without a valid CSS measurement unit (px, %, in, cm, mm, em, ex, pt, or pc).', // MISSING
+		invalidHtmlLength	: 'Value specified for the "%1" field must be a positive number with or without a valid HTML measurement unit (px or %).', // MISSING
+		invalidInlineStyle	: 'Value specified for the inline style must consist of one or more tuples with the format of "name : value", separated by semi-colons.', // MISSING
+		cssLengthTooltip	: 'Enter a number for a value in pixels or a number with a valid CSS unit (px, %, in, cm, mm, em, ex, pt, or pc).', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -155,9 +171,7 @@ CKEDITOR.lang['mn'] =
 		popupFullScreen	: 'Цонх дүүргэх (IE)',
 		popupScrollBars	: 'Скрол хэсэгүүд',
 		popupDependent	: 'Хамаатай (Netscape)',
-		popupWidth		: 'Өргөн',
 		popupLeft		: 'Зүүн байрлал',
-		popupHeight		: 'Өндөр',
 		popupTop		: 'Дээд байрлал',
 		id				: 'Id', // MISSING
 		langDir			: 'Хэлний чиглэл',
@@ -165,18 +179,19 @@ CKEDITOR.lang['mn'] =
 		langDirRTL		: 'Баруунаас зүүн (RTL)',
 		acccessKey		: 'Холбох түлхүүр',
 		name			: 'Нэр',
-		langCode		: 'Хэлний чиглэл',
-		tabIndex		: 'Tab индекс',
-		advisoryTitle	: 'Зөвлөлдөх гарчиг',
+		langCode			: 'Хэлний чиглэл',
+		tabIndex			: 'Tab индекс',
+		advisoryTitle		: 'Зөвлөлдөх гарчиг',
 		advisoryContentType	: 'Зөвлөлдөх төрлийн агуулга',
 		cssClasses		: 'Stylesheet классууд',
 		charset			: 'Тэмдэгт оноох нөөцөд холбогдсон',
 		styles			: 'Загвар',
-		selectAnchor	: 'Холбоос сонгох',
+		rel			: 'Relationship', // MISSING
+		selectAnchor		: 'Холбоос сонгох',
 		anchorName		: 'Холбоосын нэрээр',
-		anchorId		: 'Элемэнт Id-гаар',
-		emailAddress	: 'E-Mail Хаяг',
-		emailSubject	: 'Message гарчиг',
+		anchorId			: 'Элемэнт Id-гаар',
+		emailAddress		: 'E-Mail Хаяг',
+		emailSubject		: 'Message гарчиг',
 		emailBody		: 'Message-ийн агуулга',
 		noAnchors		: '(Баримт бичиг холбоосгүй байна)',
 		noUrl			: 'Линк URL-ээ төрөлжүүлнэ үү',
@@ -190,7 +205,8 @@ CKEDITOR.lang['mn'] =
 		menu		: 'Холбоос шинж чанар',
 		title		: 'Холбоос шинж чанар',
 		name		: 'Холбоос нэр',
-		errorName	: 'Холбоос төрөл оруулна уу'
+		errorName	: 'Холбоос төрөл оруулна уу',
+		remove		: 'Remove Anchor' // MISSING
 	},
 
 	// List style dialog
@@ -226,6 +242,7 @@ CKEDITOR.lang['mn'] =
 		findWhat			: 'Хайх үг/үсэг:',
 		replaceWith			: 'Солих үг:',
 		notFoundMsg			: 'Хайсан текст олсонгүй.',
+		findOptions			: 'Find Options', // MISSING
 		matchCase			: 'Тэнцэх төлөв',
 		matchWord			: 'Тэнцэх бүтэн үг',
 		matchCyclic			: 'Match cyclic', // MISSING
@@ -243,15 +260,9 @@ CKEDITOR.lang['mn'] =
 		rows		: 'Мөр',
 		columns		: 'Багана',
 		border		: 'Хүрээний хэмжээ',
-		align		: 'Эгнээ',
-		alignLeft	: 'Зүүн талд',
-		alignCenter	: 'Төвд',
-		alignRight	: 'Баруун талд',
-		width		: 'Өргөн',
 		widthPx		: 'цэг',
 		widthPc		: 'хувь',
 		widthUnit	: 'width unit', // MISSING
-		height		: 'Өндөр',
 		cellSpace	: 'Нүх хоорондын зай (spacing)',
 		cellPad		: 'Нүх доторлох(padding)',
 		caption		: 'Тайлбар',
@@ -266,8 +277,8 @@ CKEDITOR.lang['mn'] =
 		invalidBorder	: 'Border size must be a number.', // MISSING
 		invalidWidth	: 'Table width must be a number.', // MISSING
 		invalidHeight	: 'Table height must be a number.', // MISSING
-		invalidCellSpacing	: 'Cell spacing must be a number.', // MISSING
-		invalidCellPadding	: 'Cell padding must be a number.', // MISSING
+		invalidCellSpacing	: 'Cell spacing must be a positive number.', // MISSING
+		invalidCellPadding	: 'Cell padding must be a positive number.', // MISSING
 
 		cell :
 		{
@@ -287,9 +298,6 @@ CKEDITOR.lang['mn'] =
 			wordWrap		: 'Word Wrap', // MISSING
 			hAlign			: 'Horizontal Alignment', // MISSING
 			vAlign			: 'Vertical Alignment', // MISSING
-			alignTop		: 'Top', // MISSING
-			alignMiddle		: 'Middle', // MISSING
-			alignBottom		: 'Bottom', // MISSING
 			alignBaseline	: 'Baseline', // MISSING
 			bgColor			: 'Background Color', // MISSING
 			borderColor		: 'Border Color', // MISSING
@@ -410,24 +418,16 @@ CKEDITOR.lang['mn'] =
 		btnUpload	: 'Үүнийг сервэррүү илгээ',
 		upload		: 'Хуулах',
 		alt			: 'Тайлбар текст',
-		width		: 'Өргөн',
-		height		: 'Өндөр',
 		lockRatio	: 'Радио түгжих',
-		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'хэмжээ дахин оноох',
 		border		: 'Хүрээ',
 		hSpace		: 'Хөндлөн зай',
 		vSpace		: 'Босоо зай',
-		align		: 'Эгнээ',
-		alignLeft	: 'Зүүн',
-		alignRight	: 'Баруун',
 		alertUrl	: 'Зурагны URL-ын төрлийн сонгоно уу',
 		linkTab		: 'Линк',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
 		urlMissing	: 'Image source URL is missing.', // MISSING
-		validateWidth	: 'Width must be a whole number.', // MISSING
-		validateHeight	: 'Height must be a whole number.', // MISSING
 		validateBorder	: 'Border must be a whole number.', // MISSING
 		validateHSpace	: 'HSpace must be a whole number.', // MISSING
 		validateVSpace	: 'VSpace must be a whole number.' // MISSING
@@ -451,16 +451,10 @@ CKEDITOR.lang['mn'] =
 		accessAlways	: 'Always', // MISSING
 		accessSameDomain: 'Same domain', // MISSING
 		accessNever		: 'Never', // MISSING
-		align			: 'Эгнээ',
-		alignLeft		: 'Зүүн',
 		alignAbsBottom	: 'Abs доод талд',
 		alignAbsMiddle	: 'Abs Дунд талд',
 		alignBaseline	: 'Baseline',
-		alignBottom		: 'Доод талд',
-		alignMiddle		: 'Дунд талд',
-		alignRight		: 'Баруун',
 		alignTextTop	: 'Текст дээр',
-		alignTop		: 'Дээд талд',
 		quality			: 'Quality', // MISSING
 		qualityBest		: 'Best', // MISSING
 		qualityHigh		: 'High', // MISSING
@@ -474,13 +468,9 @@ CKEDITOR.lang['mn'] =
 		windowMode		: 'Window mode', // MISSING
 		flashvars		: 'Variables for Flash', // MISSING
 		bgcolor			: 'Фонны өнгө',
-		width			: 'Өргөн',
-		height			: 'Өндөр',
 		hSpace			: 'Хөндлөн зай',
 		vSpace			: 'Босоо зай',
 		validateSrc		: 'Линк URL-ээ төрөлжүүлнэ үү',
-		validateWidth	: 'Width must be a number.', // MISSING
-		validateHeight	: 'Height must be a number.', // MISSING
 		validateHSpace	: 'HSpace must be a number.', // MISSING
 		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
@@ -615,6 +605,15 @@ CKEDITOR.lang['mn'] =
 		remove				: 'Remove Div' // MISSING
   	},
 
+	iframe :
+	{
+		title		: 'IFrame Properties', // MISSING
+		toolbar		: 'IFrame', // MISSING
+		noUrl		: 'Please type the iframe URL', // MISSING
+		scrolling	: 'Enable scrollbars', // MISSING
+		border		: 'Show frame border' // MISSING
+	},
+
 	font :
 	{
 		label		: 'Фонт',
@@ -721,6 +720,8 @@ CKEDITOR.lang['mn'] =
 	{
 		title		: 'About CKEditor', // MISSING
 		dlgTitle	: 'About CKEditor', // MISSING
+		help	: 'Check $1 for help.', // MISSING
+		userGuide : 'CKEditor User\'s Guide', // MISSING
 		moreInfo	: 'For licensing information please visit our web site:', // MISSING
 		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
@@ -730,10 +731,11 @@ CKEDITOR.lang['mn'] =
 
 	fakeobjects :
 	{
-		anchor	: 'Anchor', // MISSING
-		flash	: 'Flash Animation', // MISSING
-		div		: 'Page Break', // MISSING
-		unknown	: 'Unknown Object' // MISSING
+		anchor		: 'Anchor', // MISSING
+		flash		: 'Flash Animation', // MISSING
+		iframe		: 'IFrame', // MISSING
+		hiddenfield	: 'Hidden Field', // MISSING
+		unknown		: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
@@ -750,9 +752,64 @@ CKEDITOR.lang['mn'] =
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
 	toolbarExpand	: 'Expand Toolbar', // MISSING
 
+	toolbarGroups :
+	{
+		document : 'Document', // MISSING
+		clipboard : 'Clipboard/Undo', // MISSING
+		editing : 'Editing', // MISSING
+		forms : 'Forms', // MISSING
+		basicstyles : 'Basic Styles', // MISSING
+		paragraph : 'Paragraph', // MISSING
+		links : 'Links', // MISSING
+		insert : 'Insert', // MISSING
+		styles : 'Styles', // MISSING
+		colors : 'Colors', // MISSING
+		tools : 'Tools' // MISSING
+	},
+
 	bidi :
 	{
 		ltr : 'Text direction from left to right', // MISSING
 		rtl : 'Text direction from right to left' // MISSING
+	},
+
+	docprops :
+	{
+		label : 'Баримт бичиг шинж чанар',
+		title : 'Баримт бичиг шинж чанар',
+		design : 'Design', // MISSING
+		meta : 'Meta өгөгдөл',
+		chooseColor : 'Choose', // MISSING
+		other : '<other>',
+		docTitle :	'Хуудасны гарчиг',
+		charset : 	'Encoding тэмдэгт',
+		charsetOther : 'Encoding-д өөр тэмдэгт оноох',
+		charsetASCII : 'ASCII', // MISSING
+		charsetCE : 'Төв европ',
+		charsetCT : 'Хятадын уламжлалт (Big5)',
+		charsetCR : 'Крил',
+		charsetGR : 'Гред',
+		charsetJP : 'Япон',
+		charsetKR : 'Солонгос',
+		charsetTR : 'Tурк',
+		charsetUN : 'Юникод (UTF-8)',
+		charsetWE : 'Баруун европ',
+		docType : 'Баримт бичгийн төрөл Heading',
+		docTypeOther : 'Бусад баримт бичгийн төрөл Heading',
+		xhtmlDec : 'XHTML агуулж зарлах',
+		bgColor : 'Фоно өнгө',
+		bgImage : 'Фоно зурагны URL',
+		bgFixed : 'Гүйдэггүй фоно',
+		txtColor : 'Фонтны өнгө',
+		margin : 'Хуудасны захын зай',
+		marginTop : 'Дээд тал',
+		marginLeft : 'Зүүн тал',
+		marginRight : 'Баруун тал',
+		marginBottom : 'Доод тал',
+		metaKeywords : 'Баримт бичгийн индекс түлхүүр үг (таслалаар тусгаарлагдана)',
+		metaDescription : 'Баримт бичгийн тайлбар',
+		metaAuthor : 'Зохиогч',
+		metaCopyright : 'Зохиогчийн эрх',
+		previewHtml : '<p>This is some <strong>sample text</strong>. You are using <a href="javascript:void(0)">CKEditor</a>.</p>' // MISSING
 	}
 };
