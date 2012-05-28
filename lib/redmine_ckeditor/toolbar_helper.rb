@@ -36,15 +36,21 @@ module RedmineCkeditor
     end
 
     def button_label(item, locale=I18n.locale)
+      locale = locale.to_s.downcase
       unless @@dict[locale]
         filename = RedmineCkeditor::PLUGIN_DIR +
           "/assets/javascripts/ckeditor/lang/#{locale}.js"
 
         h = @@dict[locale] = {}
-        if File.file?(filename)
-          dict = ActiveSupport::JSON.decode(
-            (data = File.read(filename))[data.index("=")+1..data.rindex(";")-1]
-          )
+        File.file?(filename) && File.open(filename, "r:BOM|UTF-8") {|f|
+          context = ExecJS.compile(<<-EOT)
+            function lang() {
+              var CKEDITOR = {lang: {}};
+              #{f.read}
+              return CKEDITOR.lang["#{locale}"];
+            }
+          EOT
+          dict = context.call("lang")
 
           configuration.each {|name, conf|
             label_keys = conf["label"] || name.camelize(:lower)
@@ -52,7 +58,7 @@ module RedmineCkeditor
               d ? d[key] : nil
             }
           }
-        end
+        }
       end
 
       @@dict[locale][item] || (locale != "en" ? button_label(item, "en") : item)
