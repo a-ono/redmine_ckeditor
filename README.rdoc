@@ -16,7 +16,8 @@ See {the official site}[http://ckeditor.com/] for more details.
 == Plugin installation and setup
 
 1. Copy the plugin directory into the plugins directory (make sure the name is redmine_ckeditor)
-2. bundle install
+2. Install the required gems
+    bundle install --without development test
 3. Start Redmine
 4. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
 5. Configure the plugin (Administration > Plugins > Configure)
