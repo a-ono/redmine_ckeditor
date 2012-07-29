@@ -1,5 +1,6 @@
 require 'redmine_ckeditor/journals_controller_patch'
 require 'redmine_ckeditor/toolbar_helper'
+require 'redmine_ckeditor/hooks/journal_listener'
 
 module RedmineCkeditor
   include ToolbarHelper
@@ -27,6 +28,10 @@ module RedmineCkeditor
     ], '/',
     %w[Styles Format Font FontSize - TextColor BGColor]
   ]
+
+  def self.enabled?
+    Setting.text_formatting == "CKEditor"
+  end
 
   def self.apply_patch
     JournalsController.send(:include, JournalsControllerPatch)

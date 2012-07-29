@@ -13,7 +13,7 @@ module RedmineCkeditor
 
     module InstanceMethods
       def new_with_ckeditor
-        unless Setting.text_formatting == "CKEditor"
+        unless RedmineCkeditor.enabled?
           new_without_ckeditor
           return
         end
