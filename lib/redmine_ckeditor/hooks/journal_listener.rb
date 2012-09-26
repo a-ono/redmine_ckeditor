@@ -8,17 +8,17 @@ module RedmineCkeditor::Hooks
         (function() {
           var note_id = "journal_#{journal.id}_notes";
           CKEDITOR.replace(note_id);
-          var note = $(note_id);
+          var note = $("#" + note_id);
 
-          var save_button = note.parentNode.getElementsBySelector('input[type="submit"]').first();
+          var save_button = note.parent().find(":submit");
           var preview_button = save_button.next();
-          var cancel_button = preview_button.next();
+          var cancel_button = preview_button.next().get(0);
 
-          save_button.onclick = function() {
+          save_button.click(function() {
             var editor = CKEDITOR.instances[note_id];
-            note.value = editor.getData();
+            note.val(editor.getData());
             editor.destroy();
-          };
+          });
 
           preview_button.hide();
           var cancel = cancel_button.onclick;
@@ -26,7 +26,7 @@ module RedmineCkeditor::Hooks
             CKEDITOR.instances[note_id].destroy();
             cancel();
             return false;
-          }
+          };
         })();
       EOT
     end

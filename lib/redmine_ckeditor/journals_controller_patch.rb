@@ -26,13 +26,10 @@ module RedmineCkeditor
           user = @issue.author
           text = @issue.description
         end
-        content = "<p>#{ll(Setting.default_language, :text_user_wrote, user)}</p>"
-        content << "<blockquote>#{ActionView::Base.full_sanitizer.sanitize(text)}</blockquote><p/>"
+        @content = "<p>#{ll(Setting.default_language, :text_user_wrote, user)}</p>"
+        @content << "<blockquote>#{ActionView::Base.full_sanitizer.sanitize(text)}</blockquote><p/>"
 
-        render(:update) {|page|
-          page.<< "CKEDITOR.instances['notes'].setData(#{content.inspect});"
-          page << "showAndScrollTo('update', 'notes');"
-        }
+        render "new_with_ckeditor"
       end
     end
   end
