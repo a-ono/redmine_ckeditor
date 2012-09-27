@@ -1,7 +1,7 @@
 div.selector-container select {
   float: left;
   padding: 3px;
-  width: 15em;
+  width: 250px;
 }
 
 div.selector-container div.container {

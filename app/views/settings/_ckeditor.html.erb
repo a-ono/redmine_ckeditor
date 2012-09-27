@@ -1,4 +1,85 @@
+<%= javascript_include_tag 'ckeditor/ckeditor', :plugin => 'redmine_ckeditor'%>
+<%= stylesheet_link_tag 'selector', :plugin => 'redmine_ckeditor'%>
 <p>
   <%= content_tag :label, l(:ckeditor_toolbar_setting) %>
 </p>
-<%= RedmineCkeditor.toolbar_selector %>
+
+<div class="selector-container">
+  <%= hidden_field_tag "settings[toolbar]", RedmineCkeditorSetting.toolbar.flatten.join(",") %>
+
+  <select id="left" multiple="multiple" size="10">
+    <%= RedmineCkeditor.left_options %>
+  </select>
+
+  <div class="container">
+    <input type="button" class="button" value="<%= t(:add) %> >>"
+      onclick="moveItem('left', 'right')"/><br/>
+    <input type="button" class="button" value="<%= t(:remove) %> <<"
+      onclick="moveItem('right', 'left')"/><br/><br/>
+    <input type="button" class="button" value="<%= t(:separator) %> >>"
+      onclick="addItem('-')"/><br/>
+    <input type="button" class="button" value="<%= t(:line_break) %> >>"
+      onclick="addItem('/')"/>
+  </div>
+
+  <select id="right" multiple="multiple" size="10">
+    <%= RedmineCkeditor.right_options %>
+  </select>
+
+  <div class="clear"></div>
+  <div id="toolbar"></div>
+</div>
+
+<%= javascript_tag do %>
+  function moveItem(from, to) {
+    from = $("#" + from);
+    to = $("#" + to);
+    var selected = to.find("option:selected").first();
+    from.find("option:selected").remove().each(function() {
+      if (this.value == '-' || this.value == '/') return;
+      selected.size() ? selected.before(this) : to.append(this);
+    });
+    to.prop("selectedIndex", -1);
+    changeHandler();
+  }
+
+  function addItem(item) {
+    var option = $("<option/>").val(item).text(item);
+    var to = $("#right");
+    var selected = to.find("option:selected").first();
+    selected.size() ? selected.before(option) : to.append(option);
+    changeHandler();
+  }
+
+  function changeHandler() {
+    var values = $("#right").find("option").map(function() {
+      return this.value;
+    });
+    $("#settings_toolbar").val(values.toArray().join(","));
+
+    var bars = [];
+    var bar = [];
+    values.each(function() {
+      if (this == "/") {
+        bars.push(bar, this);
+        bar = [];
+      } else {
+        bar.push(this);
+      }
+    });
+    if (bar.length > 0) bars.push(bar);
+
+    CKEDITOR.instances['toolbar'].destroy();
+    updateCkeditor(bars);
+  }
+
+  function updateCkeditor(toolbar) {
+    CKEDITOR.config.toolbar = toolbar;
+    CKEDITOR.config.language = "<%= current_language.to_s.downcase %>";
+    CKEDITOR.replace('toolbar');
+  }
+
+  $(document).ready(function() {
+    updateCkeditor(<%= raw RedmineCkeditorSetting.toolbar.inspect %>);
+  });
+<% end %>
