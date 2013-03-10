@@ -9,7 +9,9 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 2.1.0 or higher (trunk)
+* Redmine 2.2.0 or higher (trunk)
+
+* Redmine 2.1.x (version {0.2.1}[https://github.com/a-ono/redmine_ckeditor/tree/0.2.1])
 
 * Redmine 2.0.x (version {0.1.1}[https://github.com/a-ono/redmine_ckeditor/tree/0.1.1])
 
