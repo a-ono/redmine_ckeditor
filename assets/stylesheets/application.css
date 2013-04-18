@@ -36,7 +36,7 @@ header {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
 
 #loading {
-  background: image-url("rich/loading.png") no-repeat center;
+  background: url("/plugin_assets/redmine_ckeditor/images/loading.png") no-repeat center;
   width: 16px;
   height: 46px;
   position: absolute;
@@ -59,16 +59,16 @@ header {
   background: no-repeat center; }
 
 #insert-many {
-  background-image: image-url("rich/insert-many.png"); }
+  background-image: url("/plugin_assets/redmine_ckeditor/images/insert-many.png"); }
 
 #insert-one {
-  background-image: image-url("rich/insert-one.png"); }
+  background-image: url("/plugin_assets/redmine_ckeditor/images/insert-one.png"); }
 
 #view-grid {
-  background-image: image-url("rich/view-grid.png"); }
+  background-image: url("/plugin_assets/redmine_ckeditor/images/view-grid.png"); }
 
 #view-list {
-  background-image: image-url("rich/view-list.png"); }
+  background-image: url("/plugin_assets/redmine_ckeditor/images/view-list.png"); }
 
 #items {
   list-style: none;
@@ -122,7 +122,7 @@ header {
       margin-top: 31px;
       width: 32px;
       height: 32px;
-      background: image-url("rich/plus.png") no-repeat top center; }
+      background: url("/plugin_assets/redmine_ckeditor/images/plus.png") no-repeat top center; }
     #items li #upload .spinner {
       opacity: 1; }
     #items li .progress .progress-bar {
@@ -136,7 +136,7 @@ header {
       -webkit-animation-timing-function: linear; }
     #items li .progress .spinner.error {
       opacity: 1;
-      background-image: image-url("rich/plus-red.png");
+      background-image: url("/plugin_assets/redmine_ckeditor/images/plus-red.png");
       -webkit-transform: rotate(45deg); }
     #items li p {
       font-size: 10px;
@@ -156,7 +156,7 @@ header {
       margin-top: -20px;
       width: 20px;
       height: 20px;
-      background: image-url("rich/x-red.png") no-repeat right 5px;
+      background: url("/plugin_assets/redmine_ckeditor/images/x-red.png") no-repeat right 5px;
       opacity: 0.1; }
     #items li:hover .delete {
       opacity: 0.5; }
@@ -202,7 +202,7 @@ header {
     margin: 8px 0 0 0;
     width: 20px;
     height: 20px;
-    background: image-url("rich/x-red.png") no-repeat right 5px;
+    background: url("/plugin_assets/redmine_ckeditor/images/x-red.png") no-repeat right 5px;
     opacity: 0.1; }
   #items.list li #uploadBlock:hover .placeholder .spinner {
     background-position: 0 0px; }
@@ -214,7 +214,7 @@ ul.scopes {
   list-style: none;
   margin: 0 15px 0 15px;
   padding: 0 10px 0 0;
-  background: image-url("rich/menu-dash.png") no-repeat right 23px;
+  background: url("/plugin_assets/redmine_ckeditor/images/menu-dash.png") no-repeat right 23px;
   float: right; }
   ul.scopes li {
     float: left;

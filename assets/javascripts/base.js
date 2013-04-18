@@ -1,4 +1,4 @@
-var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+var CKEDITOR_BASEPATH = '/plugin_assets/redmine_ckeditor/ckeditor/';
 /*
 Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
@@ -905,8 +905,8 @@ function addQueryString( url, params ) {
 }
 
 // load external plugins
-CKEDITOR.plugins.addExternal('MediaEmbed', '/assets/ckeditor-contrib/plugins/MediaEmbed/');
-CKEDITOR.plugins.addExternal('richfile', '/assets/ckeditor-contrib/plugins/richfile/');
+CKEDITOR.plugins.addExternal('MediaEmbed', '/plugin_assets/redmine_ckeditor/ckeditor-contrib/plugins/MediaEmbed/');
+CKEDITOR.plugins.addExternal('richfile', '/plugin_assets/redmine_ckeditor/ckeditor-contrib/plugins/richfile/');
 // Direct asset picker
 
 var rich = rich || {};
