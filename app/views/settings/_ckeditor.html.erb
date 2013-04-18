@@ -1,4 +1,6 @@
-<%= javascript_include_tag 'ckeditor/ckeditor', :plugin => 'redmine_ckeditor'%>
+<%= javascript_include_tag 'application', :plugin => 'redmine_ckeditor'%>
+<%= javascript_include_tag 'base', :plugin => 'redmine_ckeditor'%>
+<%= stylesheet_link_tag 'application', :plugin => 'redmine_ckeditor'%>
 <%= stylesheet_link_tag 'selector', :plugin => 'redmine_ckeditor'%>
 <p>
   <%= content_tag :label, l(:ckeditor_toolbar_setting) %>
@@ -74,12 +76,12 @@
   }
 
   function updateCkeditor(toolbar) {
-    CKEDITOR.config.toolbar = toolbar;
-    CKEDITOR.config.language = "<%= current_language.to_s.downcase %>";
-    CKEDITOR.replace('toolbar');
+    var options = <%= RedmineCkeditor.options.to_json.html_safe %>;
+    options.toolbar = toolbar;
+    CKEDITOR.replace('toolbar', options);
   }
 
   $(document).ready(function() {
-    updateCkeditor(<%= raw RedmineCkeditorSetting.toolbar.inspect %>);
+    updateCkeditor(<%= RedmineCkeditorSetting.toolbar.to_json.html_safe %>);
   });
 <% end %>

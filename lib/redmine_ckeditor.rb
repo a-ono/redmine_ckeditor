@@ -18,16 +18,26 @@ module RedmineCkeditor
   ]
 
   DEFAULT_TOOLBAR = [
-    %w[Source - Preview - Maximize ShowBlocks - Templates - PasteText PasteFromWord -
-      Undo Redo - Find Replace
-    ], '/',
+    %w[Source ShowBlocks], %w[Undo Redo - Find Replace],
     %w[Bold Italic Underline Strike - Subscript Superscript -
       NumberedList BulletedList - Outdent Indent Blockquote -
       JustifyLeft JustifyCenter JustifyRight JustifyBlock -
-      Link Unlink Anchor - Image Table HorizontalRule SpecialChar
+      Link Unlink - richImage Table HorizontalRule
     ], '/',
-    %w[Styles Format Font FontSize - TextColor BGColor]
+    %w[Format Font FontSize - TextColor BGColor]
   ]
+
+  def self.options(overrides = {})
+    o = Rich.options({
+      :contentsCss => "",#stylesheet_path("application"),
+      :bodyClass => "wiki",
+      :removePlugins => 'image',
+      :toolbar => RedmineCkeditorSetting.toolbar
+    })
+    o.delete(:removeDialogTabs)
+    o.delete(:format_tags)
+    o.merge(overrides)
+  end
 
   def self.enabled?
     Setting.text_formatting == "CKEditor"

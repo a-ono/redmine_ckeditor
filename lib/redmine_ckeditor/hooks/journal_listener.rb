@@ -7,7 +7,7 @@ module RedmineCkeditor::Hooks
       javascript_tag <<-EOT
         (function() {
           var note_id = "journal_#{journal.id}_notes";
-          CKEDITOR.replace(note_id);
+          CKEDITOR.replace(note_id, #{RedmineCkeditor.options.to_json});
           var note = $("#" + note_id);
 
           var save_button = note.parent().find(":submit");

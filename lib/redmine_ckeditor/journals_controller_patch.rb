@@ -26,7 +26,7 @@ module RedmineCkeditor
           user = @issue.author
           text = @issue.description
         end
-        @content = "<p>#{ll(Setting.default_language, :text_user_wrote, user)}</p>"
+        @content = "<p>#{ll(I18n.locale, :text_user_wrote, user)}</p>"
         @content << "<blockquote>#{ActionView::Base.full_sanitizer.sanitize(text)}</blockquote><p/>"
 
         render "new_with_ckeditor"

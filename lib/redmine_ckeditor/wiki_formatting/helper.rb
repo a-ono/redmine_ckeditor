@@ -1,47 +1,37 @@
 module RedmineCkeditor::WikiFormatting
   module Helper
-    def replace_editor(field_id)
+    def replace_editor_tag(field_id)
       javascript_tag <<-EOT
       $(document).ready(function() {
         $(":submit").siblings("a").each(function() {
           var a = $(this);
           if (a.attr("onclick").indexOf("preview") >= 0) a.hide();
         });
-
-        var id = '#{field_id}';
-        var textarea = document.getElementById(id);
-        if (!textarea) return;
-
-        var editor = CKEDITOR.replace(textarea, {
-          on: {
-            instanceReady : function(ev) {
-              var writer = this.dataProcessor.writer;
-              $.each(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li'],
-                function() {
-                  writer.setRules(this, { breakAfterOpen : false });
-                }
-              );
-            }
-          }
-        });
-
-        // fire change event
-        RedmineCkeditor.intervalId[id] =
-          setInterval(function(){ textarea.value = editor.getData(); }, 1000);
+        #{replace_editor_script(field_id)}
       });
       EOT
     end
 
     def set_config
       javascript_tag <<-EOT
-        CKEDITOR.config.contentsCss = "#{stylesheet_path "application"}";
-        CKEDITOR.config.bodyClass = "wiki";
-        CKEDITOR.config.toolbar = #{RedmineCkeditorSetting.toolbar.inspect};
-        CKEDITOR.config.language = "#{current_language.to_s.downcase}";
-
         var RedmineCkeditor = {
           intervalId: {}
         };
+      EOT
+    end
+
+    def replace_editor_script(field_id)
+      <<-EOT
+      (function() {
+        var id = '#{field_id}';
+        var textarea = document.getElementById(id);
+        if (!textarea) return;
+
+        var editor = CKEDITOR.replace(textarea, #{RedmineCkeditor.options.to_json});
+        // fire change event
+        RedmineCkeditor.intervalId[id] =
+          setInterval(function(){ textarea.value = editor.getData(); }, 1000);
+      })();
       EOT
     end
 
@@ -62,14 +52,18 @@ module RedmineCkeditor::WikiFormatting
     end
 
     def initial_setup
-      javascript_include_tag('ckeditor/ckeditor', :plugin => 'redmine_ckeditor') + set_config + overwrite_functions
+      set_config + overwrite_functions
     end
 
     def wikitoolbar_for(field_id)
       if params[:format] == "js"
-        replace_editor(field_id)
+        javascript_tag(replace_editor_script(field_id))
       else
-        initial_setup + replace_editor(field_id)
+        javascript_include_tag('application', :plugin => 'redmine_ckeditor') +
+        javascript_include_tag('base', :plugin => 'redmine_ckeditor') +
+        stylesheet_link_tag('application', :plugin => 'redmine_ckeditor') +
+        stylesheet_link_tag('editor', :plugin => 'redmine_ckeditor') +
+        initial_setup + replace_editor_tag(field_id)
       end
     end
 
