@@ -2,6 +2,8 @@
 
 This plugin adds the text formatting for using CKEditor to Redmine.
 
+Since version 1.0.0, it includes {Rich}[https://github.com/bastiaanterhorst/rich] and supports image uploads.
+
 == What is CKEditor?
 
 CKEditor is a WYSIWYG text editor.
@@ -9,7 +11,13 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 2.3.0 or higher (master)
+* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version 1.0.0)
+   # Ubuntu
+   apt-get install imagemagick
+   # Mac OS X
+   brew install imagemagick
+
+* Redmine 2.3.x (version {0.4.0}[https://github.com/a-ono/redmine_ckeditor/tree/0.4.0])
 
 * Redmine 2.2.x (version {0.3.0}[https://github.com/a-ono/redmine_ckeditor/tree/0.3.0])
 
@@ -24,7 +32,9 @@ See {the official site}[http://ckeditor.com/] for more details.
 1. Copy the plugin directory into the plugins directory (make sure the name is redmine_ckeditor)
 2. Install the required gems
     bundle install --without development test
-3. Start Redmine
-4. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
-5. Configure the plugin (Administration > Plugins > Configure)
+3. Execute migration
+    rake redmine:plugins:migrate RAILS_ENV=production
+4. Start Redmine
+5. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
+6. Configure the plugin (Administration > Plugins > Configure)
 
