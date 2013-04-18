@@ -21,7 +21,7 @@ module RedmineCkeditor
     #
     def configuration(*args)
       result = @@toolbar_config ||=
-        YAML.load_file(RedmineCkeditor::PLUGIN_DIR + '/config/toolbar.yml')
+        YAML.load_file(RedmineCkeditor.root.join('config/toolbar.yml'))
 
       args.each {|arg|
         break unless result = result[arg]
@@ -38,11 +38,10 @@ module RedmineCkeditor
     def button_label(item, locale=I18n.locale)
       locale = locale.to_s.downcase
       unless @@dict[locale]
-        filename = RedmineCkeditor::PLUGIN_DIR +
-          "/assets/javascripts/ckeditor/lang/#{locale}.js"
+        path = RedmineCkeditor.root.join("assets/ckeditor/lang/#{locale}.js")
 
         h = @@dict[locale] = {}
-        File.file?(filename) && File.open(filename, "r:BOM|UTF-8") {|f|
+        path.file? && File.open(path, "r:BOM|UTF-8") {|f|
           context = ExecJS.compile(<<-EOT)
             function lang() {
               var CKEDITOR = {lang: {}};

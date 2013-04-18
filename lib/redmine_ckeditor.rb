@@ -4,7 +4,10 @@ require 'redmine_ckeditor/hooks/journal_listener'
 
 module RedmineCkeditor
   include ToolbarHelper
-  PLUGIN_DIR = File.expand_path(File.dirname(File.dirname(__FILE__)))
+
+  def self.root
+    @root ||= Pathname(File.expand_path(File.dirname(File.dirname(__FILE__))))
+  end
 
   ALLOWED_TAGS = %w[
     a abbr acronym address blockquote b big br caption cite code dd del dfn
