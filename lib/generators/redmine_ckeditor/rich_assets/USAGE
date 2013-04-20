@@ -1,0 +1,5 @@
+Description:
+    Generate rich asset files for Redmine
+
+Example:
+    rails generate redmine_ckeditor:rich_assets
