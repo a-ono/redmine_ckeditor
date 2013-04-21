@@ -60,7 +60,6 @@ module RedmineCkeditor::WikiFormatting
         javascript_tag(replace_editor_script(field_id))
       else
         javascript_include_tag('application', :plugin => 'redmine_ckeditor') +
-        javascript_include_tag('base', :plugin => 'redmine_ckeditor') +
         stylesheet_link_tag('application', :plugin => 'redmine_ckeditor') +
         stylesheet_link_tag('editor', :plugin => 'redmine_ckeditor') +
         initial_setup + replace_editor_tag(field_id)

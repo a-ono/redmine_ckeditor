@@ -32,8 +32,9 @@ module RedmineCkeditor
 
   def self.options(overrides = {})
     o = Rich.options({
-      :contentsCss => "",#stylesheet_path("application"),
+      :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
+      :extraPlugins => 'richfile',
       :removePlugins => 'image',
       :toolbar => RedmineCkeditorSetting.toolbar
     })
