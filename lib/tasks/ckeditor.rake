@@ -5,8 +5,15 @@ namespace :redmine_ckeditor do
       ENV['RAILS_ENV'] ||= "production"
       ENV['RAILS_GROUP'] ||= "assets"
       Rails.configuration.assets.enabled = true
+      Rails.configuration.assets.paths <<
+        File.expand_path("../../../app/assets/javascripts", __FILE__)
+      Rails.configuration.assets.precompile << "ckeditor-releases/ckeditor"
       Rake::Task["assets:precompile:all"].invoke
       Rake::Task["rich:assetize_ckeditor"].invoke
+
+      ckeditor = RedmineCkeditor.root.join("assets/ckeditor")
+      mkdir_p ckeditor
+      cp_r RedmineCkeditor.root.join("app/assets/javascripts/ckeditor-releases/."), ckeditor
 
       ckeditor_contrib = RedmineCkeditor.root.join("assets/ckeditor-contrib")
       mkdir_p ckeditor_contrib
@@ -16,7 +23,7 @@ namespace :redmine_ckeditor do
       stylesheets = RedmineCkeditor.root.join("assets/stylesheets")
       images = RedmineCkeditor.root.join("assets/images")
       mkdir_p [javascripts, stylesheets, images]
-      cp Dir.glob(Rails.root.join("public/assets/rich/*.js")), javascripts
+      cp Rails.root.join("public/assets/application.js"), javascripts
       cp Dir.glob(Rails.root.join("public/assets/rich/*.css")), stylesheets
       cp Dir.glob(Rails.root.join("public/assets/rich/*.png")), images
 
