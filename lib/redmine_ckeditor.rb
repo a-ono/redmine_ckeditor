@@ -20,15 +20,15 @@ module RedmineCkeditor
     style align valign border cellpadding cellspacing colspan rowspan nowrap
   ]
 
-  DEFAULT_TOOLBAR = [
-    %w[Source ShowBlocks], %w[Undo Redo - Find Replace],
-    %w[Bold Italic Underline Strike - Subscript Superscript -
-      NumberedList BulletedList - Outdent Indent Blockquote -
-      JustifyLeft JustifyCenter JustifyRight JustifyBlock -
-      Link Unlink - richImage Table HorizontalRule
-    ], '/',
-    %w[Format Font FontSize - TextColor BGColor]
-  ]
+  DEFAULT_TOOLBAR = %w[
+    Source ShowBlocks -- Undo Redo - Find Replace --
+    Bold Italic Underline Strike - Subscript Superscript -
+    NumberedList BulletedList - Outdent Indent Blockquote -
+    JustifyLeft JustifyCenter JustifyRight JustifyBlock -
+    Link Unlink - richImage Table HorizontalRule
+    /
+    Format Font FontSize - TextColor BGColor
+  ].join(",")
 
   def self.options(overrides = {})
     o = Rich.options({

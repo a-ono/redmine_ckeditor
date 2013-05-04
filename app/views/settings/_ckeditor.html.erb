@@ -6,7 +6,7 @@
 </p>
 
 <div class="selector-container">
-  <%= hidden_field_tag "settings[toolbar]", RedmineCkeditorSetting.toolbar.flatten.join(",") %>
+  <%= hidden_field_tag "settings[toolbar]", RedmineCkeditorSetting.toolbar_string %>
 
   <select id="left" multiple="multiple" size="10">
     <%= RedmineCkeditor.left_options %>
@@ -19,6 +19,8 @@
       onclick="moveItem('right', 'left')"/><br/><br/>
     <input type="button" class="button" value="<%= t(:separator) %> >>"
       onclick="addItem('-')"/><br/>
+    <input type="button" class="button" value="<%= t(:subgroup) %> >>"
+      onclick="addItem('--')"/><br/>
     <input type="button" class="button" value="<%= t(:line_break) %> >>"
       onclick="addItem('/')"/>
   </div>
@@ -37,7 +39,7 @@
     to = $("#" + to);
     var selected = to.find("option:selected").first();
     from.find("option:selected").remove().each(function() {
-      if (this.value == '-' || this.value == '/') return;
+      if (this.value == '-' || this.value == '--' || this.value == '/') return;
       selected.size() ? selected.before(this) : to.append(this);
     });
     to.prop("selectedIndex", -1);
@@ -63,6 +65,9 @@
     values.each(function() {
       if (this == "/") {
         bars.push(bar, this);
+        bar = [];
+      } else if (this == "--") {
+        bars.push(bar);
         bar = [];
       } else {
         bar.push(this);

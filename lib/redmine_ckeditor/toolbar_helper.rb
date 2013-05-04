@@ -64,7 +64,7 @@ module RedmineCkeditor
     end
 
     def selected_items
-      RedmineCkeditorSetting.toolbar.flatten 
+      RedmineCkeditorSetting.toolbar_string.split(",")
     end
 
     def left_options

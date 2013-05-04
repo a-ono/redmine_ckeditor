@@ -3,5 +3,6 @@ en:
   add: Add
   remove: Remove
   separator: Separator
+  subgroup: Subgroup
   line_break: Line break
 
