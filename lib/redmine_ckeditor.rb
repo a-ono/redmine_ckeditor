@@ -33,18 +33,22 @@ module RedmineCkeditor
     ActionController::Base.config
   end
 
-  def self.options(overrides = {})
+  def self.options(scope_object = nil)
+    scope_type = scope_object && scope_object.class.model_name
+    scope_id = scope_object && scope_object.id
+
     o = Rich.options({
       :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
       :extraPlugins => 'richfile',
       :removePlugins => 'div,flash,forms,iframe,image',
-      :toolbar => RedmineCkeditorSetting.toolbar
-    })
+      :toolbar => RedmineCkeditorSetting.toolbar,
+      :scoped => scope_object ? true : false
+    }, scope_type, scope_id)
     o.delete(:removeDialogTabs)
     o.delete(:format_tags)
     o.delete(:stylesSet)
-    o.merge(overrides)
+    o
   end
 
   def self.enabled?

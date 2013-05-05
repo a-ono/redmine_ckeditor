@@ -27,7 +27,7 @@ module RedmineCkeditor::WikiFormatting
         var textarea = document.getElementById(id);
         if (!textarea) return;
 
-        var editor = CKEDITOR.replace(textarea, #{RedmineCkeditor.options.to_json});
+        var editor = CKEDITOR.replace(textarea, #{RedmineCkeditor.options(@project).to_json});
         // fire change event
         RedmineCkeditor.intervalId[id] =
           setInterval(function(){ textarea.value = editor.getData(); }, 1000);
@@ -60,7 +60,6 @@ module RedmineCkeditor::WikiFormatting
         javascript_tag(replace_editor_script(field_id))
       else
         javascript_include_tag('application', :plugin => 'redmine_ckeditor') +
-        stylesheet_link_tag('application', :plugin => 'redmine_ckeditor') +
         stylesheet_link_tag('editor', :plugin => 'redmine_ckeditor') +
         initial_setup + replace_editor_tag(field_id)
       end

@@ -3,11 +3,12 @@ module RedmineCkeditor::Hooks
     def view_journals_notes_form_after_notes(context)
       return unless RedmineCkeditor.enabled?
 
+      project = context[:project]
       journal = context[:journal]
       javascript_tag <<-EOT
         (function() {
           var note_id = "journal_#{journal.id}_notes";
-          CKEDITOR.replace(note_id, #{RedmineCkeditor.options.to_json});
+          CKEDITOR.replace(note_id, #{RedmineCkeditor.options(project).to_json});
           var note = $("#" + note_id);
 
           var save_button = note.parent().find(":submit");
