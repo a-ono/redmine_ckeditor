@@ -9,7 +9,6 @@
   <%= hidden_field_tag "settings[toolbar]", RedmineCkeditorSetting.toolbar_string %>
 
   <select id="left" multiple="multiple" size="10">
-    <%= RedmineCkeditor.left_options %>
   </select>
 
   <div class="container">
@@ -26,7 +25,6 @@
   </div>
 
   <select id="right" multiple="multiple" size="10">
-    <%= RedmineCkeditor.right_options %>
   </select>
 
   <div class="clear"></div>
@@ -85,7 +83,25 @@
     CKEDITOR.replace('toolbar', options);
   }
 
-  $(document).ready(function() {
-    updateCkeditor(<%= RedmineCkeditorSetting.toolbar.to_json.html_safe %>);
+  CKEDITOR.on('instanceReady', function() {
+    CKEDITOR.removeListener('instanceReady', arguments.callee);
+
+    var left = $("#left");
+    var right = $("#right");
+    var rightItems = $("#settings_toolbar").val().split(",");
+
+    var dict = {};
+    $.each(CKEDITOR.instances.toolbar.ui.items, function(key, value) {
+      if (key == '-') return;
+      dict[key] = value.label;
+      if (rightItems.indexOf(key) < 0) {
+        left.append($("<option/>").val(key).text(dict[key] || key));
+      }
+    });
+    $.each(rightItems, function() {
+      right.append($("<option/>").val(this).text(dict[this] || this));
+    });
   });
+
+  updateCkeditor(<%= RedmineCkeditorSetting.toolbar.to_json.html_safe %>);
 <% end %>

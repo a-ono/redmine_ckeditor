@@ -1,9 +1,8 @@
 require 'redmine_ckeditor/journals_controller_patch'
-require 'redmine_ckeditor/toolbar_helper'
 require 'redmine_ckeditor/hooks/journal_listener'
 
 module RedmineCkeditor
-  include ToolbarHelper
+  extend ActionView::Helpers
 
   def self.root
     @root ||= Pathname(File.expand_path(File.dirname(File.dirname(__FILE__))))
@@ -29,6 +28,10 @@ module RedmineCkeditor
     /
     Format Font FontSize - TextColor BGColor
   ].join(",")
+
+  def self.config
+    ActionController::Base.config
+  end
 
   def self.options(overrides = {})
     o = Rich.options({
