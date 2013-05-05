@@ -47,7 +47,7 @@ module RedmineCkeditor
     o = Rich.options({
       :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
-      :extraPlugins => 'MediaEmbed,richfile',
+      :extraPlugins => 'MediaEmbed,codemirror,richfile',
       :removePlugins => 'div,flash,forms,iframe,image',
       :toolbar => RedmineCkeditorSetting.toolbar,
       :scoped => scope_object ? true : false
