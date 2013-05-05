@@ -12,7 +12,7 @@ module RedmineCkeditor
   ALLOWED_TAGS = %w[
     a abbr acronym address blockquote b big br caption cite code dd del dfn
     div dt em h1 h2 h3 h4 h5 h6 hr i img ins kbd li ol p pre samp small span
-    strike strong sub sup table tbody td tfoot th thead tr tt u ul var
+    strike strong sub sup table tbody td tfoot th thead tr tt u ul var iframe
   ]
 
   ALLOWED_ATTRIBUTES = %w[
@@ -47,7 +47,7 @@ module RedmineCkeditor
     o = Rich.options({
       :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
-      :extraPlugins => 'richfile',
+      :extraPlugins => 'MediaEmbed,richfile',
       :removePlugins => 'div,flash,forms,iframe,image',
       :toolbar => RedmineCkeditorSetting.toolbar,
       :scoped => scope_object ? true : false
