@@ -26,7 +26,7 @@ module RedmineCkeditor
     JustifyLeft JustifyCenter JustifyRight JustifyBlock -
     Link Unlink - richImage Table HorizontalRule
     /
-    Format Font FontSize - TextColor BGColor
+    Styles Format Font FontSize - TextColor BGColor
   ].join(",")
 
   def self.config
@@ -38,11 +38,12 @@ module RedmineCkeditor
       :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
       :extraPlugins => 'richfile',
-      :removePlugins => 'image',
+      :removePlugins => 'div,flash,forms,iframe,image',
       :toolbar => RedmineCkeditorSetting.toolbar
     })
     o.delete(:removeDialogTabs)
     o.delete(:format_tags)
+    o.delete(:stylesSet)
     o.merge(overrides)
   end
 
