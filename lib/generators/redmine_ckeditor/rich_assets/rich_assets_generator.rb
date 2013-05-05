@@ -14,6 +14,9 @@ module RedmineCkeditor
         "opt=opt.split(',');", "opt=opt ? opt.split(',') : [];"
 
       gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
+        /CKEDITOR.plugins.addExternal.+$/, ""
+
+      gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
         "/assets/", "/plugin_assets/redmine_ckeditor/"
 
       gsub_file RedmineCkeditor.root.join("assets/stylesheets/application.css"),

@@ -1,3 +1,4 @@
+require 'redmine_ckeditor/application_helper_patch'
 require 'redmine_ckeditor/journals_controller_patch'
 require 'redmine_ckeditor/hooks/journal_listener'
 
@@ -33,6 +34,12 @@ module RedmineCkeditor
     ActionController::Base.config
   end
 
+  def self.plugins
+    @plugins ||= Dir.glob(root.join("assets/ckeditor-contrib/plugins/*")).map {
+      |path| File.basename(path)
+    }
+  end
+
   def self.options(scope_object = nil)
     scope_type = scope_object && scope_object.class.model_name
     scope_id = scope_object && scope_object.id
@@ -56,6 +63,7 @@ module RedmineCkeditor
   end
 
   def self.apply_patch
+    ApplicationHelper.send(:include, ApplicationHelperPatch)
     JournalsController.send(:include, JournalsControllerPatch)
   end
 end

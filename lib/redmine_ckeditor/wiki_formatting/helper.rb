@@ -59,7 +59,7 @@ module RedmineCkeditor::WikiFormatting
       if params[:format] == "js"
         javascript_tag(replace_editor_script(field_id))
       else
-        javascript_include_tag('application', :plugin => 'redmine_ckeditor') +
+        ckeditor_javascripts +
         stylesheet_link_tag('editor', :plugin => 'redmine_ckeditor') +
         initial_setup + replace_editor_tag(field_id)
       end

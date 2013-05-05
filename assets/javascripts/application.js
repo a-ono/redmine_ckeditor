@@ -2398,8 +2398,8 @@ function addQueryString( url, params ) {
 }
 
 // load external plugins
-CKEDITOR.plugins.addExternal('MediaEmbed', '/plugin_assets/redmine_ckeditor/ckeditor-contrib/plugins/MediaEmbed/');
-CKEDITOR.plugins.addExternal('richfile', '/plugin_assets/redmine_ckeditor/ckeditor-contrib/plugins/richfile/');
+
+
 // Direct asset picker
 
 var rich = rich || {};

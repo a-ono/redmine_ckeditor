@@ -1,5 +1,5 @@
-<%= javascript_include_tag 'application', :plugin => 'redmine_ckeditor'%>
-<%= stylesheet_link_tag 'application', :plugin => 'redmine_ckeditor'%>
+<%= ckeditor_javascripts %>
+<%= stylesheet_link_tag 'editor', :plugin => 'redmine_ckeditor'%>
 <%= stylesheet_link_tag 'selector', :plugin => 'redmine_ckeditor'%>
 <p>
   <%= content_tag :label, l(:ckeditor_toolbar_setting) %>
