@@ -38,3 +38,9 @@ See {the official site}[http://ckeditor.com/] for more details.
 5. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
 6. Configure the plugin (Administration > Plugins > Configure)
 
+== CKEditor customization
+
+=== Plugins
+
+You can download plugins from {Add-ons Repository}[http://ckeditor.com/addons/plugins/all].
+To activate the plugin you have to copy the plugin directory into assets/ckeditor-contrib/plugins and restart Redmine, then configure toolbar settings.
