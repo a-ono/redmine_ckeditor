@@ -3,10 +3,6 @@ module RedmineCkeditor::WikiFormatting
     def replace_editor_tag(field_id)
       javascript_tag <<-EOT
       $(document).ready(function() {
-        $(":submit").siblings("a").each(function() {
-          var a = $(this);
-          if (a.attr("onclick").indexOf("preview") >= 0) a.hide();
-        });
         #{replace_editor_script(field_id)}
       });
       EOT
