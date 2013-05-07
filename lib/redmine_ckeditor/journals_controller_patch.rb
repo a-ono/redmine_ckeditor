@@ -18,10 +18,10 @@ module RedmineCkeditor
           return
         end
 
-        journal = Journal.find(params[:journal_id]) if params[:journal_id]
-        if journal
-          user = journal.user
-          text = journal.notes
+        @journal = Journal.visible.find(params[:journal_id]) if params[:journal_id]
+        if @journal
+          user = @journal.user
+          text = @journal.notes
         else
           user = @issue.author
           text = @issue.description
@@ -30,6 +30,8 @@ module RedmineCkeditor
         @content << "<blockquote>#{ActionView::Base.full_sanitizer.sanitize(text)}</blockquote><p/>"
 
         render "new_with_ckeditor"
+      rescue ActiveRecord::RecordNotFound
+        render_404
       end
     end
   end

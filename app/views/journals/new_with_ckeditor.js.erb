@@ -1,2 +1,9 @@
+<%
+  # when quoting a private journal, check the private checkbox
+  if @journal && @journal.private_notes? 
+%>
+$('#issue_private_notes').attr('checked', true);
+<% end %>
+
 CKEDITOR.instances['issue_notes'].setData(<%= @content.inspect.html_safe %>);
 showAndScrollTo("update", "issue_notes");
