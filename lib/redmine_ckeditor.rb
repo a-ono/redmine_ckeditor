@@ -1,5 +1,6 @@
 require 'redmine_ckeditor/application_helper_patch'
 require 'redmine_ckeditor/journals_controller_patch'
+require 'redmine_ckeditor/messages_controller_patch'
 require 'redmine_ckeditor/hooks/journal_listener'
 
 module RedmineCkeditor
@@ -65,5 +66,6 @@ module RedmineCkeditor
   def self.apply_patch
     ApplicationHelper.send(:include, ApplicationHelperPatch)
     JournalsController.send(:include, JournalsControllerPatch)
+    MessagesController.send(:include, MessagesControllerPatch)
   end
 end
