@@ -64,7 +64,6 @@ module RedmineCkeditor
   end
 
   def self.apply_patch
-    ApplicationHelper.send(:include, ApplicationHelperPatch)
     JournalsController.send(:include, JournalsControllerPatch)
     MessagesController.send(:include, MessagesControllerPatch)
   end
