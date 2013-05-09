@@ -8,19 +8,19 @@ module RedmineCkeditor
       rake "redmine_ckeditor:assets:precompile"
 
       gsub_file RedmineCkeditor.root.join("assets/ckeditor-contrib/plugins/richfile/plugin.js"),
-        "/assets/rich/", "/plugin_assets/redmine_ckeditor/images/"
+        "/assets/rich/", "../images/"
 
       gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
         "opt=opt.split(',');", "opt=opt ? opt.split(',') : [];"
 
       gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
-        /CKEDITOR.plugins.addExternal.+$/, ""
+        /var CKEDITOR_BASEPATH.+$/, ""
 
       gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
-        "/assets/", "/plugin_assets/redmine_ckeditor/"
+        /CKEDITOR.plugins.addExternal.+$/, ""
 
       gsub_file RedmineCkeditor.root.join("assets/stylesheets/application.css"),
-        'image-url("rich/', 'url("/plugin_assets/redmine_ckeditor/images/'
+        'image-url("rich/', 'url("../images/'
     end
   end
 end
