@@ -1302,7 +1302,7 @@ rich.Uploader.prototype = {
 			$('#up'+id+' .progress-bar').first().width("100%");
 			$('#up'+id+' .spinner').first().addClass("spinning");
 			//get the created image object's id from the response and use it to request the thumbnail
-			$.get("/rich/files/"+response.rich_id, function(data) {
+			$.get(response.rich_id, function(data) {
 				$('#up'+id).replaceWith(data).addClass("test");
 				$('#image'+response.rich_id).addClass("new");
 			});
@@ -1424,6 +1424,7 @@ rich.Browser.prototype = {
 	
 	selectItem: function(item) {
 		var url = $(item).data('uris')[this._options.currentStyle];
+		url = $(item).data('relative-url-root') + url;
 		var id = $(item).data('rich-asset-id');
 		var type = $(item).data('rich-asset-type');
 		var name = $(item).data('rich-asset-name');

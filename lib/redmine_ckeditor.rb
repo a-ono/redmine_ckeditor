@@ -1,4 +1,5 @@
 require 'redmine_ckeditor/application_helper_patch'
+require 'redmine_ckeditor/rich_files_helper_patch'
 require 'redmine_ckeditor/journals_controller_patch'
 require 'redmine_ckeditor/messages_controller_patch'
 require 'redmine_ckeditor/hooks/journal_listener'
@@ -46,6 +47,7 @@ module RedmineCkeditor
     scope_id = scope_object && scope_object.id
 
     o = Rich.options({
+      :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
       :contentsCss => stylesheet_path("application"),
       :bodyClass => "wiki",
       :extraPlugins => plugins.join(","),
@@ -66,5 +68,6 @@ module RedmineCkeditor
   def self.apply_patch
     JournalsController.send(:include, JournalsControllerPatch)
     MessagesController.send(:include, MessagesControllerPatch)
+    Rich::FilesHelper.send(:include, RichFilesHelperPatch)
   end
 end

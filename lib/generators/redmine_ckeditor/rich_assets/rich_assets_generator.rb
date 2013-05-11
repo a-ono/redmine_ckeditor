@@ -10,14 +10,19 @@ module RedmineCkeditor
       gsub_file RedmineCkeditor.root.join("assets/ckeditor-contrib/plugins/richfile/plugin.js"),
         "/assets/rich/", "../images/"
 
-      gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
-        "opt=opt.split(',');", "opt=opt ? opt.split(',') : [];"
+      application_js = RedmineCkeditor.root.join("assets/javascripts/application.js")
 
-      gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
-        /var CKEDITOR_BASEPATH.+$/, ""
+      gsub_file application_js, "opt=opt.split(',');", "opt=opt ? opt.split(',') : [];"
 
-      gsub_file RedmineCkeditor.root.join("assets/javascripts/application.js"),
-        /CKEDITOR.plugins.addExternal.+$/, ""
+      gsub_file application_js, /var CKEDITOR_BASEPATH.+$/, ""
+
+      gsub_file application_js, /CKEDITOR.plugins.addExternal.+$/, ""
+
+      gsub_file application_js, '"/rich/files/"+', ""
+
+      inject_into_file application_js,
+        "\t\turl = $(item).data('relative-url-root') + url;\n",
+        :after => "data('uris')[this._options.currentStyle];\n"
 
       gsub_file RedmineCkeditor.root.join("assets/stylesheets/application.css"),
         'image-url("rich/', 'url("../images/'

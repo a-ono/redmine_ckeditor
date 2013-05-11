@@ -1,0 +1,12 @@
+<li class="clickable">
+  <img  id="file<%= file.id %>"
+        src="<%= thumb_for_file(file) %>" 
+        data-uris="<%= file.uri_cache %>"
+        data-relative-url-root="<%= Redmine::Utils.relative_url_root %>"
+        data-rich-asset-id="<%= file.id %>"
+        data-rich-asset-type="<%= file.simplified_type %>"
+        data-rich-asset-name="<%= file.rich_file_file_name %>"
+  />
+  <p><%= file.rich_file_file_name %></p>
+  <%= link_to "delete", file.id.to_s, :method => :delete, :remote => true, :confirm => t(:delete_confirm), :class => "delete", :title => t(:delete) %>
+</li>
