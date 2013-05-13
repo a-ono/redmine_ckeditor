@@ -11,7 +11,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version {1.0.3}[https://github.com/a-ono/redmine_ckeditor])
+* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version {1.0.4}[https://github.com/a-ono/redmine_ckeditor])
    # Ubuntu
    apt-get install imagemagick
    # Mac OS X
@@ -44,3 +44,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 You can download plugins from {Add-ons Repository}[http://ckeditor.com/addons/plugins/all].
 To activate the plugin you have to copy the plugin directory into assets/ckeditor-contrib/plugins and restart Redmine, then configure toolbar settings.
+
+=== Skins
+
+You can select third-party skins placed in assets/ckeditor-contrib/skins directory.
