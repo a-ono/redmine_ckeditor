@@ -30,4 +30,12 @@ class RedmineCkeditorSetting
     bars.push(bar) unless bar.empty?
     bars
   end
+
+  def self.skin
+    setting[:skin] || "moono"
+  end
+
+  def self.ui_color
+    setting[:ui_color] || "#f4f4f4"
+  end
 end

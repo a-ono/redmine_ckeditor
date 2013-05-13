@@ -11,6 +11,10 @@ module RedmineCkeditor
     @root ||= Pathname(File.expand_path(File.dirname(File.dirname(__FILE__))))
   end
 
+  def self.assets_root
+    "#{Redmine::Utils.relative_url_root}/plugin_assets/redmine_ckeditor"
+  end
+
   ALLOWED_TAGS = %w[
     a abbr acronym address blockquote b big br caption cite code dd del dfn
     div dt em h1 h2 h3 h4 h5 h6 hr i img ins kbd li ol p pre samp small span
@@ -42,9 +46,22 @@ module RedmineCkeditor
     }
   end
 
+  def self.skins
+    @skins ||= Dir.glob(root.join("assets/ckeditor-contrib/skins/*")).map {
+      |path| File.basename(path)
+    }
+  end
+
+  def self.skin_options
+    options_for_select(["moono"] + skins, :selected => RedmineCkeditorSetting.skin)
+  end
+
   def self.options(scope_object = nil)
     scope_type = scope_object && scope_object.class.model_name
     scope_id = scope_object && scope_object.id
+
+    skin = RedmineCkeditorSetting.skin
+    skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono"
 
     o = Rich.options({
       :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
@@ -52,6 +69,8 @@ module RedmineCkeditor
       :bodyClass => "wiki",
       :extraPlugins => plugins.join(","),
       :removePlugins => 'div,flash,forms,iframe,image',
+      :skin => skin,
+      :uiColor => RedmineCkeditorSetting.ui_color,
       :toolbar => RedmineCkeditorSetting.toolbar,
       :scoped => scope_object ? true : false
     }, scope_type, scope_id)

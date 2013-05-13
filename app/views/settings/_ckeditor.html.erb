@@ -2,6 +2,14 @@
 <%= stylesheet_link_tag 'editor', :plugin => 'redmine_ckeditor'%>
 <%= stylesheet_link_tag 'selector', :plugin => 'redmine_ckeditor'%>
 <p>
+  <%= content_tag :label, l(:ckeditor_skin) %>
+  <%= select_tag "settings[skin]", RedmineCkeditor.skin_options %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_ui_color) %>
+  <%= text_field_tag "settings[ui_color]", RedmineCkeditorSetting.ui_color %>
+</p>
+<p>
   <%= content_tag :label, l(:ckeditor_toolbar_setting) %>
 </p>
 

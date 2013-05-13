@@ -1,4 +1,6 @@
 en:
+  ckeditor_skin: Skin
+  ckeditor_ui_color: UI color
   ckeditor_toolbar_setting: CKEditor toolbar setting
   add: Add
   remove: Remove

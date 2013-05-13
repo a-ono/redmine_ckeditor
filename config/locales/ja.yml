@@ -1,4 +1,6 @@
 ja:
+  ckeditor_skin: スキン
+  ckeditor_ui_color: UIの色
   ckeditor_toolbar_setting: CKEditorのツールバー設定
   add: 追加
   remove: 削除
