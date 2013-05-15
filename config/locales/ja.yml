@@ -1,7 +1,11 @@
 ja:
   ckeditor_skin: スキン
   ckeditor_ui_color: UIの色
-  ckeditor_toolbar_setting: CKEditorのツールバー設定
+  ckeditor_enter_mode: エンターキーの動作
+  ckeditor_startup_show_blocks: 初期表示をブロック表示モードにする
+  ckeditor_toolbar_can_collapse: ツールバーの開閉
+  ckeditor_toolbar_location: ツールバーの位置
+  ckeditor_toolbar_buttons: ツールバーのボタン
   add: 追加
   remove: 削除
   separator: セパレータ

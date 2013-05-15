@@ -38,4 +38,24 @@ class RedmineCkeditorSetting
   def self.ui_color
     setting[:ui_color] || "#f4f4f4"
   end
+
+  def self.enter_mode
+    (setting[:enter_mode] || 1).to_i
+  end
+
+  def self.shift_enter_mode
+    enter_mode == 2 ? 1 : 2
+  end
+
+  def self.show_blocks
+    (setting[:show_blocks] || 1).to_i == 1
+  end
+
+  def self.toolbar_can_collapse
+    setting[:toolbar_can_collapse].to_i == 1
+  end
+
+  def self.toolbar_location
+    setting[:toolbar_location] || "top"
+  end
 end

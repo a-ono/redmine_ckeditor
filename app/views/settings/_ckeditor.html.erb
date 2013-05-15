@@ -10,7 +10,25 @@
   <%= text_field_tag "settings[ui_color]", RedmineCkeditorSetting.ui_color %>
 </p>
 <p>
-  <%= content_tag :label, l(:ckeditor_toolbar_setting) %>
+  <%= content_tag :label, l(:ckeditor_enter_mode) %>
+  <%= select_tag "settings[enter_mode]", RedmineCkeditor.enter_mode_options %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_startup_show_blocks) %>
+  <%= hidden_field_tag "settings[show_blocks]", 0 %>
+  <%= check_box_tag "settings[show_blocks]", 1, RedmineCkeditorSetting.show_blocks %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_toolbar_can_collapse) %>
+  <%= hidden_field_tag "settings[toolbar_can_collapse]", 0 %>
+  <%= check_box_tag "settings[toolbar_can_collapse]", 1, RedmineCkeditorSetting.toolbar_can_collapse %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_toolbar_location) %>
+  <%= select_tag "settings[toolbar_location]", RedmineCkeditor.toolbar_location_options %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_toolbar_buttons) %>
 </p>
 
 <div class="selector-container">

@@ -56,6 +56,16 @@ module RedmineCkeditor
     options_for_select(["moono"] + skins, :selected => RedmineCkeditorSetting.skin)
   end
 
+  def self.enter_mode_options
+    options_for_select({:p => 1, :br => 2, :div => 3},
+      :selected => RedmineCkeditorSetting.enter_mode)
+  end
+
+  def self.toolbar_location_options
+    options_for_select(["top", "bottom"],
+      :selected => RedmineCkeditorSetting.toolbar_location)
+  end
+
   def self.options(scope_object = nil)
     scope_type = scope_object && scope_object.class.model_name
     scope_id = scope_object && scope_object.id
@@ -71,6 +81,12 @@ module RedmineCkeditor
       :removePlugins => 'div,flash,forms,iframe,image',
       :skin => skin,
       :uiColor => RedmineCkeditorSetting.ui_color,
+      :enterMode => RedmineCkeditorSetting.enter_mode,
+      :shiftEnterMode => RedmineCkeditorSetting.shift_enter_mode,
+      :startupOutlineBlocks => RedmineCkeditorSetting.show_blocks,
+      :toolbarCanCollapse => RedmineCkeditorSetting.toolbar_can_collapse,
+      :toolbarStartupExpanded => !RedmineCkeditorSetting.toolbar_can_collapse,
+      :toolbarLocation => RedmineCkeditorSetting.toolbar_location,
       :toolbar => RedmineCkeditorSetting.toolbar,
       :scoped => scope_object ? true : false
     }, scope_type, scope_id)

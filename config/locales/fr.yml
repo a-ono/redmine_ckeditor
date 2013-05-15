@@ -1,5 +1,5 @@
 fr:
-  ckeditor_toolbar_setting: "Préférences de la barre d'outil CKEditor"
+  ckeditor_toolbar_buttons: "Préférences de la barre d'outil CKEditor"
   add: Ajouter
   remove: Supprimer
   separator: Séparateur

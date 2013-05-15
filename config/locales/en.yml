@@ -1,7 +1,11 @@
 en:
   ckeditor_skin: Skin
   ckeditor_ui_color: UI color
-  ckeditor_toolbar_setting: CKEditor toolbar setting
+  ckeditor_enter_mode: Enter mode
+  ckeditor_startup_outline_blocks: Startup outline blocks 
+  ckeditor_toolbar_can_collapse: Toolbar can collapse
+  ckeditor_toolbar_location: Toolbar location
+  ckeditor_toolbar_buttons: Toolbar buttons
   add: Add
   remove: Remove
   separator: Separator
