@@ -27,4 +27,6 @@ module RedmineCkeditor
       end
     end
   end
+
+  MessagesController.send(:include, MessagesControllerPatch)
 end

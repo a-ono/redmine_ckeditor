@@ -8,7 +8,7 @@ class RedmineCkeditorSetting
   end
 
   def self.toolbar_string
-    setting[:toolbar] || RedmineCkeditor::DEFAULT_TOOLBAR
+    setting[:toolbar] || RedmineCkeditor.default_toolbar
   end
 
   def self.toolbar

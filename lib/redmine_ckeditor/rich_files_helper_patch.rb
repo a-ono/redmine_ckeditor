@@ -19,4 +19,6 @@ module RedmineCkeditor
       end
     end
   end
+
+  Rich::FilesHelper.send(:include, RichFilesHelperPatch)
 end

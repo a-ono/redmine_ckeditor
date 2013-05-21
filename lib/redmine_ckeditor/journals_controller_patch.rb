@@ -35,4 +35,6 @@ module RedmineCkeditor
       end
     end
   end
+
+  JournalsController.send(:include, JournalsControllerPatch)
 end
