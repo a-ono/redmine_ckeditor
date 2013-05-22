@@ -1,5 +1,3 @@
-require 'redmine_ckeditor/hooks/journal_listener'
-
 module RedmineCkeditor
   extend ActionView::Helpers
 
@@ -111,3 +109,5 @@ module RedmineCkeditor
     end
   end
 end
+
+require 'redmine_ckeditor/hooks/journal_listener'
