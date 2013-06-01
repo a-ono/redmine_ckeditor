@@ -111,3 +111,4 @@ module RedmineCkeditor
 end
 
 require 'redmine_ckeditor/hooks/journal_listener'
+require 'redmine_ckeditor/pdf_patch'
