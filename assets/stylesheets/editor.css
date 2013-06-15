@@ -19,3 +19,7 @@ img.left {
 img.right {
 	float: right;
 }
+
+html, body {
+  height: 100%;
+}
