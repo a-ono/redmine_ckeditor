@@ -88,7 +88,7 @@ namespace :redmine_ckeditor do
     end
 
     def format(text)
-      @formatter.new(text).to_html
+      text && @formatter.new(text).to_html
     end
   end
 
