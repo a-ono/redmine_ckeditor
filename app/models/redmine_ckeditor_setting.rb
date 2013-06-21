@@ -58,4 +58,12 @@ class RedmineCkeditorSetting
   def self.toolbar_location
     setting[:toolbar_location] || "top"
   end
+
+  def self.width
+    setting[:width]
+  end
+
+  def self.height
+    setting[:height] || 400
+  end
 end

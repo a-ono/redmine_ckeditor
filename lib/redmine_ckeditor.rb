@@ -89,7 +89,9 @@ module RedmineCkeditor
         :toolbarStartupExpanded => !RedmineCkeditorSetting.toolbar_can_collapse,
         :toolbarLocation => RedmineCkeditorSetting.toolbar_location,
         :toolbar => RedmineCkeditorSetting.toolbar,
-        :scoped => scope_object ? true : false
+        :scoped => scope_object ? true : false,
+        :width => RedmineCkeditorSetting.width,
+        :height => RedmineCkeditorSetting.height
       }, scope_type, scope_id)
       o.delete(:removeDialogTabs)
       o.delete(:format_tags)

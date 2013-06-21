@@ -6,6 +6,8 @@ ja:
   ckeditor_toolbar_can_collapse: ツールバーの開閉
   ckeditor_toolbar_location: ツールバーの位置
   ckeditor_toolbar_buttons: ツールバーのボタン
+  ckeditor_width: 幅
+  ckeditor_height: 高さ
   add: 追加
   remove: 削除
   separator: セパレータ

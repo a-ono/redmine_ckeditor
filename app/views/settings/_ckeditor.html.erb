@@ -10,6 +10,14 @@
   <%= text_field_tag "settings[ui_color]", RedmineCkeditorSetting.ui_color %>
 </p>
 <p>
+  <%= content_tag :label, l(:ckeditor_width) %>
+  <%= text_field_tag "settings[width]", RedmineCkeditorSetting.width %>
+</p>
+<p>
+  <%= content_tag :label, l(:ckeditor_height) %>
+  <%= text_field_tag "settings[height]", RedmineCkeditorSetting.height %>
+</p>
+<p>
   <%= content_tag :label, l(:ckeditor_enter_mode) %>
   <%= select_tag "settings[enter_mode]", RedmineCkeditor.enter_mode_options %>
 </p>
