@@ -22,6 +22,7 @@ module RedmineCkeditor
       @allowed_attributes ||= %w[
         href src width height alt cite datetime title class name xml:lang abbr dir
         style align valign border cellpadding cellspacing colspan rowspan nowrap
+        start reversed
       ]
     end
 
