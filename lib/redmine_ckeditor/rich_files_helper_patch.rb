@@ -14,7 +14,7 @@ module RedmineCkeditor
         if file.simplified_type == "image"
           Redmine::Utils.relative_url_root + file.rich_file.url(:rich_thumb)
         else
-          thumb_for_file_without_redmine(file)
+          image_path("document-thumb.png")
         end
       end
     end
