@@ -8,15 +8,17 @@
 * http://paulrobertlloyd.com/
 *
 * @author Fabian Vogelsteller [frozeman.de]
-* @version 0.1
+* @version 0.5
 */
 ( function() {
-    CKEDITOR.plugins.add( 'MediaEmbed',
+    CKEDITOR.plugins.add( 'mediaembed',
     {
+        icons: 'mediaembed', // %REMOVE_LINE_CORE%
+        hidpi: true, // %REMOVE_LINE_CORE%
         init: function( editor )
         {
            var me = this;
-           CKEDITOR.dialog.add( 'MediaEmbedDialog', function ()
+           CKEDITOR.dialog.add( 'MediaEmbedDialog', function (instance)
            {
               return {
                  title : 'Embed Media',
@@ -39,25 +41,29 @@
                               }]
                           }
                        ],
-                  onOk : function() {
-                    for (var i=0; i<window.frames.length; i++) {
-                       if(window.frames[i].name == 'iframeMediaEmbed') {
-                          var content = window.frames[i].document.getElementById("embed").value;
-                       }
-                    }
-                    //console.log(this.getContentElement( 'iframe', 'embedArea' ).getValue());
-                    editor.insertHtml(this.getContentElement( 'iframe', 'embedArea' ).getValue());
-                 }
+                  onOk: function() {
+                        for (var i = 0; i < window.frames.length; i++) {
+                            if (window.frames[i].name == 'iframeMediaEmbed') {
+                                var content = window.frames[i].document.getElementById("embed").value;
+                            }
+                        }
+                        // console.log(this.getContentElement( 'iframe', 'embedArea' ).getValue());
+                        div = instance.document.createElement('div');
+                        div.setHtml(this.getContentElement('iframe', 'embedArea').getValue());
+                        instance.insertElement(div);
+                  }
               };
            } );
 
-            editor.addCommand( 'MediaEmbed', new CKEDITOR.dialogCommand( 'MediaEmbedDialog' ) );
+            editor.addCommand( 'MediaEmbed', new CKEDITOR.dialogCommand( 'MediaEmbedDialog',
+                { allowedContent: 'iframe[*]' }
+            ) );
 
             editor.ui.addButton( 'MediaEmbed',
             {
                 label: 'Embed Media',
                 command: 'MediaEmbed',
-                icon: this.path + 'images/icon.png'
+                toolbar: 'mediaembed'
             } );
         }
     } );
