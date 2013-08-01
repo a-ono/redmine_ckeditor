@@ -36,7 +36,7 @@ module RedmineCkeditor::WikiFormatting
         function showAndScrollTo(id, focus) {
           var elem = $("#" + id);
           elem.show();
-          if (focus != null) CKEDITOR.instances[focus].focus();
+          if (focus != null && CKEDITOR.instances.hasOwnProperty(focus)) { CKEDITOR.instances[focus].focus(); }
           $('html, body').animate({scrollTop: elem.offset().top}, 100);
         }
 
