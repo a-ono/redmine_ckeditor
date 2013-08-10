@@ -95,14 +95,15 @@
     var bars = [];
     var bar = [];
     values.each(function() {
-      if (this == "/") {
-        bars.push(bar, this);
+      var value = this.toString();
+      if (value == "/") {
+        bars.push(bar, value);
         bar = [];
-      } else if (this == "--") {
+      } else if (value == "--") {
         bars.push(bar);
         bar = [];
       } else {
-        bar.push(this);
+        bar.push(value);
       }
     });
     if (bar.length > 0) bars.push(bar);
