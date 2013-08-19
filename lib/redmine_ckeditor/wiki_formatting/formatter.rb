@@ -13,7 +13,7 @@ module RedmineCkeditor::WikiFormatting
         %Q[<pre>\n<code class="#{lang} syntaxhl">#{
           Redmine::SyntaxHighlighting.highlight_by_language(code, lang)
         }</code>\n</pre>]
-      }.gsub(/{{(.*?)}}/) {
+      }.gsub(/\{\{(.*?)\}\}/) {
         "{{" + CGI.unescapeHTML($1) + "}}"
       }
     end
