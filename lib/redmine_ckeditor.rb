@@ -81,7 +81,7 @@ module RedmineCkeditor
         :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
         :bodyClass => "wiki",
         :extraPlugins => plugins.join(","),
-        :removePlugins => 'div,flash,forms,iframe,image',
+        :removePlugins => 'div,flash,forms,iframe',
         :skin => skin,
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
