@@ -76,11 +76,12 @@ module RedmineCkeditor
       skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono"
 
       o = Rich.options({
+        :allowedContent => true,
         :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
         :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
         :bodyClass => "wiki",
         :extraPlugins => plugins.join(","),
-        :removePlugins => 'div,flash,forms,iframe,image',
+        :removePlugins => 'div,flash,forms,iframe',
         :skin => skin,
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
@@ -106,6 +107,7 @@ module RedmineCkeditor
 
     def apply_patch
       require 'redmine_ckeditor/application_helper_patch'
+      require 'redmine_ckeditor/queries_helper_patch'
       require 'redmine_ckeditor/rich_files_helper_patch'
       require 'redmine_ckeditor/journals_controller_patch'
       require 'redmine_ckeditor/messages_controller_patch'

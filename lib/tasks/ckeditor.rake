@@ -8,6 +8,7 @@ namespace :redmine_ckeditor do
       Rails.configuration.assets.paths <<
         File.expand_path("../../../app/assets/javascripts", __FILE__)
       Rails.configuration.assets.precompile << "ckeditor-releases/ckeditor"
+      Rails.configuration.assets.precompile << "browser.js"
       Rake::Task["assets:precompile:all"].invoke
       Rake::Task["rich:assetize_ckeditor"].invoke
 
@@ -24,6 +25,7 @@ namespace :redmine_ckeditor do
       images = RedmineCkeditor.root.join("assets/images")
       mkdir_p [javascripts, stylesheets, images]
       cp Rails.root.join("public/assets/application.js"), javascripts
+      cp Rails.root.join("public/assets/browser.js"), javascripts
       cp Dir.glob(Rails.root.join("public/assets/rich/*.css")), stylesheets
       cp Dir.glob(Rails.root.join("public/assets/rich/*.png")), images
 

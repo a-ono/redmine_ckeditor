@@ -11,10 +11,10 @@ module RedmineCkeditor
 
     module InstanceMethods
       def thumb_for_file_with_redmine(file)
-        if file.simplified_type == "image"
-          Redmine::Utils.relative_url_root + file.rich_file.url(:rich_thumb)
+        Redmine::Utils.relative_url_root + if file.simplified_type == "image"
+          file.rich_file.url(:rich_thumb)
         else
-          image_path("document-thumb.png")
+          "/plugin_assets/redmine_ckeditor/images/document-thumb.png"
         end
       end
     end

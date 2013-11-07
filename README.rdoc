@@ -11,7 +11,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version {1.0.9}[https://github.com/a-ono/redmine_ckeditor])
+* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version {1.0.12}[https://github.com/a-ono/redmine_ckeditor])
    # Ubuntu
    apt-get install imagemagick
    # Mac OS X
@@ -37,6 +37,17 @@ See {the official site}[http://ckeditor.com/] for more details.
 4. Start Redmine
 5. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
 6. Configure the plugin (Administration > Plugins > Configure)
+
+=== Upgrade
+
+1. Replace the plugin directory (plugins/redmine_ckeditor)
+2. Install the required gems
+    bundle install --without development test
+3. Execute migration
+    rake redmine:plugins:migrate RAILS_ENV=production
+4. Delete old assets
+    rm -r /public/plugin_assets/redmine_ckeditor
+5. Restart Redmine
 
 == CKEditor customization
 
