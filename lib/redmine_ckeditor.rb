@@ -84,6 +84,7 @@ module RedmineCkeditor
         :extraPlugins => plugins.join(","),
         :removePlugins => 'div,flash,forms,iframe',
         :skin => skin,
+        :forcePasteAsPlainText => false,
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
         :shiftEnterMode => RedmineCkeditorSetting.shift_enter_mode,
