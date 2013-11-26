@@ -77,12 +77,14 @@ module RedmineCkeditor
 
       o = Rich.options({
         :allowedContent => true,
+        :default_style => :original,
         :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
         :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
         :bodyClass => "wiki",
         :extraPlugins => plugins.join(","),
         :removePlugins => 'div,flash,forms,iframe',
         :skin => skin,
+        :forcePasteAsPlainText => false,
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
         :shiftEnterMode => RedmineCkeditorSetting.shift_enter_mode,
@@ -109,6 +111,7 @@ module RedmineCkeditor
       require 'redmine_ckeditor/application_helper_patch'
       require 'redmine_ckeditor/queries_helper_patch'
       require 'redmine_ckeditor/rich_files_helper_patch'
+      require 'redmine_ckeditor/rich_file_patch'
       require 'redmine_ckeditor/journals_controller_patch'
       require 'redmine_ckeditor/messages_controller_patch'
     end
