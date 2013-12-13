@@ -1,0 +1,15 @@
+ru:
+  ckeditor_skin: Тема
+  ckeditor_ui_color: Цвет Интерфейса
+  ckeditor_enter_mode: Тип ввода
+  ckeditor_startup_show_blocks: Показывать блоки при запуске
+  ckeditor_toolbar_can_collapse: Панель инструментов может сворачиваться
+  ckeditor_toolbar_location: Расположение панели инструментов
+  ckeditor_toolbar_buttons: Кнопки панели инструментов
+  ckeditor_width: Ширина
+  ckeditor_height: Высота
+  add: Добавить
+  remove: Удалить
+  separator: Разделитель
+  subgroup: Подгруппа
+  line_break: Новая строка
