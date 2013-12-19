@@ -1,0 +1,16 @@
+ko:
+  ckeditor_skin: 스킨
+  ckeditor_ui_color: UI 색
+  ckeditor_enter_mode: 엔터 모드
+  ckeditor_startup_show_blocks: 시작 시 블럭 표시 
+  ckeditor_toolbar_can_collapse: 도구 모움 축소 
+  ckeditor_toolbar_location: 도구 모움 위치
+  ckeditor_toolbar_buttons: 도구 모움 버튼
+  ckeditor_width: 폭 
+  ckeditor_height: 높이
+  add: 추가
+  remove: 삭제
+  separator: 구분
+  subgroup: 하위 그룹
+  line_break: 줄 바꿈
+
