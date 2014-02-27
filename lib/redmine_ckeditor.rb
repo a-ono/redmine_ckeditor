@@ -77,6 +77,8 @@ module RedmineCkeditor
 
       o = Rich.options({
         :allowedContent => true,
+        :allow_document_uploads => true,
+        :allow_embeds => true,
         :default_style => :original,
         :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
         :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
