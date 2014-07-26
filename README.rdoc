@@ -35,7 +35,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 3. Execute migration
     rake redmine:plugins:migrate RAILS_ENV=production
 4. Start Redmine
-5. Change text formatting (Administration > Settings > General > Text formatting) to CKEditor
+5. Change the text formatting (Administration > Settings > General > Text formatting) to CKEditor
 6. Configure the plugin (Administration > Plugins > Configure)
 
 === Upgrade
@@ -46,8 +46,17 @@ See {the official site}[http://ckeditor.com/] for more details.
 3. Execute migration
     rake redmine:plugins:migrate RAILS_ENV=production
 4. Delete old assets
-    rm -r /public/plugin_assets/redmine_ckeditor
+    rm -r public/plugin_assets/redmine_ckeditor
 5. Restart Redmine
+
+=== Uninstall
+
+1. Change the text formatting (Administration > Settings > General > Text formatting) to textile
+2. Rollback the migration
+
+        rake redmine:plugins:migrate  NAME=redmine_ckeditor VERSION=0 RAILS_ENV=production
+
+3. Delete the plugin directory (plugins/redmine_ckeditor)
 
 == CKEditor customization
 
