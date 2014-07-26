@@ -1,0 +1,15 @@
+pl:
+  ckeditor_skin: Skórka
+  ckeditor_ui_color: Kolor interfejsu użytkownika
+  ckeditor_enter_mode: Znacznik po wybraniu Enter
+  ckeditor_startup_show_blocks: Pokazywanie bloków HTML odrazu po uruchomieniu
+  ckeditor_toolbar_can_collapse: Pasek narzędzi może zostać zwinięty
+  ckeditor_toolbar_location: Lokalizacja paska narzędzi
+  ckeditor_toolbar_buttons: Przyciski paska narzędzi
+  ckeditor_width: Wysokość
+  ckeditor_height: Szerokość
+  add: Dodaj
+  remove: Usuń
+  separator: Separator
+  subgroup: Pod grupa
+  line_break: Linia rozdzielająca
