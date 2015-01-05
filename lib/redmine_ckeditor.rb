@@ -77,6 +77,8 @@ module RedmineCkeditor
 
       o = Rich.options({
         :allowedContent => true,
+        :basicEntities => false,
+        :entities => false,
         :allow_document_uploads => true,
         :allow_embeds => true,
         :default_style => :original,
