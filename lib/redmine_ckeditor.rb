@@ -68,6 +68,22 @@ module RedmineCkeditor
         :selected => RedmineCkeditorSetting.toolbar_location)
     end
 
+    def ckeditor_config
+      @ckeditor_config ||= begin
+        conf = {
+          :allowedContent => true,
+          :bodyClass => "wiki",
+          :basicEntities => false,
+          :entities => false,
+          :removePlugins => 'div,flash,forms,iframe',
+          :forcePasteAsPlainText => false
+        }
+        file = Rails.root.join("config/ckeditor.yml")
+        conf.merge!(YAML.load_file(file).symbolize_keys) if file.exist?
+        conf
+      end
+    end
+
     def options(scope_object = nil)
       scope_type = scope_object && scope_object.class.model_name
       scope_id = scope_object && scope_object.id
@@ -76,19 +92,13 @@ module RedmineCkeditor
       skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono"
 
       o = Rich.options({
-        :allowedContent => true,
-        :basicEntities => false,
-        :entities => false,
         :allow_document_uploads => true,
         :allow_embeds => true,
+        :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
         :default_style => :original,
         :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
-        :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
-        :bodyClass => "wiki",
-        :extraPlugins => plugins.join(","),
-        :removePlugins => 'div,flash,forms,iframe',
         :skin => skin,
-        :forcePasteAsPlainText => false,
+        :extraPlugins => plugins.join(","),
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
         :shiftEnterMode => RedmineCkeditorSetting.shift_enter_mode,
@@ -104,7 +114,7 @@ module RedmineCkeditor
       o.delete(:removeDialogTabs)
       o.delete(:format_tags)
       o.delete(:stylesSet)
-      o
+      ckeditor_config.merge(o)
     end
 
     def enabled?

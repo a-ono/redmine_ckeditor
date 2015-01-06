@@ -69,6 +69,11 @@ To activate the plugin you have to copy the plugin directory into assets/ckedito
 
 You can select third-party skins placed in assets/ckeditor-contrib/skins directory.
 
+=== Configuration options
+
+You can configure {CKEditor settings}[http://docs.ckeditor.com/#!/api/CKEDITOR.config] by using the config/ckeditor.yml file.
+    cp plugins/redmine_ckeditor/config/ckeditor.yml.example config/ckeditor.yml
+
 == Migration notes
 
 This plugin stores contents in HTML format and renders as is.
