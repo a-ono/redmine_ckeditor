@@ -71,6 +71,7 @@ module RedmineCkeditor
     def ckeditor_config
       @ckeditor_config ||= begin
         conf = {
+          :extraPlugins => plugins.join(","),
           :allowedContent => true,
           :bodyClass => "wiki",
           :basicEntities => false,
@@ -91,14 +92,19 @@ module RedmineCkeditor
       skin = RedmineCkeditorSetting.skin
       skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono"
 
-      o = Rich.options({
+      rich_options = Rich.options({
+        :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
+        :scoped => scope_object ? true : false,
         :allow_document_uploads => true,
         :allow_embeds => true,
-        :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
         :default_style => :original,
-        :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/",
+        :richBrowserUrl => "#{Redmine::Utils.relative_url_root}/rich/files/"
+      }, scope_type, scope_id)
+      rich_options.delete(:removeDialogTabs)
+      rich_options.delete(:format_tags)
+      rich_options.delete(:stylesSet)
+      rich_options.merge(ckeditor_config.merge({
         :skin => skin,
-        :extraPlugins => plugins.join(","),
         :uiColor => RedmineCkeditorSetting.ui_color,
         :enterMode => RedmineCkeditorSetting.enter_mode,
         :shiftEnterMode => RedmineCkeditorSetting.shift_enter_mode,
@@ -107,14 +113,9 @@ module RedmineCkeditor
         :toolbarStartupExpanded => !RedmineCkeditorSetting.toolbar_can_collapse,
         :toolbarLocation => RedmineCkeditorSetting.toolbar_location,
         :toolbar => RedmineCkeditorSetting.toolbar,
-        :scoped => scope_object ? true : false,
         :width => RedmineCkeditorSetting.width,
         :height => RedmineCkeditorSetting.height
-      }, scope_type, scope_id)
-      o.delete(:removeDialogTabs)
-      o.delete(:format_tags)
-      o.delete(:stylesSet)
-      ckeditor_config.merge(o)
+      }))
     end
 
     def enabled?
