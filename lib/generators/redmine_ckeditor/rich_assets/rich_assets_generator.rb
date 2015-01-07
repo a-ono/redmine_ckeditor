@@ -27,6 +27,9 @@ module RedmineCkeditor
 
       gsub_file RedmineCkeditor.root.join("assets/stylesheets/application.css"),
         'image-url("rich/', 'url("../images/'
+
+      append_to_file RedmineCkeditor.root.join("assets/stylesheets/editor.css"),
+        "\nhtml, body {\n  height: 100%;\n}\n"
     end
   end
 end

@@ -13,12 +13,13 @@ namespace :redmine_ckeditor do
       Rake::Task["rich:assetize_ckeditor"].invoke
 
       ckeditor = RedmineCkeditor.root.join("assets/ckeditor")
-      mkdir_p ckeditor
-      cp_r RedmineCkeditor.root.join("app/assets/javascripts/ckeditor-releases/."), ckeditor
+      rm_rf ckeditor
+      cp_r RedmineCkeditor.root.join("app/assets/javascripts/ckeditor-releases"), ckeditor
+      rm ckeditor.join(".git")
 
-      ckeditor_contrib = RedmineCkeditor.root.join("assets/ckeditor-contrib")
-      mkdir_p ckeditor_contrib
-      cp_r Rails.root.join("public/assets/ckeditor-contrib/."), ckeditor_contrib
+      #ckeditor_contrib = RedmineCkeditor.root.join("assets/ckeditor-contrib")
+      #mkdir_p ckeditor_contrib
+      #cp_r Rails.root.join("public/assets/ckeditor-contrib/."), ckeditor_contrib
 
       javascripts = RedmineCkeditor.root.join("assets/javascripts")
       stylesheets = RedmineCkeditor.root.join("assets/stylesheets")
