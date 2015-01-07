@@ -8,10 +8,8 @@
 @-webkit-keyframes spinner {
   from {
     -webkit-transform: rotate(0deg); }
-
   to {
     -webkit-transform: rotate(360deg); } }
-
 *, html, body {
   font-family: helvetica, arial, sans-serif;
   -webkit-font-smoothing: antialiased;
