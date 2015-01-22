@@ -80,7 +80,8 @@ This plugin stores contents in HTML format and renders as is.
 If you have old contents, these look weird.
 
 You can use {redmine_per_project_formatting}[https://github.com/a-ono/redmine_per_project_formatting] plugin for backward compatibility or execute redmine_ckeditor:migrate task for migrating old text to HTML.
-    rake redmine_ckeditor:migrate RAILS_ENV=production [PROJECT=project_identifier1,project_identifier2] [FORMAT=textile]
+    rake redmine_ckeditor:migrate RAILS_ENV=production [PROJECT=project_identifier1,project_identifier2] [FROM=textile] [TO=html]
+This task requires to {install Pandoc}[http://johnmacfarlane.net/pandoc/installing.html].
 
 == Upgrading CKEditor (for development)
 

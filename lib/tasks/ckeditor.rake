@@ -36,46 +36,57 @@ namespace :redmine_ckeditor do
   end
 
   class Migration
-    def initialize(projects, format)
-      @formatter = Redmine::WikiFormatting.formatter_for(format)
-      @messages = [
-        "*** WARNING ***",
-        "All formattable texts are migrated to HTML and cannot be rollback.",
-        "It is strongly recommended to backup your database.",
-        "***************"
-      ]
+    FORMATS = %w[textile markdown html]
 
-      if projects.empty?
-        @projects = Project.all
-        @messages << "projects: ALL"
-      else
-        @projects = Project.where(:identifier => projects)
-        @messages << "projects: #{@projects.pluck(:identifier).join(",")}"
-      end
-      @messages << "migration: #{format} to HTML"
+    def initialize(projects, from, to)
+      @from = from
+      @to = to
+      @projects = projects
     end
 
     def start
-      @messages.each {|message| puts message}
+      [@from, @to].each do |format|
+        next if FORMATS.include?(format)
+        puts "#{format} format is not supported."
+        puts "Available formats: #{FORMATS.join(", ")}"
+        return
+      end
+
+      messages = [
+        "*** WARNING ***",
+        "It is strongly recommended to backup your database before migration, because it cannot be rolled back completely.",
+        "***************"
+      ]
+
+      if @projects.empty?
+        @projects = Project.all
+        messages << "projects: ALL"
+      else
+        messages << "projects: #{@projects.pluck(:identifier).join(",")}"
+      end
+      messages << "migration: #{@from} to #{@to}"
+
+      messages.each {|message| puts message}
       print "Do you want to continue? (type 'y' to continue): "
       unless STDIN.gets.chomp == 'y'
         puts "Cancelled"
         return
       end
 
-      @projects.each do |project|
-        puts "project #{project.name}"
-        project.description = format(project.description)
-        project.save!
-        migrate(:issues, project.issues, :description)
-        migrate(:journals, Journal.where(:journalized_type => "Issue",
-          :journalized_id => project.issues), :notes)
-        migrate(:documents, project.documents, :description)
-        migrate(:messages, Message.where(:board_id => project.boards), :content)
-        migrate(:news, project.news, :description)
-        migrate(:comments, Comment.where(:commented_type => "News",
-          :commented_id => project.news), :comments)
-        migrate(:wiki, WikiContent.where(:page_id => project.wiki.pages), :text) if project.wiki
+      ActiveRecord::Base.transaction do
+        @projects.each do |project|
+          puts "project #{project.name}"
+          project.update_column(:description, convert(project.description))
+          migrate(:issues, project.issues, :description)
+          migrate(:journals, Journal.where(:journalized_type => "Issue",
+            :journalized_id => project.issues), :notes)
+          migrate(:documents, project.documents, :description)
+          migrate(:messages, Message.where(:board_id => project.boards), :content)
+          migrate(:news, project.news, :description)
+          migrate(:comments, Comment.where(:commented_type => "News",
+            :commented_id => project.news), :comments)
+          migrate(:wiki, WikiContent.where(:page_id => project.wiki.pages), :text) if project.wiki
+        end
       end
     end
 
@@ -84,21 +95,22 @@ namespace :redmine_ckeditor do
       return if n == 0
       records.each_with_index do |record, i|
         print "\rMigrating #{type} ... (#{i}/#{n})"
-        record.send("#{column.to_s}=", format(record.send(column)))
-        record.save!
+        record.update_column(column, convert(record.send(column)))
       end
       puts "\rMigrating #{type} ... done             "
     end
 
-    def format(text)
-      text && @formatter.new(text).to_html
+    def convert(text)
+      text && PandocRuby.convert(text, from: @from, to: @to)
     end
   end
 
   desc "Migrate text to html"
   task :migrate => :environment do
-    projects = ENV['PROJECT'].to_s.split(",")
-    format = ENV['FORMAT'] || Setting.text_formatting
-    Migration.new(projects, format).start
+    projects = Project.where(:identifier => ENV['PROJECT'].to_s.split(","))
+    from = ENV['FROM'] || Setting.text_formatting
+    from = "html" if from == "CKEditor"
+    to = ENV['TO'] || "html"
+    Migration.new(projects, from, to).start
   end
 end
