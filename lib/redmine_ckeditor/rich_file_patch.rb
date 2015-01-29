@@ -1,6 +1,6 @@
-require_dependency 'rich/rich_file'
+require_dependency 'rich'
 
-module RedmineCkeditor
+module Rich
   module RichFilePatch
     def self.included(base)
       base.send(:include, InstanceMethods)
@@ -22,6 +22,17 @@ module RedmineCkeditor
       end
     end
   end
+end
 
-  Rich::RichFile.send(:include, RichFilePatch)
+if Rails::VERSION::MAJOR >= 3
+  ActionDispatch::Callbacks.to_prepare do
+    # use require_dependency if you plan to utilize development mode
+    require_dependency 'rich'
+    RichFile.send(:include, Rich::RichFilePatch)
+  end
+else
+  Dispatcher.to_prepare do
+    require_dependency 'rich'
+    RichFile.send(:include, Rich::RichFilePatch)
+  end
 end

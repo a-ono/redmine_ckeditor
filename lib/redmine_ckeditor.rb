@@ -1,6 +1,8 @@
 module RedmineCkeditor
   extend ActionView::Helpers
 
+  require 'rich'
+
   class << self
     def root
       @root ||= Pathname(File.expand_path(File.dirname(File.dirname(__FILE__))))
@@ -125,8 +127,8 @@ module RedmineCkeditor
     def apply_patch
       require 'redmine_ckeditor/application_helper_patch'
       require 'redmine_ckeditor/queries_helper_patch'
-      require 'redmine_ckeditor/rich_files_helper_patch'
       require 'redmine_ckeditor/rich_file_patch'
+      require 'redmine_ckeditor/rich_files_helper_patch'
       require 'redmine_ckeditor/rich_files_controller_patch'
       require 'redmine_ckeditor/journals_controller_patch'
       require 'redmine_ckeditor/messages_controller_patch'

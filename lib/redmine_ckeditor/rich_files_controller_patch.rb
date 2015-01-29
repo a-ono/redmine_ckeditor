@@ -1,4 +1,4 @@
-require_dependency 'rich/files_controller'
+require_dependency 'rich'
 
 module Rich
   class FilesController
