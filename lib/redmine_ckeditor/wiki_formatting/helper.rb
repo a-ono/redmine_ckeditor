@@ -8,14 +8,6 @@ module RedmineCkeditor::WikiFormatting
       EOT
     end
 
-    def set_config
-      javascript_tag <<-EOT
-        var RedmineCkeditor = {
-          intervalId: {}
-        };
-      EOT
-    end
-
     def replace_editor_script(field_id)
       <<-EOT
       (function() {
@@ -24,9 +16,7 @@ module RedmineCkeditor::WikiFormatting
         if (!textarea) return;
 
         var editor = CKEDITOR.replace(textarea, #{RedmineCkeditor.options(@project).to_json});
-        // fire change event
-        RedmineCkeditor.intervalId[id] =
-          setInterval(function(){ textarea.value = editor.getData(); }, 1000);
+        editor.on("change", function() { textarea.value = editor.getSnapshot(); });
       })();
       EOT
     end
@@ -41,14 +31,13 @@ module RedmineCkeditor::WikiFormatting
         }
 
         function destroyEditor(id) {
-          clearInterval(RedmineCkeditor.intervalId[id])
           if (CKEDITOR.instances[id]) CKEDITOR.instances[id].destroy();
         }
       EOT
     end
 
     def initial_setup
-      set_config + overwrite_functions
+      overwrite_functions
     end
 
     def wikitoolbar_for(field_id)
