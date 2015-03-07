@@ -27,7 +27,7 @@ module RedmineCkeditor
           text = @issue.description
         end
         @content = "<p>#{ll(I18n.locale, :text_user_wrote, user)}</p>"
-        @content << "<blockquote>#{ActionView::Base.full_sanitizer.sanitize(text)}</blockquote><p/>"
+        @content << "<blockquote>#{text}</blockquote><p/>"
 
         render "new_with_ckeditor"
       rescue ActiveRecord::RecordNotFound
