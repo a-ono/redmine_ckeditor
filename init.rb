@@ -1,3 +1,7 @@
+Dir["#{File.dirname(__FILE__)}/config/initializers/**/*.rb"].sort.each do |initializer|
+  Kernel.load(initializer)
+end
+
 require 'redmine'
 require 'redmine_ckeditor'
 
