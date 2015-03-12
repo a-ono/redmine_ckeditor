@@ -1,5 +1,5 @@
-gem 'rich', '1.4.6'
+gem 'rich', git: 'https://github.com/a-ono/rich.git'
 gem 'kaminari'
 gem 'htmlentities'
-gem 'paperclip', '~> 3.5.4'
+gem 'paperclip', '~> 4.2.1'
 gem 'pandoc-ruby'

@@ -86,7 +86,7 @@ module RedmineCkeditor
     end
 
     def options(scope_object = nil)
-      scope_type = scope_object && scope_object.class.model_name
+      scope_type = scope_object && scope_object.class.model_name.name
       scope_id = scope_object && scope_object.id
 
       skin = RedmineCkeditorSetting.skin
@@ -126,8 +126,6 @@ module RedmineCkeditor
       require 'redmine_ckeditor/application_helper_patch'
       require 'redmine_ckeditor/queries_helper_patch'
       require 'redmine_ckeditor/rich_files_helper_patch'
-      require 'redmine_ckeditor/rich_file_patch'
-      require 'redmine_ckeditor/rich_files_controller_patch'
       require 'redmine_ckeditor/journals_controller_patch'
       require 'redmine_ckeditor/messages_controller_patch'
       require 'redmine_ckeditor/mail_handler_patch'

@@ -11,11 +11,15 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Requirements
 
-* Redmine 2.3.x, Ruby 1.9.2 or higher, {ImageMagick}[http://www.imagemagick.org/] (version {1.0.20}[https://github.com/a-ono/redmine_ckeditor])
+{ImageMagick}[http://www.imagemagick.org/] (Since version 1.0.0)
    # Ubuntu
    apt-get install imagemagick
    # Mac OS X
    brew install imagemagick
+
+* Redmine 3.0.x, (version {1.1.0.beta}[https://github.com/a-ono/redmine_ckeditor/tree/redmine3.0.x])
+
+* Redmine 2.3.x, Ruby 1.9.2 or higher (version {1.0.20}[https://github.com/a-ono/redmine_ckeditor/tree/1.0.20])
 
 * Redmine 2.3.x (version {0.4.0}[https://github.com/a-ono/redmine_ckeditor/tree/0.4.0])
 
