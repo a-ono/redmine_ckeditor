@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def format_activity_description_with_ckeditor(text)
     if RedmineCkeditor.enabled?
-      simple_format(truncate(strip_tags(text.to_s), :length => 120))
+      simple_format(truncate(HTMLEntities.new.decode(strip_tags(text.to_s)), :length => 120))
     else
       format_activity_description_without_ckeditor(text)
     end
