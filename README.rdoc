@@ -17,19 +17,19 @@ See {the official site}[http://ckeditor.com/] for more details.
    # Mac OS X
    brew install imagemagick
 
-* Redmine 3.0.x, (version {1.1.0.beta}[https://github.com/a-ono/redmine_ckeditor/tree/redmine3.0.x])
+* Redmine 3.0.x, (version {1.1.0}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.1.0])
 
-* Redmine 2.3.x, Ruby 1.9.2 or higher (version {1.0.20}[https://github.com/a-ono/redmine_ckeditor/tree/1.0.20])
+* Redmine 2.3.x, Ruby 1.9.2 or higher (version {1.0.20}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.0.20])
 
-* Redmine 2.3.x (version {0.4.0}[https://github.com/a-ono/redmine_ckeditor/tree/0.4.0])
+* Redmine 2.3.x (version {0.4.0}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.4.0])
 
-* Redmine 2.2.x (version {0.3.0}[https://github.com/a-ono/redmine_ckeditor/tree/0.3.0])
+* Redmine 2.2.x (version {0.3.0}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.3.0])
 
-* Redmine 2.1.x (version {0.2.1}[https://github.com/a-ono/redmine_ckeditor/tree/0.2.1])
+* Redmine 2.1.x (version {0.2.1}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.2.1])
 
-* Redmine 2.0.x (version {0.1.1}[https://github.com/a-ono/redmine_ckeditor/tree/0.1.1])
+* Redmine 2.0.x (version {0.1.1}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.1.1])
 
-* Redmine 1.1.0 - 1.4.2 (version {0.0.6}[https://github.com/a-ono/redmine_ckeditor/tree/0.0.6])
+* Redmine 1.1.0 - 1.4.2 (version {0.0.6}[https://github.com/a-ono/redmine_ckeditor/releases/tag/0.0.6])
 
 == Plugin installation and setup
 
