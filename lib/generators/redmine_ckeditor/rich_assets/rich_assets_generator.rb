@@ -5,7 +5,7 @@ module RedmineCkeditor
     source_root File.expand_path('../templates', __FILE__)
     desc "Generate rich asset files for Redmine"
     def create_assets
-      rake "redmine_ckeditor:assets:precompile"
+      rake "redmine_ckeditor:assets:copy"
 
       gsub_file RedmineCkeditor.root.join("assets/ckeditor-contrib/plugins/richfile/plugin.js"),
         "/assets/rich/", "../images/"
