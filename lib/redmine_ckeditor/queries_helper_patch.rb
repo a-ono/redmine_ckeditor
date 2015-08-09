@@ -1,4 +1,5 @@
 require_dependency 'queries_helper'
+require "rails-html-sanitizer"
 
 module QueriesHelper
   def csv_value_with_ckeditor(column, issue, value)
