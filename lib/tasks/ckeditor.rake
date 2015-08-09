@@ -2,6 +2,16 @@ namespace :redmine_ckeditor do
   namespace :assets do
     desc "copy assets"
     task :copy => :environment do
+      env = Sprockets::Environment.new(RedmineCkeditor.root)
+      Rails.application.config.assets.paths.each do |path|
+        env.append_path(path)
+      end
+      env.append_path("app/assets/javascripts")
+      %w(application.js browser.js).each do |asset|
+        assets = env.find_asset(asset)
+        assets.write_to(RedmineCkeditor.root.join("assets/javascripts", asset))
+      end
+
       ckeditor = RedmineCkeditor.root.join("assets/ckeditor")
       rm_rf ckeditor
       cp_r RedmineCkeditor.root.join("app/assets/javascripts/ckeditor-releases"), ckeditor
