@@ -7,6 +7,6 @@ CKEDITOR.plugins.setLang( 'codemirror', 'de', {
     searchCode: 'Quellcode durchsuchen',
 	autoFormat: 'Auswahl formatieren',
 	commentSelectedRange: 'Auswahl auskommentieren',
-	uncommentSelectedRange: 'Auskommentierung entferen',
-	autoCompleteToggle: 'HTML Tag Autvervollständigen de-/aktivieren'
+	uncommentSelectedRange: 'Auskommentierung entfernen',
+	autoCompleteToggle: 'HTML Tag Autovervollständigen de-/aktivieren'
 });
