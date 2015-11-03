@@ -74,8 +74,6 @@ module RedmineCkeditor
           :extraPlugins => plugins.join(","),
           :allowedContent => true,
           :bodyClass => "wiki",
-          :basicEntities => false,
-          :entities => false,
           :removePlugins => 'div,flash,forms,iframe',
           :forcePasteAsPlainText => false
         }
