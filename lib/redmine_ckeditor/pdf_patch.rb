@@ -42,18 +42,15 @@ module RedmineCkeditor
         tmp.close
 
         @tmp_images << img
-        f = File.open(img,'wb')
-        f.puts(Base64.decode64(data))
-
-        f.close
+        File.open(img, 'wb') do |f|
+          f.write(Base64.decode64(data))
+        end
       else
         # for CKEditor file uploader with 'rich' plugin
-        if attrname =~ /^\/system\/rich\/rich_files\/rich_files\/[0-9]+\/[0-9]+\/[0-9]+\/(original|thumb|rich_thumb)\/[^\/"]+\.(gif|jpg|jpe|jpeg|png)$/i
-          filename_utf8 = Redmine::CodesetUtil.from_utf8(attrname, "UTF-8")
-          fullpath_utf8 = File.expand_path("../../../../../public#{filename_utf8}", __FILE__)
-          img = fullpath_utf8
+        img = if attrname.include?("/rich/rich_files/rich_files/")
+          Rails.root.join("public#{URI.decode(attrname)}").to_s
         else
-          img = get_image_filename_without_ckeditor(attrname)
+          get_image_filename_without_ckeditor(attrname)
         end
       end
       img
