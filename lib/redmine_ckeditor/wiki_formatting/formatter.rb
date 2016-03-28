@@ -14,7 +14,7 @@ module RedmineCkeditor::WikiFormatting
       ).gsub(/<pre>\s*<code\s+(?:class="(\w+)")>[\r\n]*([^<]*?)[\r\n]*<\/code>\s*<\/pre>/) {
         lang, code = $~.captures
         %Q[<pre>\n<code class="#{lang} syntaxhl">#{
-          Redmine::SyntaxHighlighting.highlight_by_language(code, lang)
+          Redmine::SyntaxHighlighting.highlight_by_language(CGI.unescapeHTML(code), lang)
         }</code>\n</pre>]
       }.gsub(/\{\{(.*?)\}\}/) {
         "{{" + CGI.unescapeHTML($1) + "}}"
