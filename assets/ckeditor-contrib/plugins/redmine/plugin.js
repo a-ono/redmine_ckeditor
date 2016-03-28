@@ -49,4 +49,11 @@
       processor.dataFilter.addRules({text: onText}, 11);
     }
   });
+
+  CKEDITOR.on('dialogDefinition', function(e) {
+    if (e.data.name == 'table') {
+      var width = e.data.definition.getContents('info').get('txtWidth');
+      width['default'] = "100%";
+    }
+  });
 })();
