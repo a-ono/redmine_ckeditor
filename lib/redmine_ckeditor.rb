@@ -10,8 +10,15 @@ module RedmineCkeditor
       @assets_root ||= "#{Redmine::Utils.relative_url_root}/plugin_assets/redmine_ckeditor"
     end
 
+    def allowed_protocols
+      @allowed_protocols ||= ckeditor_config[:allowedProtocols] || %w[
+        afs aim callto ed2k feed ftp gopher http https irc mailto news
+        nntp rsync rtsp sftp ssh tag telnet urn webcal xmpp
+      ]
+    end
+
     def allowed_tags
-      @allowed_tags ||= %w[
+      @allowed_tags ||= ckeditor_config[:allowedTags] || %w[
         a abbr acronym address blockquote b big br caption cite code dd del dfn
         div dt em h1 h2 h3 h4 h5 h6 hr i img ins kbd li ol p pre samp small span
         strike s strong sub sup table tbody td tfoot th thead tr tt u ul var iframe
@@ -19,7 +26,7 @@ module RedmineCkeditor
     end
 
     def allowed_attributes
-      @allowed_attributes ||= %w[
+      @allowed_attributes ||= ckeditor_config[:allowedAttributes] || %w[
         href src width height alt cite datetime title class name xml:lang abbr dir
         style align valign border cellpadding cellspacing colspan rowspan nowrap
         start reversed

@@ -18,3 +18,5 @@ Redmine::Plugin.register :redmine_ckeditor do
   wiki_format_provider 'CKEditor', RedmineCkeditor::WikiFormatting::Formatter,
     RedmineCkeditor::WikiFormatting::Helper
 end
+
+Loofah::HTML5::WhiteList::ALLOWED_PROTOCOLS.replace RedmineCkeditor.allowed_protocols
