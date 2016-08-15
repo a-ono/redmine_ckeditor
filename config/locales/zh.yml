@@ -1,0 +1,16 @@
+zh:
+  ckeditor_skin: 主题设置
+  ckeditor_ui_color: UI颜色设置
+  ckeditor_enter_mode: 输入模式
+  ckeditor_startup_show_blocks: 启动时显示文本块 
+  ckeditor_toolbar_can_collapse: 工具栏合拢
+  ckeditor_toolbar_location: 工具栏位置
+  ckeditor_toolbar_buttons: 工具栏按钮
+  ckeditor_width: 宽度
+  ckeditor_height: 高度
+  add: 新增
+  remove: 移除
+  separator: 分割符
+  subgroup: 子菜单
+  line_break: 换行符
+
