@@ -6,6 +6,7 @@ en:
   ckeditor_toolbar_can_collapse: Toolbar can collapse
   ckeditor_toolbar_location: Toolbar location
   ckeditor_toolbar_buttons: Toolbar buttons
+  ckeditor_show_bottom_bar: Show bottom bar
   ckeditor_width: Width
   ckeditor_height: Height
   add: Add
