@@ -1,7 +1,16 @@
 fr:
+  ckeditor_skin: Thème
+  ckeditor_ui_color: Couleur de l'interface
+  ckeditor_enter_mode: Type de blocs
+  ckeditor_startup_show_blocks: Montrer les blocs au démarrage
+  ckeditor_toolbar_can_collapse: La barre d'outil peut être réduite
+  ckeditor_toolbar_location: "Emplacement de la barre d'outil"
   ckeditor_toolbar_buttons: "Préférences de la barre d'outil CKEditor"
+  ckeditor_width: Largeur
+  ckeditor_height: Hauteur
   add: Ajouter
   remove: Supprimer
   separator: Séparateur
+  subgroup: Sous-groupe
   line_break: Saut de ligne
 
