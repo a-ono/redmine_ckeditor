@@ -36,6 +36,11 @@
   <%= select_tag "settings[toolbar_location]", RedmineCkeditor.toolbar_location_options %>
 </p>
 <p>
+  <%= content_tag :label, l(:ckeditor_show_bottom_bar) %>
+  <%= hidden_field_tag "settings[show_bottom_bar]", 0 %>
+  <%= check_box_tag "settings[show_bottom_bar]", 1, RedmineCkeditorSetting.show_bottom_bar %>
+</p>
+<p>
   <%= content_tag :label, l(:ckeditor_toolbar_buttons) %>
 </p>
 

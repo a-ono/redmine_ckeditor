@@ -119,7 +119,9 @@ module RedmineCkeditor
         :toolbarLocation => RedmineCkeditorSetting.toolbar_location,
         :toolbar => RedmineCkeditorSetting.toolbar,
         :width => RedmineCkeditorSetting.width,
-        :height => RedmineCkeditorSetting.height
+        :height => RedmineCkeditorSetting.height,
+        :removePlugins => ckeditor_config[:removePlugins] + (RedmineCkeditorSetting.show_bottom_bar ? '':',elementspath'),
+        :resize_enabled => RedmineCkeditorSetting.show_bottom_bar
       }))
     end
 

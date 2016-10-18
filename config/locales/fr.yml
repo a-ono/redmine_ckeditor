@@ -5,6 +5,7 @@ fr:
   ckeditor_startup_show_blocks: Montrer les blocs au démarrage
   ckeditor_toolbar_can_collapse: La barre d'outil peut être réduite
   ckeditor_toolbar_location: "Emplacement de la barre d'outil"
+  ckeditor_show_bottom_bar: "Afficher la barre de navigation inférieure"
   ckeditor_toolbar_buttons: "Préférences de la barre d'outil CKEditor"
   ckeditor_width: Largeur
   ckeditor_height: Hauteur

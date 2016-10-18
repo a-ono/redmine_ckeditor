@@ -59,6 +59,10 @@ class RedmineCkeditorSetting
     setting["toolbar_location"] || "top"
   end
 
+  def self.show_bottom_bar
+    setting[:show_bottom_bar].present? && setting[:show_bottom_bar].to_i == 1
+  end
+
   def self.width
     setting["width"]
   end
