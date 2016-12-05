@@ -1,0 +1,15 @@
+nl:
+  ckeditor_skin: Thema
+  ckeditor_ui_color: UI-kleur
+  ckeditor_enter_mode: Invoermodus
+  ckeditor_startup_show_blocks: Blokweergave bij opstarten
+  ckeditor_toolbar_can_collapse: Inklapbare werkbalk
+  ckeditor_toolbar_location: Werkbalklocatie
+  ckeditor_toolbar_buttons: Werkbalkknoppen
+  ckeditor_width: Breedte
+  ckeditor_height: Hoogte
+  add: Toevoegen
+  remove: Verwijderen
+  separator: Scheidingsteken
+  subgroup: Deelgroep
+  line_break: Regeleinde
