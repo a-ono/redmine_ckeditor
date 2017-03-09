@@ -3,4 +3,6 @@ gem 'kaminari'
 gem 'htmlentities'
 gem 'paperclip', '~> 4.2.1'
 gem 'pandoc-ruby'
-gem 'sprockets-rails', '< 3.0.0'
+
+# It is needed for upgrading CKEditor
+#gem 'sprockets-rails', '< 3.0.0' 
