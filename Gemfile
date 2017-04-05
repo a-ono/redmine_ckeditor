@@ -1,3 +1,5 @@
+source 'https://rubygems.org'
+
 gem 'rich', git: 'https://github.com/a-ono/rich.git'
 gem 'kaminari'
 gem 'htmlentities'
