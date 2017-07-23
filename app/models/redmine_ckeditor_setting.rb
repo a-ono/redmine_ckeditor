@@ -32,7 +32,7 @@ class RedmineCkeditorSetting
   end
 
   def self.skin
-    setting["skin"] || "moono"
+    setting["skin"] || "moono-lisa"
   end
 
   def self.ui_color

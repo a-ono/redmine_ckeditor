@@ -62,7 +62,7 @@ module RedmineCkeditor
     end
 
     def skin_options
-      options_for_select(["moono"] + skins, :selected => RedmineCkeditorSetting.skin)
+      options_for_select(["moono-lisa"] + skins, :selected => RedmineCkeditorSetting.skin)
     end
 
     def enter_mode_options
@@ -95,7 +95,7 @@ module RedmineCkeditor
       scope_id = scope_object && scope_object.id
 
       skin = RedmineCkeditorSetting.skin
-      skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono"
+      skin += ",#{assets_root}/ckeditor-contrib/skins/#{skin}/" if skin != "moono-lisa"
 
       rich_options = Rich.options({
         :contentsCss => [stylesheet_path("application"), "#{assets_root}/stylesheets/editor.css"],
