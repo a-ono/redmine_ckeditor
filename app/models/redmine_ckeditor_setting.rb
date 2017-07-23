@@ -4,11 +4,11 @@ class RedmineCkeditorSetting
   end
 
   def self.default
-    ["1", true].include?(setting[:default])
+    ["1", true].include?(setting["default"])
   end
 
   def self.toolbar_string
-    setting[:toolbar] || RedmineCkeditor.default_toolbar
+    setting["toolbar"] || RedmineCkeditor.default_toolbar
   end
 
   def self.toolbar
@@ -32,15 +32,15 @@ class RedmineCkeditorSetting
   end
 
   def self.skin
-    setting[:skin] || "moono"
+    setting["skin"] || "moono"
   end
 
   def self.ui_color
-    setting[:ui_color] || "#f4f4f4"
+    setting["ui_color"] || "#f4f4f4"
   end
 
   def self.enter_mode
-    (setting[:enter_mode] || 1).to_i
+    (setting["enter_mode"] || 1).to_i
   end
 
   def self.shift_enter_mode
@@ -48,22 +48,22 @@ class RedmineCkeditorSetting
   end
 
   def self.show_blocks
-    (setting[:show_blocks] || 1).to_i == 1
+    (setting["show_blocks"] || 1).to_i == 1
   end
 
   def self.toolbar_can_collapse
-    setting[:toolbar_can_collapse].to_i == 1
+    setting["toolbar_can_collapse"].to_i == 1
   end
 
   def self.toolbar_location
-    setting[:toolbar_location] || "top"
+    setting["toolbar_location"] || "top"
   end
 
   def self.width
-    setting[:width]
+    setting["width"]
   end
 
   def self.height
-    setting[:height] || 400
+    setting["height"] || 400
   end
 end
