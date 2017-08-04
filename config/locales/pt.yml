@@ -1,0 +1,15 @@
+pt:
+  ckeditor_skin: Skin
+  ckeditor_ui_color: Cor UI
+  ckeditor_enter_mode: Modo do ENTER
+  ckeditor_startup_show_blocks: Blocos de exibição de inicialização
+  ckeditor_toolbar_can_collapse: Barra de ferramentas pode minimizar
+  ckeditor_toolbar_location: Barra de ferramentas localização
+  ckeditor_toolbar_buttons: Barra de ferramentas botões
+  ckeditor_width: Largura
+  ckeditor_height: Altura
+  add: Adicionar
+  remove: Remover
+  separator: Separador
+  subgroup: Subgrupo
+  line_break: Quebra de linha
