@@ -33,7 +33,7 @@ See {the official site}[http://ckeditor.com/] for more details.
 
 == Plugin installation and setup
 
-1. Copy the plugin directory into the plugins directory (make sure the name is redmine_ckeditor)
+1. Download the {zip package}[https://github.com/a-ono/redmine_ckeditor/archive/master.zip] and extract the directory that it contains into the plugins directory (make sure the name is redmine_ckeditor)
 2. Install the required gems (in the Redmine root directory)
     bundle install --without development test
 3. Execute migration
