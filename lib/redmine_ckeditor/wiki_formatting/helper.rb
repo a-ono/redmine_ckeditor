@@ -24,6 +24,11 @@ module RedmineCkeditor::WikiFormatting
 			}
 		}
 	);
+	$(document).on("submit", "form",
+		function() {
+			editor.resetDirty();
+		}
+	);
       })();
       EOT
     end
