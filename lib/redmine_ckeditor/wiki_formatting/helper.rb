@@ -20,7 +20,7 @@ module RedmineCkeditor::WikiFormatting
 	$(window).on("beforeunload",
 		function() {
 			if (editor.checkDirty()) {
-				return "Unsaved changes!";
+				return #{l(:text_warn_on_leaving_unsaved).inspect};
 			}
 		}
 	);
