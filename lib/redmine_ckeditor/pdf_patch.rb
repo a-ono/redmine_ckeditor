@@ -2,30 +2,22 @@ require_dependency 'redmine/export/pdf'
 
 module RedmineCkeditor
   module PDFPatch
-    def self.included(base)
-      base.class_eval do
-        alias_method_chain :formatted_text, :ckeditor
-        alias_method_chain :get_image_filename, :ckeditor
-        alias_method_chain :RDMwriteHTMLCell, :ckeditor
-      end
-    end
-
-    def formatted_text_with_ckeditor(text)
-      html = formatted_text_without_ckeditor(text)
+    def formatted_text(text)
+      html = super
       html = HTMLEntities.new.decode(html) if RedmineCkeditor.enabled?
       html
     end
     
-    def RDMwriteHTMLCell_with_ckeditor(w, h, x, y, txt='', attachments=[], border=0, ln=1, fill=0)
+    def RDMwriteHTMLCell(w, h, x, y, txt='', attachments=[], border=0, ln=1, fill=0)
       @tmp_images = []
-      RDMwriteHTMLCell_without_ckeditor(w, h, x, y, txt, attachments, border, ln, fill)
+      super
       @tmp_images.each do |item|
         #logger.info item
         File.delete(item) if File.file?(item)
       end
     end
 
-    def get_image_filename_with_ckeditor(attrname)
+    def get_image_filename(attrname)
       img = nil
 
       if attrname.sub!(/^data:([^\/]+)\/([^;]+);base64,/, '')
@@ -50,12 +42,12 @@ module RedmineCkeditor
         img = if attrname.include?("/rich/rich_files/rich_files/")
           Rails.root.join("public#{URI.decode(attrname)}").to_s
         else
-          get_image_filename_without_ckeditor(attrname)
+          super(attrname)
         end
       end
       img
     end
   end
-
-  Redmine::Export::PDF::ITCPDF.send(:include, PDFPatch)
 end
+
+Redmine::Export::PDF::ITCPDF.prepend RedmineCkeditor::PDFPatch

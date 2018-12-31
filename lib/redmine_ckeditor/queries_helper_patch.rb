@@ -1,13 +1,16 @@
 require_dependency 'queries_helper'
 
-module QueriesHelper
-  def csv_value_with_ckeditor(column, issue, value)
-    if RedmineCkeditor.enabled? && column.name == :description
-      text = Rails::Html::FullSanitizer.new.sanitize(value.to_s)
-      text.gsub(/(?:\r\n\t*)+/, "\r").gsub("&nbsp;", " ").strip
-    else
-      csv_value_without_ckeditor(column, issue, value)
+module RedmineCkeditor
+  module QueriesHelperPatch
+    def csv_value(column, issue, value)
+      if RedmineCkeditor.enabled? && column.name == :description
+        text = Rails::Html::FullSanitizer.new.sanitize(value.to_s)
+        text.gsub(/(?:\r\n\t*)+/, "\r").gsub("&nbsp;", " ").strip
+      else
+        super
+      end
     end
   end
-  alias_method_chain :csv_value, :ckeditor
 end
+
+QueriesHelper.prepend RedmineCkeditor::QueriesHelperPatch

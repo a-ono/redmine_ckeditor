@@ -52,7 +52,7 @@ module RedmineCkeditor::WikiFormatting
       overwrite_functions
     end
 
-    def wikitoolbar_for(field_id)
+    def wikitoolbar_for(field_id, preview_url = preview_text_path)
       if params[:format] == "js"
         javascript_tag(replace_editor_script(field_id))
       else
