@@ -1,5 +1,7 @@
 module RedmineCkeditor::WikiFormatting
   module Helper
+    include RedmineCkeditor::Helper
+
     def replace_editor_tag(field_id)
       javascript_tag <<-EOT
       $(document).ready(function() {

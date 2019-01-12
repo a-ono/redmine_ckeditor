@@ -1,5 +1,3 @@
-require_dependency 'redmine/export/pdf'
-
 module RedmineCkeditor
   module PDFPatch
     def formatted_text(text)

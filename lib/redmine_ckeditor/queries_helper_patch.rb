@@ -1,5 +1,3 @@
-require_dependency 'queries_helper'
-
 module RedmineCkeditor
   module QueriesHelperPatch
     def csv_value(column, issue, value)
@@ -12,5 +10,3 @@ module RedmineCkeditor
     end
   end
 end
-
-QueriesHelper.prepend RedmineCkeditor::QueriesHelperPatch

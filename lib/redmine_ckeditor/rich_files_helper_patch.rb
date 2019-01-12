@@ -1,5 +1,3 @@
-require_dependency 'rich/files_helper'
-
 module RedmineCkeditor
   module RichFilesHelperPatch
     def thumb_for_file(file)
@@ -11,5 +9,3 @@ module RedmineCkeditor
     end
   end
 end
-
-Rich::FilesHelper.prepend RedmineCkeditor::RichFilesHelperPatch

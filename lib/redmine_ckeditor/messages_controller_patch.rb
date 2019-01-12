@@ -1,5 +1,3 @@
-require_dependency 'messages_controller'
-
 module RedmineCkeditor
   module MessagesControllerPatch
     def quote
@@ -16,5 +14,3 @@ module RedmineCkeditor
     end
   end
 end
-
-MessagesController.prepend RedmineCkeditor::MessagesControllerPatch

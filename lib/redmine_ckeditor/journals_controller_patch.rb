@@ -1,5 +1,3 @@
-require_dependency 'journals_controller'
-
 module RedmineCkeditor
   module JournalsControllerPatch
     def new
@@ -24,5 +22,3 @@ module RedmineCkeditor
     end
   end
 end
-
-JournalsController.prepend RedmineCkeditor::JournalsControllerPatch

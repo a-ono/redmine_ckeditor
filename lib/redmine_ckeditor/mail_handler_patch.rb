@@ -1,5 +1,3 @@
-require_dependency 'mail_handler'
-
 module RedmineCkeditor
   module MailHandlerPatch
     def cleaned_up_text_body(format = true)
@@ -16,5 +14,3 @@ module RedmineCkeditor
     end
   end
 end
-
-MailHandler.prepend RedmineCkeditor::MailHandlerPatch
