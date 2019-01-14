@@ -9,7 +9,7 @@ Redmine::Plugin.register :redmine_ckeditor do
   name 'Redmine CKEditor plugin'
   author 'Akihiro Ono'
   description 'This is a CKEditor plugin for Redmine'
-  version '1.2.0b'
+  version '1.2.0'
   requires_redmine :version_or_higher => '4.0.0'
   url 'http://github.com/a-ono/redmine_ckeditor'
 
