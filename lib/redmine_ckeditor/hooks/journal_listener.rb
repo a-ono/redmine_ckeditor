@@ -12,8 +12,7 @@ module RedmineCkeditor::Hooks
           var note = $("#" + note_id);
 
           var save_button = note.parent().find(":submit");
-          var preview_button = save_button.next();
-          var cancel_button = preview_button.next().get(0);
+          var cancel_button = save_button.next().get(0);
 
           save_button.click(function() {
             var editor = CKEDITOR.instances[note_id];
@@ -21,7 +20,6 @@ module RedmineCkeditor::Hooks
             editor.destroy();
           });
 
-          preview_button.hide();
           var cancel = cancel_button.onclick;
           cancel_button.onclick = function() {
             CKEDITOR.instances[note_id].destroy();
