@@ -139,7 +139,6 @@ module RedmineCkeditor
 end
 
 require 'redmine_ckeditor/helper'
-require 'redmine_ckeditor/hooks/journal_listener'
 require 'redmine_ckeditor/application_helper_patch'
 require 'redmine_ckeditor/queries_helper_patch'
 require 'redmine_ckeditor/rich_files_helper_patch'
