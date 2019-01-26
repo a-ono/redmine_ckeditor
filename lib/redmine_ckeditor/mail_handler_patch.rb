@@ -1,10 +1,12 @@
 module RedmineCkeditor
   module MailHandlerPatch
+    include ActionView::Helpers::TextHelper
+
     def cleaned_up_text_body(format = true)
       if format
-        simple_format(super)
+        simple_format(super())
       else
-        super
+        super()
       end
     end
 
