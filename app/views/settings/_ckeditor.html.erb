@@ -1,4 +1,4 @@
-<%= ckeditor_javascripts %>
+<%= RedmineCkeditor::Helper.instance_method(:ckeditor_javascripts).bind(self).call %>
 <%= stylesheet_link_tag 'editor', :plugin => 'redmine_ckeditor'%>
 <%= stylesheet_link_tag 'selector', :plugin => 'redmine_ckeditor'%>
 <p>
