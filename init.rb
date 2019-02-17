@@ -1,7 +1,7 @@
 require 'redmine'
 require 'redmine_ckeditor'
 
-Rails.application.config.to_prepare do
+ActiveSupport::Reloader.to_prepare do
   RedmineCkeditor.apply_patch
 end
 
