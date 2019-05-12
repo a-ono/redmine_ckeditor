@@ -1,4 +1,5 @@
 require 'rake'
+require 'rails/generators'
 
 module RedmineCkeditor
   class RichAssetsGenerator < Rails::Generators::Base
