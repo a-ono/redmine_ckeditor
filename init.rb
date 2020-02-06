@@ -19,4 +19,4 @@ Redmine::Plugin.register :redmine_ckeditor do
     RedmineCkeditor::WikiFormatting::Helper
 end
 
-Loofah::HTML5::WhiteList::ALLOWED_PROTOCOLS.replace RedmineCkeditor.allowed_protocols
+(Loofah::VERSION >= "2.3.0" ? Loofah::HTML5::SafeList : Loofah::HTML5::WhiteList)::ALLOWED_PROTOCOLS.replace RedmineCkeditor.allowed_protocols
