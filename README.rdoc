@@ -17,7 +17,7 @@ See {the official site}[http://ckeditor.com/] for more details.
    # Mac OS X
    brew install imagemagick
 
-* Redmine 4.x (version {1.2.2}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.2.2])
+* Redmine 4.x (version {1.2.3}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.2.3])
 
 * Redmine 3.x, (version {1.1.7}[https://github.com/a-ono/redmine_ckeditor/releases/tag/1.1.7])
 
