@@ -3,7 +3,7 @@ module RedmineCkeditor
     include ActionView::Helpers::TextHelper
 
     def cleaned_up_text_body(format = true)
-      if format
+      if RedmineCkeditor.enabled? and format
         simple_format(super())
       else
         super()
