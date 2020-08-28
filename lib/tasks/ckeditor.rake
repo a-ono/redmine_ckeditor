@@ -78,8 +78,13 @@ namespace :redmine_ckeditor do
       n = records.count
       return if n == 0
       records.each_with_index do |record, i|
-        print "\rMigrating #{type} ... (#{i}/#{n})"
-        record.update_column(column, convert(record.send(column)))
+        e = 0
+        print "\rMigrating #{type} ... (#{i}/#{n} #{e} with error)"
+        begin
+          record.update_column(column, convert(record.send(column)))
+        rescue
+          e += 1
+        end
       end
       puts "\rMigrating #{type} ... done             "
     end
