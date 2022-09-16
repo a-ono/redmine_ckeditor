@@ -138,12 +138,15 @@ module RedmineCkeditor
   end
 end
 
-require 'redmine_ckeditor/helper'
-require 'redmine_ckeditor/application_helper_patch'
-require 'redmine_ckeditor/queries_helper_patch'
-require 'redmine_ckeditor/rich_files_helper_patch'
-require 'redmine_ckeditor/journals_controller_patch'
-require 'redmine_ckeditor/messages_controller_patch'
-require 'redmine_ckeditor/mail_handler_patch'
-require 'redmine_ckeditor/pdf_patch'
-require 'redmine_ckeditor/tempfile_patch'
+plugin_name = :redmine_ckeditor
+plugin_root = File.dirname(__FILE__)
+
+require plugin_root + '/redmine_ckeditor/helper'
+require plugin_root + '/redmine_ckeditor/application_helper_patch'
+require plugin_root + '/redmine_ckeditor/queries_helper_patch'
+require plugin_root + '/redmine_ckeditor/rich_files_helper_patch'
+require plugin_root + '/redmine_ckeditor/journals_controller_patch'
+require plugin_root + '/redmine_ckeditor/messages_controller_patch'
+require plugin_root + '/redmine_ckeditor/mail_handler_patch'
+require plugin_root + '/redmine_ckeditor/pdf_patch'
+require plugin_root + '/redmine_ckeditor/tempfile_patch'
