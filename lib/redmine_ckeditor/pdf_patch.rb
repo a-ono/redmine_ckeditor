@@ -1,5 +1,5 @@
 module RedmineCkeditor
-  module PDFPatch
+  module PdfPatch
     def formatted_text(text)
       html = super
       html = HTMLEntities.new.decode(html) if RedmineCkeditor.enabled?
@@ -48,4 +48,4 @@ module RedmineCkeditor
   end
 end
 
-Redmine::Export::PDF::ITCPDF.prepend RedmineCkeditor::PDFPatch
+Redmine::Export::PDF::ITCPDF.prepend RedmineCkeditor::PdfPatch

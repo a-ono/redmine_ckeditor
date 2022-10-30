@@ -1,17 +1,29 @@
 require 'redmine'
-require 'redmine_ckeditor'
 
-ActiveSupport::Reloader.to_prepare do
-  RedmineCkeditor.apply_patch
+plugin_name = :redmine_ckeditor
+plugin_root = File.dirname(__FILE__)
+
+unless defined?(SmileTools)
+    require plugin_root + '/lib/redmine_ckeditor'
+end
+
+if Rails.version > '6.0' && Rails.autoloaders.zeitwerk_enabled?
+  Rails.application.config.after_initialize do
+    RedmineCkeditor.apply_patch
+  end
+else
+  Rails.configuration.to_prepare do
+    RedmineCkeditor.apply_patch
+  end
 end
 
 Redmine::Plugin.register :redmine_ckeditor do
   name 'Redmine CKEditor plugin'
   author 'Akihiro Ono'
   description 'This is a CKEditor plugin for Redmine'
-  version '1.2.3'
-  requires_redmine :version_or_higher => '4.0.0'
-  url 'http://github.com/a-ono/redmine_ckeditor'
+  version '1.2.4'
+  requires_redmine :version_or_higher => '5.0.0'
+  url 'https://github.com/nomadli/redmine_ckeditor'
 
   settings(:partial => 'settings/ckeditor')
 
